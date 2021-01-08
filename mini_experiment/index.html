@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My experiment</title>
+         <script src="../jspsych.js"></script>
+         <script src="../plugins/jspsych-html-button-response.js"></script>
+         <script src="../plugins/jspsych-audio-button-response.js"></script>
+         <script src="../plugins/jspsych-survey-html-form.js"></script>
+         <link href="../css/jspsych.css" rel="stylesheet">
+    </head>
+    <body></body>
+    <script>
+
+var timeline = [];
+
+  var welcome = {
+	type: 'html-button-response',
+    stimulus: '<h2>Willkomen zum Experiment!</h2>' + 
+    '<p>Vielen Dank in Voraus für Ihre Interesse, an dieser Studie teilzunehmen. '+
+    'Wir bitten Sie dafür, <strong>Kopfhörer</strong> zu verwenden.</p>' +
+    'Dieses Experiment besteht aus zwei Teilen:' +
+    ' <ol> <li>Eine <strong>Diskriminationsaufgabe,</strong> in denen Sie zwei Wörte hören werden. Sie müssen feststellen, ob sie gleich oder unterschiedlich sind;</li>' +
+  '<li>Eine <strong>Identifizierungsaufgabe,</strong> in denen Sie nur ein Wort hören werden; dabei werden Sie zwei Bilder sehen. Sie müssen den Bild auswählen, das das gehörte Wort darstellt.</li> </ol>' +  
+
+    '<p>Wir bitten Sie um Ihre Zustimmung, bevor wir Ihre Daten sammeln und verwenden. Bitte klicken Sie auf den "Start"-Button, um Ihre Zustimmung zu geben. Nachdem können Sie den Experiment starten. </p>',
+    choices: ['Zur Zustimmung']
+};
+
+timeline.push(welcome);
+
+var zustimmung = {
+    type: 'survey-html-form',
+    preamble: '<h2>Einverständniserklärung zur Teilnahme an der Forschungsstudie</h2>' +
+'<p>Sie werden gebeten, an einer Forschungsstudie teilzunehmen. Bevor Sie der Teilnahme zustimmen, muss der/die Leiter/in des Experiments Sie über (a) den Zweck, Ablauf und die Dauer der Studie, (b) etwaige Risiken, Unannehmlichkeiten und Vorteile der Studie, (c) die Datenschutzbestimmungen informieren. Diese Infos können Sie <a href= "link">hier</a>herunterladen (Link wird in einem neuen Fenster geöffnet)</p>' +
+'<h3>Teilnehmer/in</h3>' +
+'<p>Hiermit bestätige ich, dass ich über die Ziele, Methoden und Auswirkungen der aktuellen Studie, sowie über die Art der Teilnahme und mögliche Risiken informiert wurde. Ich habe das Informationsblatt gelesen und verstanden. Ich bestätige, dass meine Teilnahme an der Studie freiwillig erfolgt und nehme das Recht, meine Zustimmung jederzeit zurückzuziehen, zur Kenntnis. Verweigerung oder Abbruch werden mir keine Nachteile bringen.</p>',
+    html: '<input name="stimmung" type="checkbox" id="stimmung"> <label for="stimmung">Hiermit stimme ich der Teilnahme an der Studie zu.</label> <p>Name des/der Teilnehmers/in: <input name="participant" type="text"/></p>'
+    
+
+};
+
+timeline.push(zustimmung);
+
+var instructions1 = {
+      type: "html-button-response",
+      stimulus: "<p>In diesem Teil des Experimentes werden Sie zwei Wörte hören." +
+          " Sie müssen feststellen, ob diese Wörte gleich oder unterschiedlich sind. Der Unterschied kann sehr klein sein. Achtung: Sie haben nur 5 Sekunden, um ein Bild auszuwählen! Deshalb müssen Sie nicht zu viel überlegen. </p>",
+    choices: ['OK']
+};
+
+    timeline.push(instructions1);
+
+timeline.push({
+    type: 'audio-button-response',
+    stimulus: 'experiment_files/isi1500/eIa_rEter1500_rIter.mp3',
+    choices: ['gleich', 'unterschiedlich'],
+    trial_duration: 7000,
+    response_allowed_while_playing: false,
+    prompt: "<p>Sind die Wörte gleich oder unterschiedlich?<p>"
+});
+timeline.push({
+    type: 'audio-button-response',
+    stimulus: 'experiment_files/isi1500/eIa_rEter1500_rEter.mp3',
+    choices: ['gleich', 'unterschiedlich'],
+    trial_duration: 7000,
+    response_allowed_while_playing: false,
+    prompt: "<p>Sind die Wörte gleich oder unterschiedlich?<p>"
+});
+
+
+timeline.push({
+    type: 'audio-button-response',
+    stimulus: 'experiment_files/isi1500/eIa_rIter1500_rEter.mp3',
+    choices: ['gleich', 'unterschiedlich'],
+    trial_duration: 7000,
+    response_allowed_while_playing: false,
+    prompt: "<p>Sind die Wörte gleich oder unterschiedlich?<p>"
+});
+
+
+timeline.push({
+    type: 'audio-button-response',
+    stimulus: 'experiment_files/isi1500/eIa_rIter1500_rIter.mp3',
+    choices: ['gleich', 'unterschiedlich'],
+    trial_duration: 7000,
+    response_allowed_while_playing: false,
+    prompt: "<p>Sind die Wörte gleich oder unterschiedlich?<p>"
+});
+
+var instructions2 = {
+      type: "html-button-response",
+      stimulus: "<p>In diesem Teil des Experimentes werden Sie nur ein Wort hören." +
+          " Zusammen werden zwei Bilder angezeigt. Sie müssen das Bild klicken, das das Wort darstellt. Sie haben 5 Sekunden, um ein Bild auszuwählen. </p>",
+    choices: ['OK']
+};
+
+    timeline.push(instructions2);
+
+timeline.push({
+    type: 'audio-button-response',
+    stimulus: 'experiment_files/selected_words/eIa2_rIter.mp3',
+    choices: ['experiment_files/pics/retter.jpg', 'experiment_files/pics/ritter.jpg'],
+    prompt: "<p>Welches Wort haben Sie gehört? Bitte klicken Sie auf das passende Bild. </p>",
+    trial_duration: 5500,
+    button_html: '<img src= "%choice%" />'
+});
+
+timeline.push({
+    type: 'audio-button-response',
+    stimulus: 'experiment_files/selected_words/eIa1_rEter.mp3',
+    choices: ['experiment_files/pics/retter.jpg', 'experiment_files/pics/ritter.jpg'],
+    trial_duration: 5500,
+    prompt: "<p>Welches Wort haben Sie gehört? Bitte klicken Sie auf das passende Bild. </p>",
+    button_html: '<img src= "%choice%" />'
+})
+
+  jsPsych.init({
+    timeline: timeline,
+    on_finish: function(){jsPsych.data.displayData();}
+  });
+
+    </script>
+</html>
