@@ -31,10 +31,10 @@ timeline.push(welcome);
 var zustimmung = {
     type: 'survey-html-form',
     preamble: '<h2>Einverständniserklärung zur Teilnahme an der Forschungsstudie</h2>' +
-'<div class="myDiv"><p>Sie werden gebeten, an einer Forschungsstudie teilzunehmen. Bevor Sie der Teilnahme zustimmen, muss der/die Leiter/in des Experiments Sie über (a) den Zweck, Ablauf und die Dauer der Studie, (b) etwaige Risiken, Unannehmlichkeiten und Vorteile der Studie, (c) die Datenschutzbestimmungen informieren. Diese Infos können Sie <a href= "info_sheet_inprogress.pdf">hier</a> herunterladen (Link wird in einem neuen Fenster geöffnet)</p></div>' +
+'<div class="myDiv"><p>Sie werden gebeten, an einer Forschungsstudie teilzunehmen. Bevor Sie der Teilnahme zustimmen, muss der/die Leiter/in des Experiments Sie über (a) den Zweck, Ablauf und die Dauer der Studie, (b) etwaige Risiken, Unannehmlichkeiten und Vorteile der Studie, (c) die Datenschutzbestimmungen informieren. Diese Infos können Sie <a href="info_sheet_inprogress.pdf" target="_blank">hier</a> herunterladen (Link wird in einem neuen Fenster geöffnet)</p></div>' +
 '<h3>Teilnehmer/in</h3>' +
 '<div class="myDiv"><p>Hiermit bestätige ich, dass ich über die Ziele, Methoden und Auswirkungen der aktuellen Studie, sowie über die Art der Teilnahme und mögliche Risiken informiert wurde. Ich habe das Informationsblatt gelesen und verstanden. Ich bestätige, dass meine Teilnahme an der Studie freiwillig erfolgt und nehme das Recht, meine Zustimmung jederzeit zurückzuziehen, zur Kenntnis. Verweigerung oder Abbruch werden mir keine Nachteile bringen.</p></div>',
-    html: '<input name="zustimmung" type="checkbox" id="zustimmung"> <label for="zustimmung">Hiermit stimme ich der Teilnahme an der Studie zu.</label> <p>Name des/der Teilnehmers/in: <input name="participant" type="text"/></p>'
+    html: '<input name="zustimmung" type="checkbox" id="zustimmung"> <label for="zustimmung"> Hiermit stimme ich der Teilnahme an der Studie zu.</label> <p>Name des/der Teilnehmers/in: <input name="participant" type="text"/></p>'
     
 
 };
@@ -43,8 +43,8 @@ timeline.push(zustimmung);
 
 var instructions1 = {
       type: 'html-button-response',
-      stimulus: '<div class="myDiv"><p>In diesem Teil des Experimentes werden Sie zwei Wörte hören, die um 1.5 Sekunden getrennt sind.</p>" +
-          "<p>Sie müssen feststellen, ob diese Wörte gleich oder unterschiedlich sind. Der Unterschied, wenn es einen gibt, besteht nur aus einem Vokal. Achtung: Sie haben nur 5 Sekunden, um eine Option auszuwählen! Deshalb müssen Sie nicht zu viel überlegen. </p></div>',
+      stimulus: '<div class="myDiv"><p>In diesem Teil des Experimentes werden Sie zwei Wörte hören, die um 1.5 Sekunden getrennt sind.</p>' +
+          '<p>Sie müssen feststellen, ob diese Wörte gleich oder unterschiedlich sind. Der Unterschied, wenn es einen gibt, besteht nur aus einem Vokal. Achtung: Sie haben nur 5 Sekunden, um eine Option auszuwählen! Deshalb müssen Sie nicht zu viel überlegen. </p></div>',
     choices: ['OK']
 };
 
