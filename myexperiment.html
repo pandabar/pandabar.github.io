@@ -51,9 +51,27 @@ var instructions1 = {
 
     timeline.push(instructions1);
 
+var disc_trials = {
+    type: 'audio-button-response',
+    trial_duration: 7000,
+    post_trial_gap: 500,
+    prompt: '<p>Sind die Wörte gleich oder unterschiedlich?</p>',
+    choices: ['gleich', 'unterschiedlich'],
+    timeline: [
+        {stimulus: 'isi1500/retter1500ritter.mp3'},
+        {stimulus: 'isi1500/retter1500retter.mp3'},
+        {stimulus: 'isi1500/ritter1500ritter.mp3'},
+	{stimulus: 'isi1500/ritter1500retter.mp3'},
+    randomize_order: true,
+    repetitions: 3	    
+    ]
+};
+	    
+timeline.push(disc_trials);
+	    
 timeline.push({
     type: 'audio-button-response',
-    stimulus: 'isi1500/eIa_rEter1500_rIter.mp3',
+    stimulus: 'isi1500/retter1500ritter.mp3',
     choices: ['gleich', 'unterschiedlich'],
     trial_duration: 7000,
     post_trial_gap: 500,
@@ -62,7 +80,7 @@ timeline.push({
 });
 timeline.push({
     type: 'audio-button-response',
-    stimulus: 'isi1500/eIa_rEter1500_rEter.mp3',
+    stimulus: 'isi1500/retter1500retter.mp3',
     choices: ['gleich', 'unterschiedlich'],
     trial_duration: 7000,
     post_trial_gap: 500,
@@ -73,7 +91,7 @@ timeline.push({
 
 timeline.push({
     type: 'audio-button-response',
-    stimulus: 'isi1500/eIa_rIter1500_rEter.mp3',
+    stimulus: 'isi1500/ritter1500retter.mp3',
     choices: ['gleich', 'unterschiedlich'],
     trial_duration: 7000,
     post_trial_gap: 500,
@@ -84,7 +102,7 @@ timeline.push({
 
 timeline.push({
     type: 'audio-button-response',
-    stimulus: 'isi1500/eIa_rIter1500_rIter.mp3',
+    stimulus: 'isi1500/ritter1500ritter.mp3',
     choices: ['gleich', 'unterschiedlich'],
     trial_duration: 7000,
     post_trial_gap: 500,
@@ -94,17 +112,39 @@ timeline.push({
 
 var instructions2 = {
       type: 'html-button-response',
-      stimulus: '<h2>Teil 1: Identifizierungsaufgabe</h2>' +  
+      stimulus: '<h2>Teil 2: Identifizierungsaufgabe</h2>' +  
 	'<div class="myDiv"><p>In diesem Teil des Experimentes werden Sie nur ein Wort hören. </p>'+
         '<p>Zusammen werden zwei Bilder angezeigt. Sie müssen das Bild klicken, das das Wort darstellt. Sie haben 5 Sekunden, um ein Bild auszuwählen. </p></div>',
     choices: ['OK']
 };
 
     timeline.push(instructions2);
+var disc_procedure = {
+    timeline: [
+        {
+            type: 'html-keyboard-response',
+            stimulus: '+',
+            choices: jsPsych.NO_KEYS,
+            trial_duration: 500
+        },
+        {
+            type: 'image-keyboard-response',
+            stimulus: jsPsych.timelineVariable('face'),
+            choices: jsPsych.NO_KEYS,
+            trial_duration: 2500
+        }
+    ],
+    timeline_variables: [
+        { face: 'person-1.jpg' },
+        { face: 'person-2.jpg' },
+        { face: 'person-3.jpg' },
+        { face: 'person-4.jpg' }
+    ]
+}
 
 timeline.push({
     type: 'audio-button-response',
-    stimulus: 'selected_words/eIa2_rIter.mp3',
+    stimulus: 'selected_words/ritter.mp3',
     choices: ['pics/retter.jpg', 'pics/ritter.jpg'],
     prompt: "<p>Welches Wort haben Sie gehört? Bitte klicken Sie auf das passende Bild. </p>",
     trial_duration: 5500,
@@ -114,7 +154,7 @@ timeline.push({
 
 timeline.push({
     type: 'audio-button-response',
-    stimulus: 'selected_words/eIa1_rEter.mp3',
+    stimulus: 'selected_words/retter.mp3',
     choices: ['pics/retter.jpg', 'pics/ritter.jpg'],
     trial_duration: 5500,
     post_trial_gap: 500,
