@@ -52,7 +52,7 @@ var instructions1 = {
 
 timeline.push({
     type: 'audio-button-response',
-    stimulus: 'experiment_files/isi1500/eIa_rEter1500_rIter.mp3',
+    stimulus: 'isi1500/eIa_rEter1500_rIter.mp3',
     choices: ['gleich', 'unterschiedlich'],
     trial_duration: 7000,
     response_allowed_while_playing: false,
@@ -60,17 +60,7 @@ timeline.push({
 });
 timeline.push({
     type: 'audio-button-response',
-    stimulus: 'experiment_files/isi1500/eIa_rEter1500_rEter.mp3',
-    choices: ['gleich', 'unterschiedlich'],
-    trial_duration: 7000,
-    response_allowed_while_playing: false,
-    prompt: "<p>Sind die Wörte gleich oder unterschiedlich?<p>"
-});
-
-
-timeline.push({
-    type: 'audio-button-response',
-    stimulus: 'experiment_files/isi1500/eIa_rIter1500_rEter.mp3',
+    stimulus: 'isi1500/eIa_rEter1500_rEter.mp3',
     choices: ['gleich', 'unterschiedlich'],
     trial_duration: 7000,
     response_allowed_while_playing: false,
@@ -80,7 +70,17 @@ timeline.push({
 
 timeline.push({
     type: 'audio-button-response',
-    stimulus: 'experiment_files/isi1500/eIa_rIter1500_rIter.mp3',
+    stimulus: 'isi1500/eIa_rIter1500_rEter.mp3',
+    choices: ['gleich', 'unterschiedlich'],
+    trial_duration: 7000,
+    response_allowed_while_playing: false,
+    prompt: "<p>Sind die Wörte gleich oder unterschiedlich?<p>"
+});
+
+
+timeline.push({
+    type: 'audio-button-response',
+    stimulus: 'isi1500/eIa_rIter1500_rIter.mp3',
     choices: ['gleich', 'unterschiedlich'],
     trial_duration: 7000,
     response_allowed_while_playing: false,
@@ -98,7 +98,7 @@ var instructions2 = {
 
 timeline.push({
     type: 'audio-button-response',
-    stimulus: 'experiment_files/selected_words/eIa2_rIter.mp3',
+    stimulus: 'selected_words/eIa2_rIter.mp3',
     choices: ['experiment_files/pics/retter.jpg', 'experiment_files/pics/ritter.jpg'],
     prompt: "<p>Welches Wort haben Sie gehört? Bitte klicken Sie auf das passende Bild. </p>",
     trial_duration: 5500,
@@ -107,7 +107,7 @@ timeline.push({
 
 timeline.push({
     type: 'audio-button-response',
-    stimulus: 'experiment_files/selected_words/eIa1_rEter.mp3',
+    stimulus: 'selected_words/eIa1_rEter.mp3',
     choices: ['experiment_files/pics/retter.jpg', 'experiment_files/pics/ritter.jpg'],
     trial_duration: 5500,
     prompt: "<p>Welches Wort haben Sie gehört? Bitte klicken Sie auf das passende Bild. </p>",
