@@ -23,7 +23,7 @@ var timeline = [];
   '<li>Eine <strong>Identifizierungsaufgabe,</strong> in denen Sie nur ein Wort hören werden; dabei werden Sie zwei Bilder sehen. Sie müssen den Bild auswählen, das das gehörte Wort darstellt.</li> </ol>' +  
 
     '<p>Wir bitten Sie um Ihre Zustimmung, bevor wir Ihre Daten sammeln und verwenden. Bitte klicken Sie auf den "Start"-Button, um Ihre Zustimmung zu geben. Nachdem können Sie den Experiment starten. </p></div>',
-    choices: ['Zur Zustimmung']
+    choices: ['Start']
 };
 
 timeline.push(welcome);
@@ -55,6 +55,7 @@ timeline.push({
     stimulus: 'isi1500/eIa_rEter1500_rIter.mp3',
     choices: ['gleich', 'unterschiedlich'],
     trial_duration: 7000,
+    post_trial_gap: 500,
     response_allowed_while_playing: false,
     prompt: "<p>Sind die Wörte gleich oder unterschiedlich?<p>"
 });
@@ -63,6 +64,7 @@ timeline.push({
     stimulus: 'isi1500/eIa_rEter1500_rEter.mp3',
     choices: ['gleich', 'unterschiedlich'],
     trial_duration: 7000,
+    post_trial_gap: 500,
     response_allowed_while_playing: false,
     prompt: "<p>Sind die Wörte gleich oder unterschiedlich?<p>"
 });
@@ -73,6 +75,7 @@ timeline.push({
     stimulus: 'isi1500/eIa_rIter1500_rEter.mp3',
     choices: ['gleich', 'unterschiedlich'],
     trial_duration: 7000,
+    post_trial_gap: 500,
     response_allowed_while_playing: false,
     prompt: "<p>Sind die Wörte gleich oder unterschiedlich?<p>"
 });
@@ -83,6 +86,7 @@ timeline.push({
     stimulus: 'isi1500/eIa_rIter1500_rIter.mp3',
     choices: ['gleich', 'unterschiedlich'],
     trial_duration: 7000,
+    post_trial_gap: 500,
     response_allowed_while_playing: false,
     prompt: "<p>Sind die Wörte gleich oder unterschiedlich?<p>"
 });
@@ -102,6 +106,7 @@ timeline.push({
     choices: ['pics/retter.jpg', 'experiment_files/pics/ritter.jpg'],
     prompt: "<p>Welches Wort haben Sie gehört? Bitte klicken Sie auf das passende Bild. </p>",
     trial_duration: 5500,
+    post_trial_gap: 500,
     button_html: '<img src= "%choice%" />'
 });
 
@@ -110,6 +115,7 @@ timeline.push({
     stimulus: 'selected_words/eIa1_rEter.mp3',
     choices: ['pics/retter.jpg', 'experiment_files/pics/ritter.jpg'],
     trial_duration: 5500,
+    post_trial_gap: 500,
     prompt: "<p>Welches Wort haben Sie gehört? Bitte klicken Sie auf das passende Bild. </p>",
     button_html: '<img src= "%choice%" />'
 })
