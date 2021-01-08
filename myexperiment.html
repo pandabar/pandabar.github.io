@@ -119,28 +119,6 @@ var instructions2 = {
 };
 
     timeline.push(instructions2);
-var disc_procedure = {
-    timeline: [
-        {
-            type: 'html-keyboard-response',
-            stimulus: '+',
-            choices: jsPsych.NO_KEYS,
-            trial_duration: 500
-        },
-        {
-            type: 'image-keyboard-response',
-            stimulus: jsPsych.timelineVariable('face'),
-            choices: jsPsych.NO_KEYS,
-            trial_duration: 2500
-        }
-    ],
-    timeline_variables: [
-        { face: 'person-1.jpg' },
-        { face: 'person-2.jpg' },
-        { face: 'person-3.jpg' },
-        { face: 'person-4.jpg' }
-    ]
-}
 
 timeline.push({
     type: 'audio-button-response',
