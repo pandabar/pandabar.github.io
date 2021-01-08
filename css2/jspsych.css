@@ -27,9 +27,15 @@
  }
 
  .jspsych-content {
-   max-width: 95%; /* this is mainly an IE 10-11 fix */
+   max-width: 80%; /* this is mainly an IE 10-11 fix */
    text-align: center;
    margin: auto; /* this is for overflowing content */
+ }
+
+.myDiv {
+   max-width: 80%; 
+   text-align: left;
+   margin: auto; 
  }
 
  .jspsych-top {
