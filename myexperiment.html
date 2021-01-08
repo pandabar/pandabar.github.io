@@ -16,13 +16,13 @@ var timeline = [];
   var welcome = {
 	type: 'html-button-response',
     stimulus: '<h2>Willkomen zum Experiment!</h2>' + 
-    '<p>Vielen Dank in Voraus für Ihre Interesse, an dieser Studie teilzunehmen. '+
-    'Wir bitten Sie dafür, <strong>Kopfexperimenthörer</strong> zu verwenden.</p>' +
+    '<div class="myDiv"><p>Vielen Dank in Voraus für Ihre Interesse, an dieser Studie teilzunehmen. '+
+    'Wir bitten Sie dafür, <strong>Kopfhörer</strong> zu verwenden.</p>' +
     'Dieses Experiment besteht aus zwei Teilen:' +
     ' <ol> <li>Eine <strong>Diskriminationsaufgabe,</strong> in denen Sie zwei Wörte hören werden. Sie müssen feststellen, ob sie gleich oder unterschiedlich sind;</li>' +
   '<li>Eine <strong>Identifizierungsaufgabe,</strong> in denen Sie nur ein Wort hören werden; dabei werden Sie zwei Bilder sehen. Sie müssen den Bild auswählen, das das gehörte Wort darstellt.</li> </ol>' +  
 
-    '<p>Wir bitten Sie um Ihre Zustimmung, bevor wir Ihre Daten sammeln und verwenden. Bitte klicken Sie auf den "Start"-Button, um Ihre Zustimmung zu geben. Nachdem können Sie den Experiment starten. </p>',
+    '<p>Wir bitten Sie um Ihre Zustimmung, bevor wir Ihre Daten sammeln und verwenden. Bitte klicken Sie auf den "Start"-Button, um Ihre Zustimmung zu geben. Nachdem können Sie den Experiment starten. </p></div>',
     choices: ['Zur Zustimmung']
 };
 
@@ -31,10 +31,10 @@ timeline.push(welcome);
 var zustimmung = {
     type: 'survey-html-form',
     preamble: '<h2>Einverständniserklärung zur Teilnahme an der Forschungsstudie</h2>' +
-'<p>Sie werden gebeten, an einer Forschungsstudie teilzunehmen. Bevor Sie der Teilnahme zustimmen, muss der/die Leiter/in des Experiments Sie über (a) den Zweck, Ablauf und die Dauer der Studie, (b) etwaige Risiken, Unannehmlichkeiten und Vorteile der Studie, (c) die Datenschutzbestimmungen informieren. Diese Infos können Sie <a href= "link">hier</a>herunterladen (Link wird in einem neuen Fenster geöffnet)</p>' +
+'<div class="myDiv"><p>Sie werden gebeten, an einer Forschungsstudie teilzunehmen. Bevor Sie der Teilnahme zustimmen, muss der/die Leiter/in des Experiments Sie über (a) den Zweck, Ablauf und die Dauer der Studie, (b) etwaige Risiken, Unannehmlichkeiten und Vorteile der Studie, (c) die Datenschutzbestimmungen informieren. Diese Infos können Sie <a href= "info_sheet_inprogress.pdf">hier</a> herunterladen (Link wird in einem neuen Fenster geöffnet)</p></div>' +
 '<h3>Teilnehmer/in</h3>' +
-'<p>Hiermit bestätige ich, dass ich über die Ziele, Methoden und Auswirkungen der aktuellen Studie, sowie über die Art der Teilnahme und mögliche Risiken informiert wurde. Ich habe das Informationsblatt gelesen und verstanden. Ich bestätige, dass meine Teilnahme an der Studie freiwillig erfolgt und nehme das Recht, meine Zustimmung jederzeit zurückzuziehen, zur Kenntnis. Verweigerung oder Abbruch werden mir keine Nachteile bringen.</p>',
-    html: '<input name="stimmung" type="checkbox" id="stimmung"> <label for="stimmung">Hiermit stimme ich der Teilnahme an der Studie zu.</label> <p>Name des/der Teilnehmers/in: <input name="participant" type="text"/></p>'
+'<div class="myDiv><p>Hiermit bestätige ich, dass ich über die Ziele, Methoden und Auswirkungen der aktuellen Studie, sowie über die Art der Teilnahme und mögliche Risiken informiert wurde. Ich habe das Informationsblatt gelesen und verstanden. Ich bestätige, dass meine Teilnahme an der Studie freiwillig erfolgt und nehme das Recht, meine Zustimmung jederzeit zurückzuziehen, zur Kenntnis. Verweigerung oder Abbruch werden mir keine Nachteile bringen.</p></div>',
+    html: '<input name="zustimmung" type="checkbox" id="zustimmung"> <label for="zustimmung">Hiermit stimme ich der Teilnahme an der Studie zu.</label> <p>Name des/der Teilnehmers/in: <input name="participant" type="text"/></p>'
     
 
 };
@@ -43,8 +43,8 @@ timeline.push(zustimmung);
 
 var instructions1 = {
       type: "html-button-response",
-      stimulus: "<p>In diesem Teil des Experimentes werden Sie zwei Wörte hören." +
-          " Sie müssen feststellen, ob diese Wörte gleich oder unterschiedlich sind. Der Unterschied kann sehr klein sein. Achtung: Sie haben nur 5 Sekunden, um ein Bild auszuwählen! Deshalb müssen Sie nicht zu viel überlegen. </p>",
+      stimulus: "<div class="myDiv"><p>In diesem Teil des Experimentes werden Sie zwei Wörte hören, die um 1.5 Sekunden getrennt sind." +
+          " Sie müssen feststellen, ob diese Wörte gleich oder unterschiedlich sind. Der Unterschied, wenn es einen gibt, besteht nur aus einem Vokal. Achtung: Sie haben nur 5 Sekunden, um eine Option auszuwählen! Deshalb müssen Sie nicht zu viel überlegen. </p></div>",
     choices: ['OK']
 };
 
@@ -116,6 +116,7 @@ timeline.push({
 
   jsPsych.init({
     timeline: timeline,
+	default_iti: 500
     on_finish: function(){jsPsych.data.displayData();}
   });
 
