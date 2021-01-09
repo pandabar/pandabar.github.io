@@ -19,7 +19,7 @@ var timeline = [];
     '<div class="myDiv"><p>Vielen Dank in Voraus für Ihre Interesse, an dieser Studie teilzunehmen. '+
     'Wir bitten Sie dafür, <strong>Kopfhörer</strong> zu verwenden.</p>' +
     'Dieses Experiment besteht aus zwei Teilen:' +
-    ' <ol> <li>Eine <strong>Diskriminationsaufgabe,</strong> in denen Sie zwei Wörte hören werden. Sie müssen feststellen, ob sie gleich oder unterschiedlich sind;</li>' +
+    ' <ol> <li>Eine <strong>Diskriminationsaufgabe,</strong> in denen Sie zwei Wörter hören werden. Sie müssen feststellen, ob sie gleich oder unterschiedlich sind;</li>' +
   '<li>Eine <strong>Identifizierungsaufgabe,</strong> in denen Sie nur ein Wort hören werden; dabei werden Sie zwei Bilder sehen. Sie müssen das Bild auswählen, das das gehörte Wort darstellt.</li> </ol>' +  
 
     '<p>Wir bitten Sie um Ihre Zustimmung, bevor wir Ihre Daten sammeln und verwenden. Bitte klicken Sie auf den "Start"-Button, um Ihre Zustimmung zu geben. Nachdem können Sie den Experiment starten. </p></div>',
@@ -44,8 +44,8 @@ timeline.push(zustimmung);
 var instructions1 = {
       type: 'html-button-response',
       stimulus: '<h2>Teil 1: Diskriminationsaufgabe</h2>' +  
-	'<div class="myDiv"><p>In diesem Teil des Experimentes werden Sie zwei Wörte hören, die um 1.5 Sekunden getrennt sind.</p>' +
-          '<p>Sie müssen feststellen, ob diese Wörte gleich oder unterschiedlich sind. Der Unterschied, wenn es einen gibt, besteht nur aus einem Vokal. Achtung: Sie haben nur 5 Sekunden, um eine Option auszuwählen! Deshalb müssen Sie nicht zu viel überlegen. </p></div>',
+	'<div class="myDiv"><p>In diesem Teil des Experimentes werden Sie zwei Wörter hören, die um 1.5 Sekunden getrennt sind.</p>' +
+          '<p>Sie müssen feststellen, ob diese Wörter gleich oder unterschiedlich sind. Der Unterschied, wenn es einen gibt, besteht nur aus einem Vokal. Achtung: Sie haben nur 5 Sekunden, um eine Option auszuwählen! Deshalb müssen Sie nicht zu viel überlegen. </p></div>',
     choices: ['OK']
 };
 
@@ -55,7 +55,7 @@ var disc_trials = {
     type: 'audio-button-response',
     trial_duration: 7000,
     post_trial_gap: 500,
-    prompt: '<p>Sind die Wörte gleich oder unterschiedlich?</p>',
+    prompt: '<p>Sind die Wörter gleich oder unterschiedlich?</p>',
     choices: ['gleich', 'unterschiedlich'],
     timeline: [
         {stimulus: 'isi1500/retter1500ritter200.mp3'},
