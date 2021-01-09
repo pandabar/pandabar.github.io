@@ -61,7 +61,11 @@ var disc_trials = {
         {stimulus: 'isi1500/retter1500ritter200.mp3'},
         {stimulus: 'isi1500/retter1500retter200.mp3'},
         {stimulus: 'isi1500/ritter1500ritter200.mp3'},
-	{stimulus: 'isi1500/ritter1500retter200.mp3'}    
+	{stimulus: 'isi1500/ritter1500retter200.mp3'},
+	{stimulus: 'isi1500/spulen1500spuelen200.mp3'},
+	{stimulus: 'isi1500/spulen1500spulen200.mp3'},
+	{stimulus: 'isi1500/spuelen1500spuelen200.mp3'},
+	{stimulus: 'isi1500/spuelen1500spulen200.mp3'}
     ],
     randomize_order: true,
     repetitions: 3	
@@ -82,7 +86,7 @@ var instructions2 = {
 
 var ident_trials = {
     type: 'audio-button-response',
-    choices: ['pics/retter.jpg', 'pics/ritter.jpg'],
+    choices: ['pics/spulen2.jpg', 'pics/spuelen2.jpg'],
     prompt: "<p>Welches Wort haben Sie gehört? Bitte klicken Sie auf das passende Bild. </p>",
     trial_duration: 5500,
     post_trial_gap: 500,
@@ -90,10 +94,11 @@ var ident_trials = {
     timeline: [
         {stimulus: 'selected_words/retter3200.wav'},
 	{stimulus: 'selected_words/ritter3200.wav'},
-	{stimulus: 'selected_words/ritter3200.wav'}    
+	{stimulus: 'selected_words/spulen5200.wav'}, 
+	{stimulus: 'selected_words/spuelen1200.wav'}
     ],
     randomize_order: true,
-    repetitions: 4	
+    repetitions: 6	
 };
 
 timeline.push(ident_trials);
