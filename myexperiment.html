@@ -68,7 +68,13 @@ var disc_trials = {
 	{stimulus: 'isi1500/spuelen1500spulen200.mp3'}
     ],
     randomize_order: true,
-    repetitions: 2	
+    repetitions: 2,
+	on_finish: function() {
+        // at the end of each trial, update the progress bar
+        // based on the current value and the proportion to update for each trial
+        var curr_progress_bar_value = jsPsych.getProgressBarCompleted();
+        jsPsych.setProgressBar(curr_progress_bar_value + (1/n_trials));
+    }
 };
 	    
 timeline.push(disc_trials);
@@ -102,7 +108,13 @@ var ident_trials = {
 	{stimulus: 'selected_words/spuelen5200.mp3', choices: ['pics/spulen2.jpg', 'pics/spuelen2.jpg']}
     ],
     randomize_order: true,
-    repetitions: 4	
+    repetitions: 4,
+	on_finish: function() {
+        // at the end of each trial, update the progress bar
+        // based on the current value and the proportion to update for each trial
+        var curr_progress_bar_value = jsPsych.getProgressBarCompleted();
+        jsPsych.setProgressBar(curr_progress_bar_value + (1/n_trials));
+    }
 };
 
 timeline.push(ident_trials);
@@ -112,7 +124,9 @@ timeline.push(ident_trials);
       preamble: '<h2>Vielen Dank</h2>'+  
 	'<div class="myDiv"><p>Danke für Ihre Teilnahme an diesem Experiment! </p>'+
         '<p>Bitte geben Sie Ihre Email-addresse ein, um Ihren Gutschein zu erhalten.</p></div>',
-		   html: '<p>Email-addresse: <input name="participants email" type="text"/></p>',
+		   html: '<p>Email-addresse: <input name="participants email" type="text"/></p>'+
+		    '<div style="height:20px; width:100%"></div>',
+		    ,
     button_label: 'OK'
 };
 
@@ -121,7 +135,8 @@ timeline.push(goodbye_screen);
   jsPsych.init({
 	 timeline: timeline,
 	 show_progress_bar: true,
-	  message_progress_bar:"Fortschritt",
+	  message_progress_bar:"Fortschritt:",
+	  auto_update_progress_bar: false,
     on_finish: function(){jsPsych.data.displayData();}
   });
 
