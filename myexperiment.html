@@ -111,21 +111,26 @@ var instructions2 = {
     timeline.push(instructions2);
 
 var ident_trials = {
+timeline: [
+    {
     type: 'audio-button-response',
+    stimulus: jsPsych.timelineVariable('word'),
     choices: ['pics/retter.jpg', 'pics/ritter.jpg'],
     prompt: "<p>Welches Wort haben Sie gehört? Bitte klicken Sie auf das passende Bild. </p>",
     trial_duration: 5500,
     post_trial_gap: 500,
-    button_html: '<img src= "%choice%" />',
+    button_html: '<img src= "%choice%" />'
+	    },
     timeline: [
-        {stimulus: 'selected_words/retter3200.wav'},
-	{stimulus: 'selected_words/spulen1200.mp3', choices: ['pics/spulen2.jpg', 'pics/spuelen2.jpg']},
-	{stimulus: 'selected_words/ritter3200.wav'},	
-	{stimulus: 'selected_words/spuelen5200.mp3', choices: ['pics/spulen2.jpg', 'pics/spuelen2.jpg']}
+        {word: 'selected_words/retter3200.wav'},
+	{word: 'selected_words/spulen1200.mp3', choices: ['pics/spulen2.jpg', 'pics/spuelen2.jpg']},
+	{word: 'selected_words/ritter3200.wav'},	
+	{word: 'selected_words/spuelen5200.mp3', choices: ['pics/spulen2.jpg', 'pics/spuelen2.jpg']}
     ],
-    randomize_order: true,
-    repetitions: 4,
-	on_finish: function() {
+    sample: {
+        type: 'fixed-repetitions',
+        size: 3, // 3 repetitions of each trial, 12 total trials, order is randomized.
+    	on_finish: function() {
         // at the end of each trial, update the progress bar
         // based on the current value and the proportion to update for each trial
         var curr_progress_bar_value = jsPsych.getProgressBarCompleted();
