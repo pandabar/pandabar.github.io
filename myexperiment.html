@@ -13,6 +13,8 @@
 
 var timeline = [];
 
+var n_screens = 36;
+	    
   var welcome = {
 	type: 'html-button-response',
     stimulus: '<h2>Willkommen zum Experiment!</h2>' + 
@@ -23,7 +25,10 @@ var timeline = [];
   '<li>Eine <strong>Identifizierungsaufgabe,</strong> in denen Sie nur ein Wort hören werden; dabei werden Sie zwei Bilder sehen. Sie müssen das Bild auswählen, das das gehörte Wort darstellt.</li> </ol>' +  
 
     '<p>Wir bitten Sie um Ihre Zustimmung, bevor wir Ihre Daten sammeln und verwenden. Bitte klicken Sie auf den "Start"-Button, um Ihre Zustimmung zu geben. Nachdem können Sie den Experiment starten. </p></div>',
-    choices: ['Start']
+    choices: ['Start'],
+	  on_finish: function(){
+        jsPsych.setProgressBar(0); // set progress bar to 85% full.
+    }
 };
 
 timeline.push(welcome);
@@ -35,7 +40,10 @@ var zustimmung = {
 '<h3>Teilnehmer/in</h3>' +
 '<div class="myDiv"><p>Hiermit bestätige ich, dass ich über die Ziele, Methoden und Auswirkungen der aktuellen Studie, sowie über die Art der Teilnahme und mögliche Risiken informiert wurde. Ich habe das Informationsblatt gelesen und verstanden. Ich bestätige, dass meine Teilnahme an der Studie freiwillig erfolgt und nehme das Recht, meine Zustimmung jederzeit zurückzuziehen, zur Kenntnis. Verweigerung oder Abbruch werden mir keine Nachteile bringen.</p></div>',
     html: '<input name="zustimmung" type="checkbox" id="zustimmung"> <label for="zustimmung"> Hiermit stimme ich der Teilnahme an der Studie zu.</label> <p>Name des/der Teilnehmers/in: <input name="participant" type="text"/></p>',
-button_label: 'OK'
+button_label: 'OK',
+	on_finish: function(){
+        jsPsych.setProgressBar(1/n_screens);
+    }
     
 };
 
@@ -46,12 +54,14 @@ var instructions1 = {
       stimulus: '<h2>Teil 1: Diskriminationsaufgabe</h2>' +  
 	'<div class="myDiv"><p>In diesem Teil des Experimentes werden Sie zwei Wörter hören, die um 1.5 Sekunden getrennt sind.</p>' +
           '<p>Sie müssen feststellen, ob diese Wörter gleich oder unterschiedlich sind. Der Unterschied, wenn es einen gibt, besteht nur aus einem Vokal. Achtung: Sie haben nur 5 Sekunden, um eine Option auszuwählen! Deshalb müssen Sie nicht zu viel überlegen. </p></div>',
-    choices: ['OK']
+    choices: ['OK'],
+	on_finish: function(){
+        jsPsych.setProgressBar((2/n_screens));
+    }
 };
 
     timeline.push(instructions1);
 	    
-var n_trials = 16;
 	    
 var disc_trials = {
     type: 'audio-button-response',
@@ -75,7 +85,7 @@ var disc_trials = {
         // at the end of each trial, update the progress bar
         // based on the current value and the proportion to update for each trial
         var curr_progress_bar_value = jsPsych.getProgressBarCompleted();
-        jsPsych.setProgressBar(curr_progress_bar_value + (1/n_trials));
+        jsPsych.setProgressBar(curr_progress_bar_value + (1/n_screens));
     }
 };
 	    
@@ -91,7 +101,11 @@ var instructions2 = {
 	'<div><img src="pics/coffee.png" alt="Machen Sie eine Pause..." width="150" height="150" class="center"></div>'+
 	'<div style="height:20px; width:100%"></div>',
     
-	choices: ['Fortfahren']
+	choices: ['Fortfahren'],
+	on_finish: function(){
+        var curr_progress_bar_value = jsPsych.getProgressBarCompleted();
+        jsPsych.setProgressBar(curr_progress_bar_value + (1/n_screens));
+    }
 };
 
     timeline.push(instructions2);
@@ -115,7 +129,7 @@ var ident_trials = {
         // at the end of each trial, update the progress bar
         // based on the current value and the proportion to update for each trial
         var curr_progress_bar_value = jsPsych.getProgressBarCompleted();
-        jsPsych.setProgressBar(curr_progress_bar_value + (1/n_trials));
+        jsPsych.setProgressBar(curr_progress_bar_value + (1/n_screens));
     }
 };
 
@@ -128,8 +142,10 @@ timeline.push(ident_trials);
         '<p>Bitte geben Sie Ihre Email-addresse ein, um Ihren Gutschein zu erhalten.</p></div>',
 		   html: '<p>Email-addresse: <input name="participants email" type="text"/></p>'+
 		    '<div style="height:20px; width:100%"></div>',
-		    ,
-    button_label: 'OK'
+    button_label: 'OK',
+		    on_finish: function(){
+        jsPsych.setProgressBar(1);
+    }
 };
 
 timeline.push(goodbye_screen);
