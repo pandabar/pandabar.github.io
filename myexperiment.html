@@ -111,8 +111,8 @@ var instructions2 = {
     timeline.push(instructions2);
 
 var ident_trials = {
-//timeline: [
- //   {
+timeline: [
+    {
     type: 'audio-button-response',
    // stimulus: jsPsych.timelineVariable('word'),
     choices: ['pics/retter.jpg', 'pics/ritter.jpg'],
@@ -120,11 +120,9 @@ var ident_trials = {
     trial_duration: 5500,
     post_trial_gap: 500,
     button_html: '<img src= "%choice%" />',
-    stimulus: timelineVariable('word'),
-
-    
-//	    }
-//	 ],
+    stimulus: timelineVariable('word')
+	    }
+	 ],
     timeline: [
         {word: 'selected_words/retter3200.wav'},
 	{word: 'selected_words/spulen1200.mp3', choices: ['pics/spulen2.jpg', 'pics/spuelen2.jpg']},
