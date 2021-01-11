@@ -120,13 +120,16 @@ var ident_trials = {
     trial_duration: 5500,
     post_trial_gap: 500,
     button_html: '<img src= "%choice%" />',
+    stimulus: timelineVariable('word'),
+
+    
 //	    }
 //	 ],
     timeline: [
-        {stimulus: 'selected_words/retter3200.wav'},
-	{stimulus: 'selected_words/spulen1200.mp3', choices: ['pics/spulen2.jpg', 'pics/spuelen2.jpg']},
-	{stimulus: 'selected_words/ritter3200.wav'},	
-	{stimulus: 'selected_words/spuelen5200.mp3', choices: ['pics/spulen2.jpg', 'pics/spuelen2.jpg']}
+        {word: 'selected_words/retter3200.wav'},
+	{word: 'selected_words/spulen1200.mp3', choices: ['pics/spulen2.jpg', 'pics/spuelen2.jpg']},
+	{word: 'selected_words/ritter3200.wav'},	
+	{word: 'selected_words/spuelen5200.mp3', choices: ['pics/spulen2.jpg', 'pics/spuelen2.jpg']}
     ],
     sample: {
         type: 'fixed-repetitions',
