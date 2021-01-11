@@ -131,9 +131,10 @@ var ident_trials = {
 	{word: 'selected_words/ritter3200.wav'},	
 	{word: 'selected_words/spuelen5200.mp3', choices: ['pics/spulen2.jpg', 'pics/spuelen2.jpg']}
     ],
+	randomize_order: true,
     sample: {
         type: 'fixed-repetitions',
-        size: 4 // 3 repetitions of each trial, 12 total trials, order is randomized.
+        size: 4 // 4 repetitions of each trial, 16 total trials, order is randomized.
 	    },
     on_finish: function() {
         // at the end of each trial, update the progress bar
