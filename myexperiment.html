@@ -70,14 +70,14 @@ var disc_trials = {
     prompt: '<p>Sind die Wörter gleich oder unterschiedlich?</p>',
     choices: ['gleich', 'unterschiedlich'],
     timeline: [
-        {stimulus: 'isi1500/retter1500ritter200.mp3'},
-        {stimulus: 'isi1500/retter1500retter200.mp3'},
-        {stimulus: 'isi1500/ritter1500ritter200.mp3'},
-	{stimulus: 'isi1500/ritter1500retter200.mp3'},
-	{stimulus: 'isi1500/spulen1500spuelen200.mp3'},
-	{stimulus: 'isi1500/spulen1500spulen200.mp3'},
-	{stimulus: 'isi1500/spuelen1500spuelen200.mp3'},
-	{stimulus: 'isi1500/spuelen1500spulen200.mp3'}
+        {stimulus: 'mp3/bluten1500blueten300.mp3'},
+        {stimulus: 'mp3/bluten1500bluten300.mp3'},
+        {stimulus: 'mp3/blueten1500bluten300.mp3'},
+	{stimulus: 'mp3/blueten1500blueten300.mp3'},
+	{stimulus: 'mp3/spulen1500spuelen300.mp3'},
+	{stimulus: 'mp3/spulen1500spulen300.mp3'},
+	{stimulus: 'mp3/spuelen1500spuelen300.mp3'},
+	{stimulus: 'mp3/spuelen1500spulen300.mp3'}
     ],
     randomize_order: true,
     repetitions: 2,
@@ -111,16 +111,16 @@ var instructions2 = {
     timeline.push(instructions2);
 	    
 var test_stimuli = [
-	{stimulus: 'selected_words/retter3200.wav'},
-	{stimulus: 'selected_words/spulen1200.mp3', choices: ['pics/spulen2.jpg', 'pics/spuelen2.jpg']},
-	{stimulus: 'selected_words/ritter3200.wav'},	
-	{stimulus: 'selected_words/spuelen5200.mp3', choices: ['pics/spulen2.jpg', 'pics/spuelen2.jpg']}
+	{stimulus: 'mp3/bluten.wav'},
+	{stimulus: 'mp3/spulen.mp3', choices: ['pics/spulen.jpg', 'pics/spuelen.jpg']},
+	{stimulus: 'mp3/blueten.wav'},	
+	{stimulus: 'mp3/spuelen.mp3', choices: ['pics/spulen.jpg', 'pics/spuelen.jpg']}
     ];
 	    
 var ident_trial = {
 
     type: 'audio-button-response',
-    choices: ['pics/retter.jpg', 'pics/ritter.jpg'],
+    choices: ['pics/bluten.jpg', 'pics/blueten.jpg'],
     stimulus: jsPsych.timelineVariable('stimulus'),
     prompt: "<p>Welches Wort haben Sie gehört? Bitte klicken Sie auf das passende Bild. </p>",
     trial_duration: 5500,
