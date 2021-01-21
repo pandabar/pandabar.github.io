@@ -69,12 +69,12 @@ div.blank {
 }
 
 a:link {
-  color: #4CAF50;
+  color:  green;
   text-decoration: none;
 }
 
 a:visited {
-  color: #77e5a1;
+  color: purple;
   text-decoration: none;
 }
 
@@ -84,7 +84,7 @@ a:hover {
 }
 
 a:active {
-  color: #4CAF50;
+  color: green;
   text-decoration: underline;
 }
 
