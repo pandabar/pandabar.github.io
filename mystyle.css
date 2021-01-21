@@ -42,13 +42,13 @@ body {
 div.content {
   margin-left: 250px;
   padding: 1px 30px;
-  height: 700px;
+  height: 600px;
 }
 
 div.title {
   margin-left: 250px;
   padding: 1px 30px;
-  height: 40px;
+  height: 20px;
 }
 
 div.blank {
