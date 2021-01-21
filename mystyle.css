@@ -43,6 +43,7 @@ div.content {
   margin-left: 250px;
   padding: 1px 30px;
   height: 600px;
+  
 }
 
 div.title {
@@ -66,26 +67,6 @@ div.blank {
   .sidebar a {float: left;}
   div.content {margin-left: 0;}
   div.blank  {margin-left: 0;}
-}
-
-a:link {
-  color:  green;
-  text-decoration: none;
-}
-
-a:visited {
-  color: purple;
-  text-decoration: none;
-}
-
-a:hover {
-  color: blue;
-  text-decoration: underline;
-}
-
-a:active {
-  color: green;
-  text-decoration: underline;
 }
 
 @media screen and (max-width: 400px) {
