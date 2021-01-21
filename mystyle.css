@@ -68,6 +68,26 @@ div.blank {
   div.blank  {margin-left: 0;}
 }
 
+a:link {
+  color: #4CAF50;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #77e5a1;
+  text-decoration: none;
+}
+
+a:hover {
+  color: blue;
+  text-decoration: underline;
+}
+
+a:active {
+  color: #4CAF50;
+  text-decoration: underline;
+}
+
 @media screen and (max-width: 400px) {
   .sidebar a {
     text-align: center;
