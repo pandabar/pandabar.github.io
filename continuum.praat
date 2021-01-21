@@ -1,232 +1,92 @@
 #Vowel continuum maker#
-#By Fernanda Barrientos + Henri Kauhanen, who's incredibly unhappy about repeating the loop#
-#University of Manchester#
+#By Fernanda Barrientos #
+#University of Manchester- University of Konstanz#
 
 #Description: creates a 7-step continuum from a source original vowel sound
-#and the values of a target vowel sound 
-
-
+#and the values of a target vowel sound
+#Use with caution! Resynthesis does not sound very well either...
 
 
 #Directories
 
-sound_directory$ = "/Users/mfbxkfb2/Desktop/definitivo2/vowels2"
-out_directory$ = "/Users/mfbxkfb2/Desktop/continua3"
+#We assume that you have a "vowels_original" folder with 3 .wav files (say, Spanish i, a, u) with original vowels.
+#Your script is outside the "vowels_original" folder. 
+#Their file names are vocali.wav , vocala.wav, vocalu.wav
+#We want to convert these three vowels into other vowels (say, English lax i, ae, wedge).
+#You need the formant values for the latter; we will calculate the values for the former here. 
+#You also need an empty folder called "vowels_resynthesis", which is where your synthesized files will land.
+#It has to be in the same folder as "vowel_original" and this script. 
+
+sound_directory$ = "vowels_original"
+out_directory$ = "vowels_resynthesis"
 
 #Formant values. Enter F1 and F2 of target vowels here.
 
-	#Spanish vowels
-	a_f1 = 935
-	a_f2 = 1548
-	e_f1 = 609
-	e_f2 = 2263
-	i_f1 = 489
-	i_f2 = 2864
-	o_f1 = 597
-	o_f2 = 966
-	u_f1= 460
-	u_f2 = 982
-
 	#English vowels
-	as_f1 = 964
-	as_f2 = 1296
-	#ae_f1 = 844
-	#ae_f2 = 1060
-	hs_f1 = 379
-	hs_f2 = 1154
-	ic_f1 = 485
-	ic_f2 = 2236
-	vt_f1 = 814
-	vt_f2 = 1684
-
+	laxi_f1 = 480
+	laxi_f2 = 2400
+	ae_f1 = 750
+	ae_f2 = 2350
+	wedge_f1 = 780
+	wedge_f2 = 1500
+	
 #Reading files
 
-strings = Create Strings as file list: "list", sound_directory$ + "/*.wav"
+strings = Create Strings as file list: "list", sound_directory$ + "/*.wav" 
 numberOfFiles = Get number of strings
 
-
 for ifile to numberOfFiles
 	selectObject: strings
 	filename$ = Get string... ifile
 	wav_file = Read from file: sound_directory$ + "/" + filename$
+	vowel$ = replace_regex$ (filename$, ".wav", "", 0)
 
 	#Preliminary tasks: resample and peak scaling
 	wav_file_resampled = Resample... 11000 50
 	Scale peak... 0.99
 	
 	#LPC to get source
-	lpc= To LPC (autocorrelation): 16, 0.025, 0.005, 50
+	lpc= To LPC (burg): 16, 0.025, 0.005, 50
+	selectObject: wav_file_resampled
+	formant_id = To Formant (burg): 0, 5, 5500, 0.015, 50
 	selectObject: wav_file_resampled
 	plus lpc
 	Filter (inverse)
-	Rename... source
-	
-	dif_f1 = 0
-	dif_f2 = 0
-	targetname$ = ""
+	Rename... Source
+	selectObject: formant_id
+	f1_vowel = Get mean: 1, 0, 0, "hertz"
+	f2_vowel = Get mean: 2, 0, 0, "hertz"
+	appendInfoLine: vowel$, tab$, 0, tab$, 0, f1_vowel, tab$, f2_vowel
+#Define the difference in formant values
 
-	#End 1: Calculating reference values
-	if filename$ == "as.wav"
-		dif_f1 = as_f1 - a_f1
-		dif_f2 = as_f2 - a_f2
-		targetname$ = "a"
-	#elsif filename$ == "ae.wav"
-		#dif_f1 = ae_f1 - a_f1
-		#dif_f2 = ae_f2 - a_f2
-		#targetname$ = "a"
-	elsif filename$ == "hs.wav"
-		dif_f1 = hs_f1 - o_f1
-		dif_f2 = hs_f2 - o_f2
-		targetname$ = "o"
-	elsif filename$ == "ic.wav"
-		dif_f1 = ic_f1 - i_f1
-		dif_f2 = ic_f2 - i_f2
-		targetname$ = "i"
-	elsif filename$ == "vt.wav"
-		dif_f1 = vt_f1 - a_f1
-		dif_f2 = vt_f2 - a_f2
-		targetname$ = "a"
-	endif
-	
-	name$ = replace_regex$ (filename$, ".wav", "", 0)
-	for i from 1 to 7
-		selectObject: wav_file_resampled
-		formant_id = To Formant (burg): 0, 5, 5500, 0.015, 50
-		selectObject: formant_id
-
-		Formula (frequencies): "if row = 1 then self + (-(dif_f1/6) * (i-1)) else self fi"
-		Formula (frequencies): "if row = 2 then self + (-(dif_f2/6) * (i-1)) else self fi"
-		selectObject: "Sound source"
-		plus formant_id
-		Filter
-		selectObject: "Sound source_filt"
-		Rename... token'i'
-		Write to WAV file... 'out_directory$'/'name$'_'targetname$'_'i'.wav
-		select formant_id	
-		Remove
-	endfor
-	
-endfor
-select all
-minus strings
-Remove
-
-for ifile to numberOfFiles
-	selectObject: strings
-	filename$ = Get string... ifile
-	wav_file = Read from file: sound_directory$ + "/" + filename$
-
-	#Preliminary tasks: resample and peak scaling
-	wav_file_resampled = Resample... 11000 50
-	Scale peak... 0.99
-	
-	#LPC to get source
-	lpc= To LPC (autocorrelation): 16, 0.025, 0.005, 50
+for i from 1 to 7
 	selectObject: wav_file_resampled
-	plus lpc
-	Filter (inverse)
-	Rename... source
+	formant_id = To Formant (burg): 0, 5, 5500, 0.015, 50
+Rename: vowel$
+if selected$ ("Formant") == "vocala"
+		dif_f1 = f1_vowel - ae_f1
+		dif_f2 = f2_vowel - ae_f2
+		targetname$ = "ae"
+elsif selected$ ("Formant") == "vocali"
+		dif_f1 = f1_vowel - laxi_f1
+		dif_f2 = f2_vowel - laxi_f2
+		targetname$ = "laxi"
+else
+		dif_f1 = f1_vowel - wedge_f1
+		dif_f2 = f2_vowel - wedge_f2
+		targetname$ = "wedge"
+endif
 	
-	dif_f1 = 0
-	dif_f2 = 0
-	targetname$ = ""
-
-	#End 2: Calculating reference values
-	if filename$ == "as.wav"
-		dif_f1 = as_f1 - o_f1
-		dif_f2 = as_f2 - o_f2
-		targetname$ = "o"
-	#elsif filename$ == "ae.wav"
-	#	dif_f1 = ae_f1 - e_f1
-	#	dif_f2 = ae_f2 - e_f2
-	#	targetname$ = "e"
-	elsif filename$ == "hs.wav"
-		dif_f1 = hs_f1 - u_f1
-		dif_f2 = hs_f2 - u_f2
-		targetname$ = "u"
-	elsif filename$ == "ic.wav"
-		dif_f1 = ic_f1 - e_f1
-		dif_f2 = ic_f2 - e_f2
-		targetname$ = "e"
-	elsif filename$ == "vt.wav"
-		dif_f1 = vt_f1 - o_f1
-		dif_f2 = vt_f2 - o_f2
-		targetname$ = "o"
-	endif
-	
-
-	name$ = replace_regex$ (filename$, ".wav", "", 0)
-	for i from 1 to 7
-		selectObject: wav_file_resampled
-		formant_id = To Formant (burg): 0, 5, 5500, 0.015, 50
-		selectObject: formant_id
-
 		Formula (frequencies): "if row = 1 then self + (-(dif_f1/6) * (i-1)) else self fi"
 		Formula (frequencies): "if row = 2 then self + (-(dif_f2/6) * (i-1)) else self fi"
-		selectObject: "Sound source"
+		appendInfoLine: vowel$, tab$, targetname$, tab$, (dif_f1/6) * (i-1), tab$, (dif_f2/6) * (i-1)
+		selectObject: "Sound Source"
 		plus formant_id
 		Filter
-		selectObject: "Sound source_filt"
-		Rename... token'i'
-		Write to WAV file... 'out_directory$'/'name$'_'targetname$'_'i'.wav
-		select formant_id	
-		Remove
-	endfor
-select all
-minus strings
-Remove
-endfor
-
-for ifile to numberOfFiles
-	selectObject: strings
-	filename$ = Get string... ifile
-	wav_file = Read from file: sound_directory$ + "/" + filename$
-
-	#Preliminary tasks: resample and peak scaling
-	wav_file_resampled = Resample... 11000 50
-	Scale peak... 0.99
-	
-	#LPC to get source
-	lpc= To LPC (autocorrelation): 16, 0.025, 0.005, 50
-	selectObject: wav_file_resampled
-	plus lpc
-	Filter (inverse)
-	Rename... source
-	
-	dif_f1 = 0
-	dif_f2 = 0
-	targetname$ = ""
-	#English-to-English: Calculating reference values
-	if filename$ == "as.wav"
-		dif_f1 = as_f1 - vt_f1
-		dif_f2 = as_f2 - vt_f2
-		targetname$ = "vt"
-	elsif filename$ == "hs.wav"
-		dif_f1 = hs_f1 - ic_f1
-		dif_f2 = hs_f2 - ic_f2
-		targetname$ = "ic"
-	endif
-
-
-	name$ = replace_regex$ (filename$, ".wav", "", 0)
-	for i from 1 to 7
-		selectObject: wav_file_resampled
-		formant_id = To Formant (burg): 0, 5, 5500, 0.015, 50
-		selectObject: formant_id
-
-		Formula (frequencies): "if row = 1 then self + (-(dif_f1/6) * (i-1)) else self fi"
-		Formula (frequencies): "if row = 2 then self + (-(dif_f2/6) * (i-1)) else self fi"
-		selectObject: "Sound source"
-		plus formant_id
-		Filter
-		selectObject: "Sound source_filt"
-		Rename... token'i'
-		Write to WAV file... 'out_directory$'/'name$'_'targetname$'_'i'.wav
-		select formant_id	
-		Remove
+		selectObject: "Sound Source_filt"
+		Rename... 'i'
+		Write to WAV file: out_directory$ + "/" + vowel$ + "_" + targetname$ + string$(i)  + ".wav"
 	endfor
 
 endfor
-select all
-minus strings
-Remove
+	

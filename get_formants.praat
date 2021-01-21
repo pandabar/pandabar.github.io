@@ -1,9 +1,9 @@
 #Get formants from vowel files
+#This means that your files are just a single vowel, nothing else.
 
 #Directories
 
-sound_directory$ = "/Users/mfbxkfb2/Desktop/definitivo2/vowels2"
-out_directory$ =  "/Users/mfbxkfb2/Desktop"
+sound_directory$ = "/home/fernanda/afolder"
 
 #Creates table
 table_ID = Create Table with column names: "data", 0, "vowel F1 F2"
@@ -32,8 +32,7 @@ Set numeric value: ifile, "F1", f1
 Set numeric value: ifile, "F2", f2
 endfor
 
-#Saving table as file (will appear on 
+#Saving table as file (it will land on the same folder). 
 selectObject: table_ID
-Save as comma-separated file: 'out_directory$'/voweldata.csv
-
+Save as comma-separated file: sound_directory$ + "/voweldata.csv"
 
