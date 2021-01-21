@@ -1,6 +1,5 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-
 <head>
   <title>Fernanda Barrientos</title>
   <meta name="description" content="Fernanda's personal website" />
@@ -9,41 +8,87 @@
 <!--  <link rel="stylesheet" type="text/css" href="style/style.css" />  -->
 </head>
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+  margin: 0;
+  font-family: "Lato", sans-serif;
+}
+
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #f1f1f1;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+.sidebar a {
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+}
+ 
+.sidebar a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 1000px;
+}
+
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
+
+div.content {margin-left: 0;}
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
+</style>
+</head>
 <body>
-  <div id="main">
-    <div id="header">
-      <div id="logo">
-	<div id="logo_text">
-        <!-- class="logo_colour", allows you to change the colour of the text -->
-        <h1><a href="index.htm"><span class="logo_colour">Fernanda Barrientos</span></a></h1>
-      </div>
-	</div>
-      <div id="menubar">
-        <ul id="menu">
-          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
-          <li class="selected"><a href="index.htm">Home</a></li>
-          <li><a href="CV.html">CV</a></li>
-          <li><a href="resources.html">Resources</a></li>
-          <li><a href="personal.html">Other</a></li>
-        </ul>
-      </div>
-    </div>
-    <div id="site_content">
-      <div class="sidebar">
-        
-        
-        <img src="yo.jpg" alt="Me" title="St. Gallen, 2018" width="200" height="200">
-     
-       <h4>Relevant Links</h4>
-<ul>
-	<li><a href="http://www.ling.uni-konstanz.de/en/">Department of Linguistics @ Univ. of Konstanz</a></li>
-	<li><a href="http://www.alc.manchester.ac.uk/subjects/lel/">Department of Linguistics and English Language (LEL) @ Univ. of Manchester</a></li>
-	<li><a href="http://mfilconf.wordpress.com/">The Manchester Forum in Linguistics</a></li>
+
+<div class="sidebar">
+  <a class="active" href="intex.html">Home</a>
+  <a href="cv.html">CV</a>
+  <a href="resources.html">Resources</a>
+  <a href="personal">About</a>
+</div>
+
+	<img src="yo.jpg" alt="Me" title="St. Gallen, 2018" width="200" height="200">
 	
-	</ul>
-      </div>
-      <div id="content">
-        <h1>Hola</h1>
+<div class="content">
+	 <h2>Hola</h2>
         <p>I am an Academic Collaborator at the University of Konstanz. My main areas of interest are 
 		Phonetics and Phonology, Second Language Acquisition and Speech perception. 
 		I have done some work in Artificial Intelligence and CALL, but now I am currently working on vowel perception in L2. 
@@ -53,11 +98,6 @@
 <p>If you wish to contact me, feel free to drop me a line at fernandabarrientos(at)gmail(dot)com.
         
       </div>
-    </div>
-    <div id="footer">
-      <p><a href="default.htm">Home</a> | <a href="CV.html">CV</a> | <a href="resources.html">Resources</a> | <a href="personal.html">Other</a></p>
-      <p style="font-size:8px">Copyright &copy; simple_light | <a href="http://validator.w3.org/check?uri=referer">HTML5</a> | <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a> | <a href="http://www.html5webtemplates.co.uk">design from HTML5webtemplates.co.uk</a></p>
-    </div>
-  </div>
+	
 </body>
 </html>
