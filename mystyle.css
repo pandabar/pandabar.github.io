@@ -37,20 +37,20 @@ body {
 		
 		
 div.content {
-  margin-left: 150px;
-  padding: 1px 16px;
+  margin-left: 250px;
+  padding: 1px 30px;
   height: 700px;
 }
 
 div.title {
-  margin-left: 150px;
-  padding: 1px 16px;
+  margin-left: 250px;
+  padding: 1px 30px;
   height: 100px;
 }
 
 div.blank {
-  margin-left: 150px;
-  padding: 1px 16px;
+  margin-left: 250px;
+  padding: 1px 30px;
   height: 200px;
 }
 
