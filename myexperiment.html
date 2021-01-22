@@ -67,9 +67,10 @@ var discr_proc = {
 	timeline: [
 {
             type: 'audio-keyboard-response',
-	    stimulus: jsPsych.timelineVariable('stimulus'),
+	    stimulus: jsPsych.timelineVariable('stims'),
             prompt: '<div style="font-size:60px;">+</div>',
-            choices: jsPsych.NO_KEYS
+            choices: jsPsych.NO_KEYS,
+	trial_duration: 3500
     },
 	    
 {   
@@ -80,11 +81,10 @@ var discr_proc = {
     choices: ['p', 'q' ]
 }
 		],
-
 	timeline_variables: [
-		{ stimulus: 'mp3/baer1500baer300.mp3' },
-{ stimulus: 'mp3/baer1500bier300.mp3' },
-{ stimulus: 'mp3/biene1500biene300.mp3' } 
+		{ stims: 'mp3/baer1500baer300.mp3' },
+{ stims: 'mp3/baer1500bier300.mp3' },
+{ stims: 'mp3/biene1500biene300.mp3' } 
     ],
     randomize_order: true,
 	on_finish: function() {
@@ -123,6 +123,7 @@ var ident_procedure = {
 	    stimulus: jsPsych.timelineVariable('stimulus2'),
             prompt: '<div style="font-size:60px;">+</div>',
             choices: jsPsych.NO_KEYS,
+		      trial_duration: 1000
     },
    {
     type: 'html-keyboard-response',
@@ -134,9 +135,9 @@ html: jsPsych.timelineVariable('html')
  } 
 	      ],
       timeline_variables: [
-	{stimulus2: 'mp3/baer.mp3', html:<img src="pics/baer.jpg"> <img src="pics/baer.jpg">},
- 	{stimulus2: 'mp3/biene.mp3', html: <img src="pics/buehne.jpg" <img src="pics/biene.jpg">},
-{stimulus2: 'mp3/bier.mp3', html: <img src="pics/buehne.jpg"> <img src="pics/biene.jpg">}
+	{stimulus2: 'mp3/baer.mp3', html:<img src="pics/baer.jpg"><img src="pics/bier.jpg">},
+ 	{stimulus2: 'mp3/biene.mp3', html: <img src="pics/buehne.jpg"><img src="pics/biene.jpg">},
+{stimulus2: 'mp3/bier.mp3', html: <img src="pics/baer.jpg"><img src="pics/bier.jpg">}
     ],
       randomize_order: true,
       on_finish: function() {
