@@ -63,30 +63,29 @@ var instructions1 = {
 
     timeline.push(instructions1);
 
-var test_stim = [
-{  stimulus: 'mp3/baer1500baer300.mp3'},
-{  stimulus: 'mp3/baer1500bier300.mp3'},
-{ stimulus: 'mp3/zinn1500zinn300.mp3'}	 
-    ];
-		    
-var fixation1 = {
+var discr_proc = {
+	timeline: [
+{
             type: 'audio-keyboard-response',
 	    stimulus: jsPsych.timelineVariable('stimulus'),
             prompt: '<div style="font-size:60px;">+</div>'
             choices: jsPsych.NO_KEYS,
-    }  
+    },
 	    
-var discr_trial =  {   
+{   
     type: 'html-keyboard-response',
     trial_duration: 5000,
     post_trial_gap: 500,
     prompt: '<p>Sind die Wörter gleich oder unterschiedlich? Bitte drücken Sie die Q-Taste wenn sie gleich sind; und die P-Taste wenn unterschiedlich.</p>',
     choices: ['p', 'q' ]
 }
+		],
 
-var discr_proc = {
-	timeline: [fixation1, discr_trial],
-	timeline_variables: test_stim, 
+	timeline_variables: [
+		{stimulus: 'mp3/baer1500baer300.mp3'},
+{stimulus: 'mp3/baer1500bier300.mp3'},
+{stimulus: 'mp3/biene1500biene300.mp3'} 
+    ],
     randomize_order: true,
 	on_finish: function() {
         // at the end of each trial, update the progress bar
@@ -116,23 +115,16 @@ var instructions2 = {
 };
 
     timeline.push(instructions2);
-	    
-test_stimuli = [
-	{stimulus: 'mp3/baer.mp3', html:<img src="pics/baer.jpg"> <img src="pics/baer.jpg">},
- 	{stimulus: 'mp3/biene.mp3', html: <img src="pics/buehne.jpg", <img src="pics/biene.jpg">},
-{stimulus: 'mp3/bier.mp3', html: <img src="pics/buehne.jpg">, <img src="pics/biene.jpg">}
-    ];
 
-var fixation2 = {
+var ident_procedure = {
+      timeline: [
+	      {
             type: 'audio-keyboard-response',
 	    stimulus: jsPsych.timelineVariable('stimulus'),
             prompt: '<div style="font-size:60px;">+</div>',
             choices: jsPsych.NO_KEYS,
-    } 
-	    
-
-var ident_trial = {
-
+    },
+{
     type: 'html-keyboard-response',
     choices: ['p', 'q' ]
     prompt: "<p>Welches Wort haben Sie gehört? Bitte drücken Sie die Q-Taste um das linke Bild auszuwählen, oder die P-Taste um das rechte Bild auszuwählen. </p>",
@@ -140,18 +132,22 @@ var ident_trial = {
     post_trial_gap: 500,
 html: jsPsych.timelineVariable('html')
  } 
-
-var ident_procedure = {
-      timeline: [fixation2, ident_trial],
-      timeline_variables: test_stimuli,
+	      ],
+      timeline_variables: [
+	{stimulus: 'mp3/baer.mp3', html:<img src="pics/baer.jpg"> <img src="pics/baer.jpg">},
+ 	{stimulus: 'mp3/biene.mp3', html: <img src="pics/buehne.jpg", <img src="pics/biene.jpg">},
+{stimulus: 'mp3/bier.mp3', html: <img src="pics/buehne.jpg">, <img src="pics/biene.jpg">}
+    ],
       randomize_order: true,
       on_finish: function() {
         // at the end of each trial, update the progress bar
         // based on the current value and the proportion to update for each trial
         var curr_progress_bar_value = jsPsych.getProgressBarCompleted();
         jsPsych.setProgressBar(curr_progress_bar_value + (1/n_screens));
-    };
+    }
     
+ }
+
 timeline.push(ident_procedure);
 
 	    var goodbye_screen = {
