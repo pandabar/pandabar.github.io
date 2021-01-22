@@ -69,7 +69,7 @@ var discr_proc = {
             type: 'audio-keyboard-response',
 	    stimulus: jsPsych.timelineVariable('stimulus'),
             prompt: '<div style="font-size:60px;">+</div>'
-            choices: jsPsych.NO_KEYS,
+            choices: jsPsych.NO_KEYS
     },
 	    
 {   
@@ -82,9 +82,9 @@ var discr_proc = {
 		],
 
 	timeline_variables: [
-		{stimulus: 'mp3/baer1500baer300.mp3'},
-{stimulus: 'mp3/baer1500bier300.mp3'},
-{stimulus: 'mp3/biene1500biene300.mp3'} 
+		{ stimulus: 'mp3/baer1500baer300.mp3' },
+{ stimulus: 'mp3/baer1500bier300.mp3' },
+{ stimulus: 'mp3/biene1500biene300.mp3' } 
     ],
     randomize_order: true,
 	on_finish: function() {
@@ -124,9 +124,9 @@ var ident_procedure = {
             prompt: '<div style="font-size:60px;">+</div>',
             choices: jsPsych.NO_KEYS,
     },
-{
+   {
     type: 'html-keyboard-response',
-    choices: ['p', 'q' ]
+    choices: ['p', 'q' ],
     prompt: "<p>Welches Wort haben Sie gehört? Bitte drücken Sie die Q-Taste um das linke Bild auszuwählen, oder die P-Taste um das rechte Bild auszuwählen. </p>",
     trial_duration: 5000,
     post_trial_gap: 500,
@@ -135,8 +135,8 @@ html: jsPsych.timelineVariable('html')
 	      ],
       timeline_variables: [
 	{stimulus: 'mp3/baer.mp3', html:<img src="pics/baer.jpg"> <img src="pics/baer.jpg">},
- 	{stimulus: 'mp3/biene.mp3', html: <img src="pics/buehne.jpg", <img src="pics/biene.jpg">},
-{stimulus: 'mp3/bier.mp3', html: <img src="pics/buehne.jpg">, <img src="pics/biene.jpg">}
+ 	{stimulus: 'mp3/biene.mp3', html: <img src="pics/buehne.jpg" <img src="pics/biene.jpg">},
+{stimulus: 'mp3/bier.mp3', html: <img src="pics/buehne.jpg"> <img src="pics/biene.jpg">}
     ],
       randomize_order: true,
       on_finish: function() {
@@ -144,9 +144,8 @@ html: jsPsych.timelineVariable('html')
         // based on the current value and the proportion to update for each trial
         var curr_progress_bar_value = jsPsych.getProgressBarCompleted();
         jsPsych.setProgressBar(curr_progress_bar_value + (1/n_screens));
-    }
-    
- }
+    }    
+ };
 
 timeline.push(ident_procedure);
 
