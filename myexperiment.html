@@ -13,7 +13,7 @@
 
 var timeline = [];
 
-var n_screens = 36;
+var n_screens = 11;
 	    
   var welcome = {
 	type: 'html-button-response',
@@ -61,26 +61,32 @@ var instructions1 = {
 };
 
     timeline.push(instructions1);
+
+var test_stim = [
+{  stimulus: 'mp3/baer1500baer300.mp3'},
+{  stimulus: 'mp3/baer1500bier300.mp3'},
+{ stimulus: 'mp3/zinn1500zinn300.mp3'}	 
+    ];
+		    
+var fixation1 = {
+            type: 'audio-keyboard-response',
+	    stimulus: jsPsych.timelineVariable('stimulus'),
+            prompt: '<div style="font-size:60px;">+</div>'
+            choices: jsPsych.NO_KEYS,
+    }  
 	    
-	    
-var disc_trials = {
-    type: 'audio-button-response',
-    trial_duration: 7000,
+var discr_trial =  {   
+    type: 'html-keyboard-response',
+    trial_duration: 5000,
     post_trial_gap: 500,
-    prompt: '<p>Sind die Wörter gleich oder unterschiedlich?</p>',
-    choices: ['gleich', 'unterschiedlich'],
-    timeline: [
-        {stimulus: 'mp3/bluten1500blueten300.mp3'},
-        {stimulus: 'mp3/bluten1500bluten300.mp3'},
-        {stimulus: 'mp3/blueten1500bluten300.mp3'},
-	{stimulus: 'mp3/blueten1500blueten300.mp3'},
-	{stimulus: 'mp3/spulen1500spuelen300.mp3'},
-	{stimulus: 'mp3/spulen1500spulen300.mp3'},
-	{stimulus: 'mp3/spuelen1500spuelen300.mp3'},
-	{stimulus: 'mp3/spuelen1500spulen300.mp3'}
-    ],
+    prompt: '<p>Sind die Wörter gleich oder unterschiedlich? Bitte drücken Sie die Q-Taste wenn sie gleich sind; und die P-Taste wenn unterschiedlich.</p>',
+    choices: ['p', 'q' ]
+}
+
+var discr_proc = {
+	timeline: [fixation1, discr_trial],
+	timeline_variables: test_stim, 
     randomize_order: true,
-    repetitions: 2,
 	on_finish: function() {
         // at the end of each trial, update the progress bar
         // based on the current value and the proportion to update for each trial
@@ -89,7 +95,7 @@ var disc_trials = {
     }
 };
 	    
-timeline.push(disc_trials);
+timeline.push(discr_proc);
 	   
 
 var instructions2 = {
@@ -110,29 +116,34 @@ var instructions2 = {
 
     timeline.push(instructions2);
 	    
-var test_stimuli = [
-	{stimulus: 'mp3/bluten.wav'},
-	{stimulus: 'mp3/spulen.mp3', choices: ['pics/spulen.jpg', 'pics/spuelen.jpg']},
-	{stimulus: 'mp3/blueten.wav'},	
-	{stimulus: 'mp3/spuelen.mp3', choices: ['pics/spulen.jpg', 'pics/spuelen.jpg']}
+test_stimuli = [
+	{stimulus: 'mp3/baer.mp3', html:<img src="pics/baer.jpg"> <img src="pics/baer.jpg">},
+ 	{stimulus: 'mp3/biene.mp3', html: <img src="pics/buehne.jpg", <img src="pics/biene.jpg">},
+{stimulus: 'mp3/bier.mp3', html: <img src="pics/buehne.jpg">, <img src="pics/biene.jpg">}
     ];
+
+var fixation2 = {
+            type: 'audio-keyboard-response',
+	    stimulus: jsPsych.timelineVariable('stimulus'),
+            prompt: '<div style="font-size:60px;">+</div>',
+            choices: jsPsych.NO_KEYS,
+    } 
 	    
+
 var ident_trial = {
 
-    type: 'audio-button-response',
-    choices: ['pics/bluten.jpg', 'pics/blueten.jpg'],
-    stimulus: jsPsych.timelineVariable('stimulus'),
-    prompt: "<p>Welches Wort haben Sie gehört? Bitte klicken Sie auf das passende Bild. </p>",
-    trial_duration: 5500,
+    type: 'html-keyboard-response',
+    choices: ['p', 'q' ]
+    prompt: "<p>Welches Wort haben Sie gehört? Bitte drücken Sie die Q-Taste um das linke Bild auszuwählen, oder die P-Taste um das rechte Bild auszuwählen. </p>",
+    trial_duration: 5000,
     post_trial_gap: 500,
-    button_html: '<img src= "%choice%" />'
-	};
+html: jsPsych.timelineVariable('html')
+ } 
 
 var ident_procedure = {
-      timeline: ident_trial,
+      timeline: [fixation2, ident_trial],
       timeline_variables: test_stimuli,
       randomize_order: true,
-      repetitions: 3,
       on_finish: function() {
         // at the end of each trial, update the progress bar
         // based on the current value and the proportion to update for each trial
@@ -140,7 +151,7 @@ var ident_procedure = {
         jsPsych.setProgressBar(curr_progress_bar_value + (1/n_screens));
     };
     
-timeline.push(ident_trials);
+timeline.push(ident_procedure);
 
 	    var goodbye_screen = {
 		type: 'survey-html-form',
