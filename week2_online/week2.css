@@ -122,5 +122,10 @@ span#colorbox4{background-color:#EDEDED;}
 span#colorbox5{background-color:#EDEDED;}
 span#colorbox6{background-color:#EDEDED;}
 span#colorbox7{background-color:#EDEDED;}
+
+.responsive {
+  max-width: 100%;
+  height: auto;
+}
 /* end css.sty */
 
