@@ -1,0 +1,42 @@
+dir$ = "C:\Users\HPPavilion\Desktop\Uni\Master\Praat Scripting\Week 5\samples\"
+myann = Read Strings from raw text file: dir$ + "annotation.txt"
+transcription = Create Strings as tokens: "s t \vt k"
+wav_files = Create Strings as file list: "wavlist", dir$ + "/*.wav"
+nowav_files = Get number of strings
+
+for ifile to nowav_files
+
+selectObject: wav_files
+
+wavfilename$ = Get string... ifile
+wav_file= Read from file: dir$ + "/" + wavfilename$
+mytg=To TextGrid: "word phon vot", ""
+
+dur = Get total duration
+selectObject: myann
+numWords = Get number of strings
+for iword to numWords
+string$ = Get string: iword
+if iword < numWords
+selectObject: mytg
+Insert boundary: 1, (dur/numWords) *iword
+endif
+selectObject: myann
+selectObject: mytg
+Set interval text: 1, iword, string$
+selectObject: myann
+endfor
+selectObject: mytg
+plusObject: wav_file
+for ifile to nowav_files
+selectObject: wav_files
+
+wavfilename$ = Get string... ifile
+wav_file= Read from file: dir$ + "/" + wavfilename$
+Extract intervals where: 1, "yes", "starts with", "word"
+mytg2 = To TextGrid: "segment", ""
+
+View & Edit
+pauseScript: "This is a pause in the script so you can adjust the boundaries. Click continue when you're finished."
+minusObject: wav_file
+endfor
