@@ -110,6 +110,17 @@ writeInfoLine: "My name has ", firstname + lastname , " letters in total"</code>
 </p><!--l. 78--><p class="noindent" > Note also that Praat remembers only the variables that are within the script you're running. 
 </p>
 
+<p><strong>Quick exercise:</strong> Which of these are "legal" variable assignments/operations? If you're unsure open a new script, try to do the operations and see if Praat complains. If it does, correct the mistakes!</p>
+
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>soundfile$ = "recording.wav"
+age = 28
+age$ = "28"
+sound file$ = "recording.wav"
+Dir$ = "/home/User/Desktop/praat scripting/"
+dir$ = "/home/User/Desktop/praat_scripting/"
+filepath$ = dir$ + soundfile$
+2timesAge = 2 * age
+agePlusAge$ = age$ + age$</code></pre></div></div>
                                                                                       
 </p><!--l. 93--><p class="noindent" >
 </p>
