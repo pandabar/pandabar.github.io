@@ -225,8 +225,40 @@ element. If you look at the loop, you may notice that the last line before closi
 <span 
 class="cmtt-10x-x-109">selectObject: &#x0022;Strings fileList&#x0022;</span>. This line takes Praat back to the Strings element after each
 iteration.
-                                                                                      
-                                                                                      
+ 
+   <div style="background-color:yellow;color:black;padding:20px;">
+  <h2>PRO TIP</h2>
+    </div> 
+     <p>Praat basically has two different ways to use the <span class="cmtt-10x-x-109">selectObject</span> command: </p>
+      <ul>
+        <li>Either by <strong>name</strong> (the one in the script above), ot</li>
+        <li>By <strong>object number</strong></li>
+</ul> 
+  <p/> Basically, Praat assigns an individual number to each object that is opened or created in a session. It's the number that we see to the left of the object name in the object window. In order to use the <span class="cmtt-10x-x-109">selectObject</span> command (and other similar commands) with the object number, we can just create a new numeric variable when we create/open this object and then later use this variable with the <span 
+class="cmtt-10x-x-109">selectObject</span> command.
+
+For the script above it would look something like this (pay attention to <strong>lines 2 and 10</strong>):
+
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sound_directory$ = "/home/fernanda/Desktop/palabras/"
+fileList = Create Strings as file list: "fileList", sound_directory$ + "*.wav"
+numOfFiles= Get number of strings
+for ifile to numOfFiles
+thisfile$ = Get string: ifile
+if thisfile$ != "causa.wav"
+Read from file: sound_directory$ + thisfile$
+endif
+selectObject: fileList
+endfor
+</code></pre></div></div>
+
+<p>Here we see that the Strings list created in line 2 was stored as <strong>a numeric variable</strong> whose name is </strong>fileList</strong>. There are a couple of reasons why this is a better approach:</p>
+<ol>
+  <li>It's less error prone: if you refer to the file by name, you have to know which object type it is (Strings, Sound, TextGrid, etc.) and you have to know the name of the file and also there is always typos.</li>
+
+<li>If for some reason you want to select an object in a for loop that changes with every iteration (e.g. a soundfile), this can easily be done with using the object number but it's a bit more complicated if you want to use the object name.</li>
+  </ul>
+
+
 </p><!--l. 142--><p class="noindent" >
 </p>
   <h3 class="sectionHead"><span class="titlemark">7 </span> <a 
@@ -235,6 +267,7 @@ iteration.
 <ul>
   <li> Praat opens only the ﬁles starting with the letter <span class="cmtt-10x-x-109">C </span>(i.e. <span class="cmtt-10x-x-109">causa.wav, cancha.wav </span>and <span class="cmtt-10x-x-109">carta.wav</span>)? Search in the Praat manual for <span class="cmtt-10x-x-109">String functions</span> to get a hint.</li>
 <li> Make it print to the Info window which files are being opened, and which are not.</li>
+  <li> Whenever possible, make sure to turn your objects into numeric variables, following the pro tip above. </li>
 <li>If you want to add an extra level of difficulty, make it print the total duration of each one of the files that will be opened (You can do this manually by going to <em>Query >> Get total duration</em>). Hint: you can do this by creating a numeric variable.</li></ul>
 </p> 
 </div>
