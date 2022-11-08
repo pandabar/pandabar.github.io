@@ -10,7 +10,7 @@
 mark { 
   background-color: yellow;
   color: black;
-  padding:5px;
+  padding:6px;
 }
 </style>
 </head><body>
@@ -38,7 +38,7 @@ mark {
 <div class="author" ><span 
 class="cmr-12x-x-120">Dr. Fernanda Barrientos</span></div><br />
 <div class="date" ><span 
-class="cmr-12x-x-120">November 2, 2021</span></div>
+class="cmr-12x-x-120">November 8, 2022</span></div>
   </div>
   <h3 class="sectionHead"><span class="titlemark">1 </span> <a 
  id="x1-10001"></a>What’s a for loop?</h3>
@@ -233,7 +233,7 @@ element. If you look at the loop, you may notice that the last line before closi
 class="cmtt-10x-x-109">selectObject: &#x0022;Strings fileList&#x0022;</span>. This line takes Praat back to the Strings element after each
 iteration.
  
-  <div style="border:5px outset #04AA6D;padding:5px;padding-left:30px;">
+  <div style="border:3px outset #04AA6D;padding:5px;padding-left:30px;">
     <h4><mark>PRO TIP:</mark> Objects can be refered to as numeric variables</h4>
     
      <p>Praat basically has two different ways to use the <span class="cmtt-10x-x-109">selectObject</span> command: </p>
@@ -244,7 +244,7 @@ iteration.
   <p/> Basically, Praat assigns an individual number to each object that is opened or created in a session. It's the number that we see to the left of the object name in the object window. In order to use the <span class="cmtt-10x-x-109">selectObject</span> command (and other similar commands) with the object number, we can just create a new numeric variable when we create/open this object and then later use this variable with the <span 
 class="cmtt-10x-x-109">selectObject</span> command.
 
-For the script above it would look something like this (pay attention to <strong>lines 2 and 10</strong>):
+For the script above it would look something like this (pay attention to <strong>lines 2 and 9</strong>):
 
 <div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sound_directory$ = "/home/fernanda/Desktop/palabras/"
 fileList = Create Strings as file list: "fileList", sound_directory$ + "*.wav"
@@ -255,8 +255,7 @@ if thisfile$ != "causa.wav"
 Read from file: sound_directory$ + thisfile$
 endif
 selectObject: fileList
-endfor
-</code></pre></div></div>
+endfor</code></pre></div></div>
 
 <p>Here we see that the Strings list created in line 2 was stored as <strong>a numeric variable</strong> whose name is </strong>fileList</strong>. There are a couple of reasons why this is a better approach:</p>
 <ol>
