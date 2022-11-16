@@ -32,7 +32,7 @@
 <div class="author" ><span 
 class="cmr-12x-x-120">Dr. Fernanda Barrientos</span></div><br />
 <div class="date" ><span 
-class="cmr-12x-x-120">November 8, 2021</span></div>
+class="cmr-12x-x-120">November 15, 2022</span></div>
   </div>
   <h3 class="sectionHead"><span class="titlemark">1 </span> <a 
  id="x1-10001"></a>The spectrogram</h3>
@@ -87,7 +87,7 @@ for i to 3
   midval= Get value at time: i, mid, "hertz", "Linear"
   meanval= Get mean: i, 0, 0, "hertz"
   medianval= Get quantile: i, 0, 0, "hertz", 0.5
-  appendInfoLine: "F"+i, tab$, begval, tab$, midval, tab$, endval, tab$, meanval, tab$, medianval
+  appendInfoLine: "F"+string$(i), tab$, begval, tab$, midval, tab$, endval, tab$, meanval, tab$, medianval
 endfor</code></pre></div></div>
 
 <!--l. 79--><p class="indent" >  This script is one of the several possible ways to create a table from the Info window. What does it
@@ -109,10 +109,7 @@ class="cmsy-10x-x-109">→ </span> To Formant (burg)</em>. If you do that you wi
      </dd><dt class="enumerate-enumitem">
    4. </dt><dd 
 class="enumerate-enumitem">Then <span 
-class="cmbx-10x-x-109">we created a for loop </span>that goes from 1 to 3; this refers to the number of formants
-                                                                                      
-                                                                                      
-     that we want to look at. We deﬁned numeric variables again which are the <span 
+class="cmbx-10x-x-109">we created a for loop </span>that goes from 1 to 3; this refers to the number of formants that we want to look at. We deﬁned numeric variables again which are the <span 
 class="cmbx-10x-x-109">formant</span>
      <span 
 class="cmbx-10x-x-109">values </span>at the times deﬁned above.
@@ -126,6 +123,18 @@ class="cmbx-10x-x-109">print the values </span>to the Info window with the <span
 class="cmtt-10x-x-109">appendInfoLine</span> command.</dd></dl>
 <!--l. 89--><p class="noindent" >
 </p>
+  
+<div style="border:3px outset #04AA6D;padding:5px;padding-left:30px;">
+    <h4><mark>PRO TIP:</mark> You can turn a numeric variable into a string variable</h4>
+    
+  <p>Let's remember that trying to concatenate (that is, joining them by using the <strong>+</strong> symbol) strings with numbers does not work well. We can, however, use a comma to just append them, one next to the other. But this may not be a good idea, especially if you're working on something that will be saved as a .csv file. The script above wanted to add "F" + i , which won't work. However, we can use one of Praat's in-built functions, <strong>string$()</strong>.</p>
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>statement$= "I love the fantastic "
+numberofthem=5
+appendInfoLine: statement$ + string$(numberofthem)</code></pre></div></div>
+
+  <p>This will be super important for scripts that save files. For instance, I might want to open the same file 10 times (say, carta.wav), rename them as carta1.wav, carta2.wav, etc. and then save them with these names, in order to manipulate them for a perceptual experiment. </p>
+  </div>
+  
   <h3 class="sectionHead"><span class="titlemark">3 </span> <a 
  id="x1-30003"></a>A quicker approach</h3>
 
@@ -162,12 +171,12 @@ class="cmtt-10x-x-109">diph1</span>. First, we will create three Objects: a Text
 <span 
 class="colorbox" id="colorbox1"></p>
 <div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#we create three objects: a TextGrid, a Spectrogram, and a Formant
-selectObject: "Sound dip1"
+selectObject: "Sound diph1"
 tg=To TextGrid: "phone", ""
 Set interval text: 1, 1, "a\ic"
-selectObject: "Sound dip1"
+selectObject: "Sound diph1"
 spec=To Spectrogram: 0.005, 5000, 0.002, 20, "Gaussian"
-selectObject: "Sound dip1"
+selectObject: "Sound diph1"
 formant= To Formant (burg): 0, 5, 5000, 0.025, 50</code></pre></div></div>
                                                                                       
                                                                                       
