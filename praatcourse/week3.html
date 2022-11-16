@@ -132,7 +132,7 @@ class="cmtt-10x-x-109">appendInfoLine</span> command.</dd></dl>
 numberofthem=5
 appendInfoLine: statement$ + string$(numberofthem)</code></pre></div></div>
 
-  <p>This will be super important for scripts that save files. For instance, I might want to open the same file 10 times (say, carta.wav), rename them as carta1.wav, carta2.wav, etc. and then save them with these names, in order to manipulate them for a perceptual experiment. </p>
+  <p>This will be super important for scripts that save files. For instance, I might want to open the same file 10 times (say, <code>carta.wav</code>), rename them as <code>carta1.wav, carta2.wav</code>, etc. and then save them with these names, in order to manipulate them for a perceptual experiment. </p>
   </div>
   
   <h3 class="sectionHead"><span class="titlemark">3 </span> <a 
@@ -190,9 +190,6 @@ class="colorbox" id="colorbox1"></p>
 <div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#This would go after line 3 in the script above
 Insert boundary: 1, 0.219 
 #the 1 means the tier number and the other number is the time where we insert the boundary (this is more or less right in the middle)</code></pre></div></div>
-
-
-
 
 <p>Line 5 selects the Sound back again, and line 6 creates a Spectrogram object. We don't need to touch these settings, except for the second one which corresponds to <em>Maximum frequency (Hz)</em>. We use the value for the male voice, which is 5000. Again, you can consult the meaning of these values by going to <em>Analyze spectrum <span class="cmsy-10x-x-109">→ </span> To Spectrogram</em>. And finally, line 7 selects our Sound object again, and line 8 creates the Formant object.</p>
 
@@ -259,7 +256,7 @@ src="week3_online/diph1.png" title="This is a beautiful drawing of a spectrogram
 <!--l. 144--><p class="noindent" ><ol>
   <li>Extract the word <em>mouse</em> from <code>Sound tigermouse</code> manually, following the steps in section 2. Rename the new sound as <code>mouse</code>.</li>
   <li>Create a TextGrid for the object <code>Sound mouse</code> with two tiers: one called <code>segment</code> and another one called <code>word</code>. See line 3 in the script under section 5 to create a TextGrid (HINT: when you have more than one tier, just keep adding the names of the other ones in the first argument, without commas, just a space in between). </li>
-  <li>Add two <del>intervals</del> <span style="color:red"><strong>boundaries</strong> (corrected: 10.11.2021; 14:05)</span> in the <code>segment</code> tier; one at time 0.634 and the second one at time 0.793.</li>
+  <li>Add two boundaries in the <code>segment</code> tier; one at time 0.634 and the second one at time 0.793.</li>
   <li>Fill in every corresponding interval in the TextGrid (m, au, and s on the <code>segment</code> tier; and the word <em>mouse</em> on the <code>word</code> tier. Tip: the &#650; symbol is made in Praat by typing <strong>\hs</strong>.</li>
   <li>Create an image like the one below:</li>
 
