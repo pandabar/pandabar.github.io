@@ -250,6 +250,19 @@ account any TextGrid intervals where there might be an f or an s that are NOT at
 beginning of the string (can you guess why this is necessary? Remove the carets and see what
 happens).
 </p>
+	
+<div style="border:3px outset #04AA6D;padding:5px;padding-left:30px;">
+    <h4><mark>PRO TIP:</mark> You can use regular expressions in Praat (but beware the backslash)</h4>
+ <ul>   
+  <li>Since you will be working with string variables most of the time, you will need to constantly tell Praat things like "fetch me all the files in this folder starting with the letter C", or "extract all the TextGrid intervals containing an F but that won't have a M before it", or "Get me all the files with this extension", etc. In many cases, you will be able to use Praat's in-built functions (which can be conveniently found under "String functions" in the Praat Manual). </li>
+<li> However, sometimes you might need to use <strong>regular expressions</strong> (also called <strong>regex</strong>, which are a series of characters you can use in order to search for patterns in text. They are more or less standard across programming languages and Praat allows for their use; you can find a list of them under "Regular expressions" in the Praat manual. The <strong>caret (^)</strong> in the script above is one of them and as we saw, it means "the caracter must be at the beginning of the string"; the <strong>asterisk</strong> or <strong>star(*)</strong> is another one and means "any (sequence of) character(s)". Now if you want Praat NOT to read a character used in a regex as such, you can <strong>escape</strong> the character by using a <strong>backslash</strong> character.</li> 
+	 <li><strong>BUT</strong>, Praat also uses backslashes for certain IPA symbols; for instance, the symbol for the voiced dental fricative (also called <strong>eth</strong>, or [&eth;], is produced with the sequence <strong>\dh</strong>. So, if you want Praat to use regex AND extract intervals from a TextGrid with IPA characters, you will need to "escape the escape", that is, you will need to tell Praat that the backslash in the phonetic symbol is NOT an escape symbol... with a backslash (that's right, one backslash cancels the other).</li>
+	</ul>	
+	  
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#I want to extract intervals with vowels i and \ic (the second stands for the high, front, lax, unrounded vowel).
+Extract intervals where: 2, "yes", "matches (regex)", "i|\\ic"</code></pre></div></div>
+
+  </div>
   <h3 class="sectionHead"><span class="titlemark">7 </span> <a 
  id="x1-100007"></a>Homework</h3>
 <!--l. 142--><p class="noindent" >Download the .zip file tigermouse3 from <a href="week4_online/tigermouse3.zip">this link</a>. Unzip it and open the files with Praat (they are a Sound and a TextGrid). Now modify today's first script so that you know which sound from which word you're getting the data from (as you might have already noticed, the script only gives you a number for the <code>sound</code> column). Here are some hints:
