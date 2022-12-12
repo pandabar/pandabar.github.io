@@ -25,22 +25,31 @@
 </div>
                                                                                     <!-- Page content -->
 <div class="content">
-  <div class="maketitle">
-                                                                                      
-                                                                                      
+  <div class="maketitle">            
 
 <h2 class="titleHead">Week 6: Annotation I</h2>
 <div class="author" ><span 
 class="cmr-12x-x-120">Dr. Fernanda Barrientos</span></div><br />
 <div class="date" ><span 
-class="cmr-12x-x-120">December 13, 2022/span></div>
+class="cmr-12x-x-120">December 13, 2022</span></div>
   </div>
-  <h3 class="sectionHead"><span class="titlemark">1 </span> <a 
+    <h3class="sectionHead"><span class="titlemark">1 </span> <a 
+ id="x1-10001"></a>Annotating a Sound file</h3>
+    
+ <p>Let's recall that Praat allows you to annotate your Sound files. That is, if you have a recording of a person saying "hello" and you want to mark exactly where the /&#601;/ sound starts and ends, you can do so with a TextGrid. A TextGrid is a type of Object that allows you to assign a tag (e.g. a word, an IPA symbol, a syllable...) Praat calls them <emph>interval labels</emph>) to a given point in your Sound file.</p>
+  <p>Furthermore, you can add more than one layer (Praat calls them <emph>Tiers<emph>) to your TextGrid. While you can easily tag at a broader level (say, words) just by listening, doing more fine-grained analysis (for instance, VOT, duration, etc.) requires that you learn the contents from weeks 3 and 4: this way you can align a given tag by looking at the spectrogram while you listen.</p> 
+    
+   <p> When you select a Sound file, the Objects window will show you the option <emph>Annotate</>, from which you can select <emph>To TextGrid</emph>. After that, you will get a somewhat confusing window where you have to input the names of your tiers, and state which one of the above are <emph>Point tiers</emph>. You will need a point tier if you want to pinpoint something very specific (e.g. to make tone annotations) instead of getting the duration and time stamps of a certain interval of time. The picture above shows you the window in question, where we added two tiers (the number of tiers is implicit in the number of names you are entering here), one called <emph>phone</emph> and the other <emph>phone</emph>.</p>
+ 
+  <p></p>
+  
+  <h3 class="sectionHead"><span class="titlemark">2 </span> <a 
  id="x1-10001"></a>A somewhat quicker way to annotate Sound ﬁles</h3>
+  
 <!--l. 31--><p class="noindent" >From the exercises in Weeks 3 and 4, it has become clear to us that annotation can be a slow, painful process. There are, however, a couple of steps that you can take to make it easier:
 </p>
      <ul class="itemize1">
-     <li class="itemize">You can create a for loop that creates boundaries in your TextGrid every x number of (mili)seconds. You may either decide to space these boundaries evenly, or just put them all at the beginning of your TextGrid. Today we will use the ﬁrst approach.
+     <li class="itemize">You can create a for-loop that creates boundaries in your TextGrid every x number of (mili)seconds. You may either decide to space these boundaries evenly, or just put them all at the beginning of your TextGrid. Today we will use the ﬁrst approach.
      </li>
      <li class="itemize">You can make .txt ﬁles with transcriptions using a simple programme such as Notepad. If you already have one, then you can ask Praat to read these as a Strings list with tokens.
      If you’re already wandering what the use of this is, see below...
