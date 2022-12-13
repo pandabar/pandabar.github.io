@@ -62,7 +62,7 @@ endfor</code></pre></div></div>
  <h3 class="sectionHead"><span class="titlemark">3 </span> <a 
  id="x1-10001"></a>Adding boundaries to your TextGrid</h3>
   
-  <p>When you create a TextGrid with the lines shown above, you will get a TextGrid with one interval per tier. In order to create more intervals, you need to add boundaries to each tier. Now, you can do so by using the <em>Wiew and Edit</em> window and clicking where you want your boundaries to be, but you can also script it. Let's take the case of Sound hello, which is 0.51 ms long. We can add a boundary on Tier 1 at 0.1 seconds, then a second one at 0.2, and a third one at 0.3 (we can adjust them later so that they fit with the sound):</p>
+  <p>When you create a TextGrid with the lines shown above, you will get a TextGrid with one interval per tier. In order to create more intervals, you need to add boundaries to each tier. Now, you can do so by using the <em>View and Edit</em> window and clicking where you want your boundaries to be, but you can also script it. Let's take the case of Sound hello, which is 0.51 ms long. We can add a boundary on Tier 1 at 0.1 seconds, then a second one at 0.2, and a third one at 0.3 (we can adjust them later so that they fit with the sound):</p>
   
    <div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>selectObject: mytg
 Insert boundary: 1, 0.01
@@ -74,14 +74,14 @@ Insert boundary: 1, 0.03</code></pre></div></div>
    <div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>selectObject: mytg
 tgdur= Get total duration
 for i to 3
-Insert boundary: 1, (tgdur/3) *i ; this line adds one boundary every tgdur/3 (that is, 0.51/3 = 0.17)
+Insert boundary: 1, (tgdur/4) *i ; this line adds one boundary every tgdur/4 (that is, 0.51/4 = 0.12)
 endfor</code></pre></div></div>
   
 <p>Now we can adjust the boundaries manually. Granted, you still need to do this by using your mouse and clicking, but at least it saves you a couple of clicks (it will save you A LOT of clicks as your Sound files get longer).</p>
   <br>
   
 <div style="border:3px outset #04AA6D;padding:5px;padding-left:30px;">
-  <p><strong>Quick exercise</strong>: Create a script that modifies your <em>TextGrid soles</em> by adding four boundaries to Tier 1, and two boundaries to Tier 2.</p>
+  <p><strong>Quick exercise</strong>: Create a script that modifies your <em>TextGrid soles</em> by adding four boundaries to Tier 1, and one boundary to Tier 2.</p>
   </div> 
   
   <h3 class="sectionHead"><span class="titlemark">4 </span> <a 
@@ -101,6 +101,16 @@ Set interval text: 1, 1, "h"</code></pre></div></div>
   <div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Create Strings from tokens: "hello", "h \sw l \sw\hs", " ,"</code></pre></div></div>
   
   <br>
+  
+   <div style="border:5px outset red;padding:5px;padding-left:30px;">
+     <h4><strong>CAUTION - VORSICHT - CUIDADO - ATTENZIONE - ATTENTION - DIKKAT - VAR&Uacute;&ETH;- OPREZ - VAROITUS</strong></h4>
+     
+     <p>Some Praat versions have a different command for creating Strings lists. These versions have the name <em>tokens</em> as a default and you cannot change it; the window option only gives you the text field to input the tags and another one for the separator. If you have such Praat versions, you will need to use the following line:</p>
+     
+     <div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mylist1 = Create Strings as tokens: "h \sw l \sw\hs", " ,"</code></pre></div></div>
+       
+       <p>Additionally, you will see that this line <strong>stores your Strings list's ID number as a numeric variable</strong>. This is because if you are creating more than one Strings list and both are called <em>tokens</em>, you won't be able to tell them apart if you refer to them by their names. </p>
+  </div>
   
   <div style="border:3px outset #04AA6D;padding:5px;padding-left:30px;">
    <p><strong>Quick exercise</strong>: Create a script with two Strings lists: one with the labels for Tier 1, and another with the labels for Tier 2. Tier 2 is for the syllable structure, which in this word is so-les. Thus, your labels will be <em>CV</em> and <em>CVC</em>.</p>
