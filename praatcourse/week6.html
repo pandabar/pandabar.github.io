@@ -54,6 +54,8 @@ class="cmr-12x-x-120">December 13, 2022</span></div>
 mytg=To TextGrid: "word phone", ""
 endfor</code></pre></div></div>
   
+  <br>
+  
  <div style="border:3px outset #04AA6D;padding:5px;padding-left:30px;">
   <p><strong>Quick exercise</strong>: Create a script that opens the file <em>soles.wav</em> from the folder <em>palabras</em>, and creates a TextGrid with four tiers, named <em>phone, syllable, word, language.</em>
   </div> 
@@ -76,6 +78,7 @@ Insert boundary: 1, (tgdur/3) *i ; this line adds one boundary every tgdur/3 (th
 endfor</code></pre></div></div>
   
 <p>Now we can adjust the boundaries manually. Granted, you still need to do this by using your mouse and clicking, but at least it saves you a couple of clicks (it will save you A LOT of clicks as your Sound files get longer).</p>
+  <br>
   
 <div style="border:3px outset #04AA6D;padding:5px;padding-left:30px;">
   <p><strong>Quick exercise</strong>: Create a script that modifies your <em>TextGrid soles</em> by adding four boundaries to Tier 1, and two boundaries to Tier 2.</p>
@@ -96,6 +99,9 @@ Set interval text: 1, 1, "h"</code></pre></div></div>
   <p>This can be done with the following line:</p>
   
   <div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Create Strings from tokens: "hello", "h \sw l \sw\hs", " ,"</code></pre></div></div>
+  
+  <br>
+  
   <div style="border:3px outset #04AA6D;padding:5px;padding-left:30px;">
    <p><strong>Quick exercise</strong>: Create a script with two Strings lists: one with the labels for Tier 1, and another with the labels for Tier 2. Tier 2 is for the syllable structure, which in this word is so-les. Thus, your labels will be <em>CV</em> and <em>CVC</em>.</p>
   </div>
@@ -111,10 +117,13 @@ selectObject: "Strings hello" ; And don't forget to get back to your list
 endfor</code></pre></div></div>
 
 <p>Now check your TextGrid: the intervals will be labeled with the strings from the Strings list.</p>
-
+<br>
+  
+  <div style="border:3px outset #04AA6D;padding:5px;padding-left:30px;">
   <p><strong>Quick exercise</strong>: Create a script that feeds both Strings lists from the previous exercise to your <em>TextGrid soles</em>. After this, you may adjust the boundaries so they match with the Sound file.</p>
 
-</p>
+<br>
+    
   <h3 class="sectionHead"><span class="titlemark">5 </span> <a 
  id="x1-60006"></a>Homework</h3>
   <!--l. 124--><p class="noindent" >Download the file <em>seizure.wav</em> <a href="week6_online/seizure.wav">here</a> (you can also find it on ILIAS). Create a script that: (a) Opens the file; (b) Creates a TextGrid with two tiers (word and phone); (c) Adds the corresponding intervals; and (d) Adds labels to both tiers. For those who like challenges, you can create a small follow-up script that (e) Gets the start and end times plus duration of each fricative and (f) Puts these values in a Table object. Upload your script to ILIAS as usual.</p> 
