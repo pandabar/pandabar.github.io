@@ -33,139 +33,89 @@ class="cmr-12x-x-120">Dr. Fernanda Barrientos</span></div><br />
 <div class="date" ><span 
 class="cmr-12x-x-120">December 13, 2022</span></div>
   </div>
-    <h3class="sectionHead"><span class="titlemark">1 </span> <a 
- id="x1-10001"></a>Annotating a Sound file</h3>
+    <h3 class="sectionHead"><span class="titlemark">1 </span> <a 
+ id="x1-10001"></a>The TextGrid object</h3>
     
- <p>Let's recall that Praat allows you to annotate your Sound files. That is, if you have a recording of a person saying "hello" and you want to mark exactly where the /&#601;/ sound starts and ends, you can do so with a TextGrid. A TextGrid is a type of Object that allows you to assign a tag (e.g. a word, an IPA symbol, a syllable...) Praat calls them <emph>interval labels</emph>) to a given point in your Sound file.</p>
+ <p>Let's recall that Praat allows you to annotate your Sound files. That is, if you have a recording of a person saying "hello" and you want to mark exactly where the /&#601;/ sound starts and ends, you can do so with a TextGrid. A TextGrid is a type of Object that allows you to assign a tag (e.g. a word, an IPA symbol, a syllable... Praat calls them <emph>interval labels</emph>) to a given point in your Sound file.</p>
   <p>Furthermore, you can add more than one layer (Praat calls them <emph>Tiers<emph>) to your TextGrid. While you can easily tag at a broader level (say, words) just by listening, doing more fine-grained analysis (for instance, VOT, duration, etc.) requires that you learn the contents from weeks 3 and 4: this way you can align a given tag by looking at the spectrogram while you listen.</p> 
     
-   <p> When you select a Sound file, the Objects window will show you the option <emph>Annotate</>, from which you can select <emph>To TextGrid</emph>. After that, you will get a somewhat confusing window where you have to input the names of your tiers, and state which one of the above are <emph>Point tiers</emph>. You will need a point tier if you want to pinpoint something very specific (e.g. to make tone annotations) instead of getting the duration and time stamps of a certain interval of time. The picture above shows you the window in question, where we added two tiers (the number of tiers is implicit in the number of names you are entering here), one called <emph>phone</emph> and the other <emph>phone</emph>.</p>
+    <img src="week6_online/tg.png" alt="A TextGrid with two tiers">
+
+     <h3 class="sectionHead"><span class="titlemark">2 </span> <a 
+ id="x1-10001"></a>Creating a TextGrid</h3>
+    
+   <p> When you select a Sound file, the Objects window will show you the option <emph>Annotate</>, from which you can select <emph>To TextGrid</emph>. After that, you will get a somewhat confusing window where you have to input the names of your tiers, and state which one of the above are <emph>Point tiers</emph>. You will need a point tier if you want to pinpoint something very specific (e.g. to make tone annotations) instead of getting the duration and time stamps of a certain interval of time. The picture above shows you the window in question, where we added two tiers (the number of tiers is implicit in the two names you are entering here), one called <emph>phone</emph> and the other <emph>phone</emph>.</p>
  
-  <p></p>
+  <img src="week6_online/create_tg.png" alt="Creating a TextGrid with two interval tiers">
   
-  <h3 class="sectionHead"><span class="titlemark">2 </span> <a 
- id="x1-10001"></a>A somewhat quicker way to annotate Sound ﬁles</h3>
+  <p>This can be done by clicking, but you can also script it. By default, the name of the TextGrid object will be the same as the name of the Sound object, so no need to worry about that.</p>
   
-<!--l. 31--><p class="noindent" >From the exercises in Weeks 3 and 4, it has become clear to us that annotation can be a slow, painful process. There are, however, a couple of steps that you can take to make it easier:
-</p>
-     <ul class="itemize1">
-     <li class="itemize">You can create a for-loop that creates boundaries in your TextGrid every x number of (mili)seconds. You may either decide to space these boundaries evenly, or just put them all at the beginning of your TextGrid. Today we will use the ﬁrst approach.
-     </li>
-     <li class="itemize">You can make .txt ﬁles with transcriptions using a simple programme such as Notepad. If you already have one, then you can ask Praat to read these as a Strings list with tokens.
-     If you’re already wandering what the use of this is, see below...
-     </li>
-     <li class="itemize">A Strings list with tokens in it may be used to be the interval texts for your TextGrids. Therefore, you can tell Praat not only to create boundaries for your TextGrid, but also ﬁll in the intervals with the desired text.</li></ul>
-<!--l. 38--><p class="noindent" >
-</p>
-  <h3 class="sectionHead"><span class="titlemark">2 </span> <a 
- id="x1-20002"></a>Preliminaries: Feeding a .txt ﬁle to Praat as Strings list</h3>
-<!--l. 40--><p class="noindent" >Download from ILIAS the .zip ﬁle called <span 
-class="cmtt-10x-x-109">samples</span> (or click <a href="week5_online/samples.zip">here </a> to download), unzip it and put it in your Desktop or your desired
-folder. Inside you’ll ﬁnd six .wav ﬁles (corresponding to 6 different people reading the same text aloud: "the tiger tried to swallow all of the cheese at once, but it got stuck in his throat") and a ﬁle called <span 
-class="cmtt-10x-x-109">annotation.txt</span>. If you open this ﬁle, you will
-ﬁnd the following text: <br 
-class="newline" />
-</p><!--l. 44--><p class="noindent" ><span class="fbox">The tiger tried to swallow all of the cheese at once, but it got stuck in his throat.            </span>
-                                                                                      
-                                                                                      
-</p><!--l. 52--><p class="indent" >  However, it will be written vertically, that is, one word per line, and without any orthographic
-symbols such as commas, full stops, etc.
-</p><!--l. 54--><p class="indent" > Let's create a Strings list where the strings will be the words in the file <em>annotation.txt</em>. We type:
-
-<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dir$ = "/home/fernanda/Desktop/samples/"
-myann = Read Strings from raw text file: dir$ + "annotation.txt"</code></pre></div></div>
-
-<!--l. 60--><p class="indent" >  Remember that the ﬁrst line is my own computer path. If you are still unsure about how to get the
-right path to your ﬁles, try opening one of the .wav ﬁles in the <span 
-class="cmtt-10x-x-109">samples </span>folder normally (i.e. by
-clicking in the Objects window). Then go back to your script and click <span 
-class="cmti-10x-x-109">Edit </span><span 
-class="cmmi-10x-x-109">&#x003E; </span><span 
-class="cmti-10x-x-109">Paste History</span>. It will
-show there. If you have been clicking before, check the last line. If not, it will be the only line you'll see.
-</p><!--l. 62--><p class="indent" >  Now, let's go back to the Objects window. There will be a Strings object called <span 
-class="cmtt-10x-x-109">annotation</span>. Open it: it
-will be a list of strings with the words in the <em>annotation.txt</em> file, which we will use to annotate the Sound ﬁles.
-</p><!--l. 65--><p class="noindent" >
-</p>
-  <h3 class="sectionHead"><span class="titlemark">3 </span> <a 
- id="x1-30003"></a>TextGrid generation</h3>
- <h4 class="sectionHead"><span class="titlemark"> 3.1 </span> <a 
- id="x1-30003"></a>Create a textGrid for each sound file</h4>
-<!--l. 66--><p class="noindent" >Now, right below the previous lines, we add the following bit:
-
-<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wav_files = Create Strings as file list: "wavlist", dir$ + "/*.wav"
-nowav_files = Get number of strings
-for ifile to nowav_files
-selectObject: wav_files
-wavfilename$ = Get string... ifile
-wav_file= Read from file: dir$ + "/" + wavfilename$
-mytg=To TextGrid: "word phon vot", ""
+  <div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>selectObject: "Sound hello"
+mytg=To TextGrid: "word phone", ""
 endfor</code></pre></div></div>
-
-
-<!--l. 79--><p class="indent" >  If you go back to the Objects window, you will notice that each one of the three Sound ﬁles has now
-its corresponding TextGrid. They have three tiers, but they are empty. 
-
-<h4 class="sectionHead"><span class="titlemark">3.2 </span> <a 
- id="x1-30003"></a>Add boundaries to the TextGrid</h4>
-
-We will ﬁll the ﬁrst tier with boundaries. We know that if we have an <em>x</em> number of words, the total number of boundaries that we need is <em>x-1</em>. This is what the following chunk does: it counts the number of words contained in the Object <code>Strings myann</code> and stores it as the numeric variable <code>numwords</code>, i.e. 18(lines 2-3), and then, lines 4-11 create a for loop for all numbers that are smaller than <code>numwords</code> (i.e. 1 to 17) and places a boundary on Tier of the TexgGrid. It is important that you add the following chunk <span 
-class="cmbx-10x-x-109">RIGHT BEFORE </span>the
-<span 
-class="cmtt-10x-x-109">endfor </span>line of the script above:</p>
-<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dur= Get total duration
-selectObject: myann
-numWords= Get number of strings
-for iword to numWords
-string$ = Get string: iword
-if iword < numWords
-selectObject: mytg
-Insert boundary: 1, (dur/numWords) *iword
-endif
-selectObject: myann
+ 
+  <p><strong>Quick exercise</strong>: Create a script that opens the file <emph>soles.wav</emph> from the folder <emph>palabras</emph>, and creates a TextGrid with four tiers, named <emph>phone, syllable, word, language.</emph>
+  
+ <h3 class="sectionHead"><span class="titlemark">3 </span> <a 
+ id="x1-10001"></a>Adding boundaries to your TextGrid</h3>
+  
+  <p>When you create a TextGrid with the lines shown above, you will get a TextGrid with one interval per tier. In order to create more intervals, you need to add boundaries to each tier. Now, you can do so by using the <emph>Wiew and Edit</emph> window and clicking where you want your boundaries to be, but you can also script it. Let's take the case of Sound hello, which is 0.51 ms long. We can add a boundary on Tier 1 at 0.1 seconds, then a second one at 0.2, and a third one at 0.3 (we can adjust them later so that they fit with the sound):</p>
+  
+   <div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>selectObject: mytg
+Insert boundary: 1, 0.01
+Insert boundary: 1, 0.02
+Insert boundary: 1, 0.03</code></pre></div></div>
+  
+  <p>But adding boundaries this way is not very smart. However, we can get the total duration of our Sound file and then create a for-loop that sets boundaries within the duration of the Sound. For instance, we know that we want four intervals for <emph>Sound hello</emph>'s Tier 1 (that is, three boundaries):</p>
+    
+   <div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>selectObject: mytg
+tgdur= Get total duration
+for i to 3
+Insert boundary: 1, (tgdur/3) *i ; this line adds one boundary every tgdur/3 (that is, 0.51/3 = 0.17)
 endfor</code></pre></div></div>
-<!--l. 95--><p class="indent" >  Now, check the TextGrids. They should have 17 boundaries, which you can later move and adjust to
-match the Sound.
-</p>
-  <h4 class="sectionHead"><span class="titlemark">3.3 </span> <a 
- id="x1-40004"></a>Add the text to the TextGrid</h4>
-<!--l. 98--><p class="noindent" >Now we are ready to put the text inside each interval in the TextGrid. Your script should now have
-two <span 
-class="cmtt-10x-x-109">endfor </span>lines at the end, one after the other. The following lines should be added <span class="cmbx-10x-x-109">BEFORE </span>these
-two <span class="cmtt-10x-x-109">endfor </span>lines:
+  
+<p>Now we can adjust the boundaries manually. Granted, you still need to do this by using your mouse and clicking, but at least it saves you a couple of clicks (it will save you A LOT of clicks as your Sound files get longer).</p>
 
-<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>selectObject: mytg
-Set interval text: 1, iword, string$
-selectObject: myann</code></pre></div></div>
-
-<p>Now look at the TextGrids. They should have the corresponding text inside each interval.
-                                                                                      
-                                                                                      
-</p><!--l. 108--><p class="noindent" >
-</p>
+  <p><strong>Quick exercise</strong>: Create a script that modifies your <emph>TextGrid soles</emph> by adding four boundaries to Tier 1, and two boundaries to Tier 2.</p>
+  
   <h3 class="sectionHead"><span class="titlemark">4 </span> <a 
- id="x1-50005"></a>Boundary adjustment: Add a dialogue box</h3>
-<!--l. 110--><p class="noindent" >We can leave the script as is and take care of the boundary adjustment later, or we can add a little pause in our script so it gives us time to adjust the boundaries after each iteration. We add these lines <span class="cmbx-10x-x-109">BETWEEN </span>the two <span class="cmtt-10x-x-109">endfor </span>lines at the end of the script:
-<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>selectObject: mytg
-plusObject: wav_file
-View & Edit
-pauseScript: "This is a pause in the script so you can adjust the boundaries. Click Continue when you’re finished."
-minusObject: wav_file</code></pre></div></div>
+ id="x1-10001"></a>Adding labels to your TextGrid</h3>
+  
+  <p>Again, you can add labels by using the <emph>View and Edit</emph> window. However, this is also possible to do via scripting. Let's add the "h" to interval 1 on Tier 1 of <emph>Sound hello</emph>:
+    
+ <div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>selectObject: mytg
+Set interval text: 1, 1, "h"</code></pre></div></div>
+ 
+<p>But, is there a way to feed my TextGrid with the labels I want? Here is when the (in)famous Strings list may come in handy. We can create a Strings list from scratch by going to <emph>New > Generics > Strings > Create Strings from tokens</emph>, where we give our Strings list a name and we input the strings that conform our labels. Like so:</p>
+  
+ <img src="week6_online/stringsfromtokens.png" alt="Creating a Strings list from scratch">
+  
+  <p>This can be done with the following line:</p>
+  
+  <div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Create Strings from tokens: "hello", "h \sw l \sw\hs", " ,"</code></pre></div></div>
+  
+   <p><strong>Quick exercise</strong>: Create a script with two Strings lists: one with the labels for Tier 1, and another with the labels for Tier 2. Tier 2 is for the syllable structure, which in this word is so-les. Thus, your labels will be <emph>CV</emph> and <emph>CVC</emph>.</p>
+  
+<p>Now comes the interesting part: We make a for-loop that iterates through the strings in our Strings list and fills in the TextGrid with them.</p>
+  
+ <div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>selectObject: "Strings hello"
+n= Get number of strings
+for i to n
+label$= Get string: i
+selectObject: mytg ; Don't forget to select the tg
+Set interval text: 1, i, label$ ; this line says: on tier 1, interval i, add the label corresponding to i
+selectObject: "Strings hello" ; And don't forget to get back to your list
+endfor</code></pre></div></div>
 
+<p>Now check your TextGrid: the intervals will be labeled with the strings from the Strings list.</p>
+
+  <p><strong>Quick exercise</strong>: Create a script with two Strings lists: one with the labels for Tier 1, and another with the labels for Tier 2. Tier 2 is for the syllable structure, which in this word is so-les. Thus, your labels will be <emph>CV</emph> and <emph>CVC</emph>. After this, you may adjust the boundaries so they match with the Sound file.</p>
 
 </p>
   <h3 class="sectionHead"><span class="titlemark">5 </span> <a 
  id="x1-60006"></a>Homework</h3>
-<!--l. 124--><p class="noindent" >Modify the script so that:
-  <ul>
-    <li>The word "stuck" is extracted from all 6 sound files.</li>
-    <li>Each instance of the word "stuck" gets its own TextGrid with one tier called <code>segment</code>.</li>
-    <li>On week 2, we created a for loop using the command <code>Create Strings as tokens</code> (you can do it manually by going to the Objects window and then <em>New > Strings > Create Strings as tokens</em>). Create a Strings list like this, but instead of Rachel, Monica, etc. as tokens you use the phonetic symbols for each sound in the word <em>stuck</em> (hint: the [&#652;] symbol is rendered with <strong>\vt</strong>). This action will create an Object called <code>Strings tokens</code>. Add the line of code that creates this Object at the beginning of your script.</li> 
-    <li><strong>HINT:</strong> The chunk of script that you will be creating goes between the last <code>endfor</code> lines.</li>
-    <li>Feed each one of the TextGrids with the phonetic annotation contained in your <code>Strings tokens</code> object.</li>
-    
-
+  <!--l. 124--><p class="noindent" >Download the file <emph>seizure.wav</emph> <a href="week6_online/seizure.wav">here</a> (you can also find it on ILIAS). Create a script that: (a) Opens the file; (b) Creates a TextGrid with two tiers (word and phone); (c) Adds the corresponding intervals; and (d) Adds labels to both tiers. For those who like challenges, extend your script by making it (e) Extract the fricatives; and (f) Get the duration of each fricative. Upload your script to ILIAS as usual.</p> 
+   
   </ul>
 </div>
 
