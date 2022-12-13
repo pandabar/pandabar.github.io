@@ -33,19 +33,19 @@
 <div class="author" ><span 
 class="cmr-12x-x-120">Dr. Fernanda Barrientos</span></div><br />
 <div class="date" ><span 
-class="cmr-12x-x-120">November 22, 2021</span></div>
+class="cmr-12x-x-120">December 21, 2022</span></div>
   </div>
   <h3 class="sectionHead"><span class="titlemark">1 </span> <a 
  id="x1-10001"></a>A somewhat quicker way to annotate Sound ﬁles</h3>
-<!--l. 31--><p class="noindent" >From the exercises in Weeks 3 and 4, it has become clear to us that annotation can be a slow, painful process. There are, however, a couple of steps that you can take to make it easier:
+<!--l. 31--><p class="noindent" >From the exercises in previous weeks, it has become clear to us that annotation can be a slow, painful process. There are, however, a couple of steps that you can take to make it easier:
 </p>
      <ul class="itemize1">
-     <li class="itemize">You can create a for loop that creates boundaries in your TextGrid every x number of (mili)seconds. You may either decide to space these boundaries evenly, or just put them all at the beginning of your TextGrid. Today we will use the ﬁrst approach.
+     <li class="itemize">You can create a for loop that creates boundaries in your TextGrid every x number of (mili)seconds. You may either decide to space these boundaries evenly. This is what we learned last week. You could also put all the boundaries very close to each other at the begining or end of your script.
      </li>
-     <li class="itemize">You can make .txt ﬁles with transcriptions using a simple programme such as Notepad. If you already have one, then you can ask Praat to read these as a Strings list with tokens.
+     <li class="itemize">You can make .txt ﬁles with transcriptions using a simple programme such as Notepad. If you already have one, then you can ask Praat to read these as a Strings list. Last week we saw that we can use a Strings list to feed our TextGrids with labels; today we will see a small variation of that trick.
      If you’re already wandering what the use of this is, see below...
      </li>
-     <li class="itemize">A Strings list with tokens in it may be used to be the interval texts for your TextGrids. Therefore, you can tell Praat not only to create boundaries for your TextGrid, but also ﬁll in the intervals with the desired text.</li></ul>
+     <li class="itemize">A Strings list with tokens in it may be used to be the interval texts for your TextGrids. Therefore, you can tell Praat not only to create boundaries for your TextGrid, but also fill in the intervals with the desired text.</li></ul>
 <!--l. 38--><p class="noindent" >
 </p>
   <h3 class="sectionHead"><span class="titlemark">2 </span> <a 
@@ -152,7 +152,7 @@ minusObject: wav_file</code></pre></div></div>
   <ul>
     <li>The word "stuck" is extracted from all 6 sound files.</li>
     <li>Each instance of the word "stuck" gets its own TextGrid with one tier called <code>segment</code>.</li>
-    <li>On week 2, we created a for loop using the command <code>Create Strings as tokens</code> (you can do it manually by going to the Objects window and then <em>New > Strings > Create Strings as tokens</em>). Create a Strings list like this, but instead of Rachel, Monica, etc. as tokens you use the phonetic symbols for each sound in the word <em>stuck</em> (hint: the [&#652;] symbol is rendered with <strong>\vt</strong>). This action will create an Object called <code>Strings tokens</code>. Add the line of code that creates this Object at the beginning of your script.</li> 
+    <li>Last week we created a for-loop using the command <code>Create Strings from tokens</code>. Create a Strings list like this, with the phonetic symbols for each sound in the word <em>stuck</em> (hint: the [&#652;] symbol is rendered with <strong>\vt</strong>). Add the line of code that creates this Object at the beginning of your script.</li> 
     <li><strong>HINT:</strong> The chunk of script that you will be creating goes between the last <code>endfor</code> lines.</li>
     <li>Feed each one of the TextGrids with the phonetic annotation contained in your <code>Strings tokens</code> object.</li>
     
@@ -160,7 +160,7 @@ minusObject: wav_file</code></pre></div></div>
   </ul>
 </div>
 
-
+  </div>
 
   <script src="https://cdn.jsdelivr.net/g/ace@1.2.6(min/ace.js+min/mode-praat.js+min/theme-solarized_light.js)"></script>
 
