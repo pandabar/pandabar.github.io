@@ -1,0 +1,332 @@
+<!DOCTYPE html> 
+<html lang="en-US" xml:lang="en-US" > 
+<head><title>Week 8: Recap</title> 
+<meta  charset="utf-8" /> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
+<meta name="viewport" content="width=device-width,initial-scale=1" /> 
+<link rel="stylesheet" type="text/css" href="index.css" />
+<meta name="src" content="week8.tex" /> 
+</head><body 
+>
+<div class="sidebar">
+  <a href="index.html">Start</a>
+  <a href="week1.html">Week 1: Basics</a>
+  <a href="week2.html">Week 2: For-loops and conditions</a>
+  <a href="week3.html">Week 3: Vowels and formants</a>
+  <a href="week4.html">Week 4: Consonants</a>
+  <a href="week5.html">Week 5: Tables</a>
+  <a href="week6.html">Week 6: Annotation I</a>
+  <a href="week7.html">Week 7: Annotation II</a>
+  <a class="active" href="week8.html">Week 8: Recap
+  <a href="week9.html">Week 9: Manipulation and resynthesis</a>
+  <a href="week10.html">Week 10: The KlattGrid</a>
+  <a href="week11.html">Week 11: Perceptual experiments</a>
+  <a href="week12.html">Week 12: Procedures</a>
+</div>
+                                                                                    <!-- Page content -->
+<div class="content">
+  <div class="maketitle">
+                                                                                      
+                                                                                      
+
+<h2 class="titleHead">Week 8: Recap</h2>
+<div class="author" ><span 
+class="cmr-12x-x-120">Dr. Fernanda Barrientos</span></div><br />
+<div class="date" ><span 
+class="cmr-12x-x-120">January 10, 2023</span></div>
+  </div>
+
+    
+  <h3 class="sectionHead"><span class="titlemark">1 </span> <a 
+ id="x1-20002"></a>Types of Objects</h3>
+
+Praat contains several types of Objects. You can perform different actions on these objects, as long as you are selecting them. 
+  <h4 class="sectionHead"><span class="titlemark">1.1 </span> <a 
+ id="x1-20002"></a>String lists</h4>
+
+ A Strings list contains a set of string elements, which can refer to file names or tokens. You can create them in several ways:
+ <ul>
+  <li>When you use the <em>Create Strings as file list...</em> command, your list of strings will be the file names that you store in a certain folder. By doing this you can open multiple sound files (for instance, .wav files) in one go. A crucial advantage of this is that you can run a for loop on a Strings list with file names and perform a bunch of other actions on each one of these files, one after another. </li>
+<figure>
+  <img src="week6_online/stringslist.png" class="responsive2", title="You have already seen this before">
+  <figcaption>Fig. 1. A Strings list. By using the <em>Create Strings as file list...</em> option you can perform several actions on each one of these Sound files.</figcaption>
+</figure>
+  <li>When you use the <em>Create Strings as tokens</em> option you can make a Strings list with whatever Strings you like. In weeks 6 and 7 we used such a strings list in order to feed it to a TextGrid, but this is just one of many potential uses.</li>
+<figure>
+   <img src="week6_online/stringslist2.png" class="responsive2", title="You have also seen this already">
+   <figcaption>Fig 2. Strings as tokens: using them to feed a TextGrid object.</figcaption>
+</figure>
+ 
+</ul>
+
+ <h4 class="sectionHead"><span class="titlemark">1.2 </span> <a 
+ id="x1-20002"></a>Sounds</h4>
+ <p>You can load the following types of Sound files to Praat:</p>
+ <ul>
+   <li>.wav</li>
+   <li>.aiff or .aifc</li>
+   <li>.nist</li>
+   <li>.flac</li>
+   <li>.mp3</li>
+   <li>.au</li>
+ </ul> 
+
+<p>You can also create Sound files, either by using a formula (see week 2) or by recording something yourself (you can go to the Objects window and then select <em>New > Record mono sound</em>. Other options include creating pure tones, vowels using the VowelEditor, and synthesizing speech, among other possibilities. They can be accesed by going to the Objects window and then select <em>New > Sound</em>.</p>
+
+<figure><img src="week6_online/recording.png" class="responsive2" title="You can also record yourself or others with Praat">
+<figcaption>Fig. 3. Recording a Sound with the <em>Record mono sound...</em> option.</figcaption></figure>
+
+
+ <h4 class="sectionHead"><span class="titlemark">1.3 </span> <a 
+ id="x1-20002"></a>TextGrids</h4>
+
+ <p>A TextGrid is a text file (you can open them with a text editor) containing time stamps and labels. However, when you create a TextGrid for a Sound object in Praat and then open both together with the <em>View & Edit</em> option, you can see and edit a TextGrid as you listen and look at the oscillogram and spectrogram of that file. You can edit a TextGrid by adding Tiers of information (e.g. a phone tier, a word tier, a syllable tier, etc), boundaries (i.e. mark the start and end times of a word/segment), and labels for each interval (whatever is between two boundaries). You can add IPA symbols to the TextGrid as well; newer versions of Praat come with a handy-dandy chart of phonetic symbols that you can click on. Likewise, you can query a TextGrid and obtain information from it regarding Tiers, intervals, labels, times, etc. When you select a TextGrid object in Praat you can see the range of options available for you.</p>
+
+
+<figure>
+  <img src="week6_online/textgrid.png" class="responsive">
+  <figcaption>Fig. 4. A Textgrid object with three Tiers. The first tier has 7 intervals; the second tier has 3, and the third one 1. The blue lines (boundaries) can be inserted either manually by clicking on the relevant part of the spectrogram, or with a script by giving a time stamp.</figcaption>
+</figure>
+
+ <h4 class="sectionHead"><span class="titlemark">1.4 </span> <a 
+ id="x1-20002"></a>Spectrograms</h4>
+
+ <p>Spectrograms are just images; you can create a Spectrogam object from a Sound object by selecting it and then going to <em>Analyse Spectrum > To Spectrogram</em>. Other than drawing it to the Picture window, querying/analysing a slice, and synthesizing it, it is not a very versatile Object (you can modify it with a formula, but the possibilities are a bit limited). </p>
+
+<figure>
+  <img src="week6_online/spectrogram.png" class="responsive2">
+  <figcaption>Fig. 5. A Spectrogram object.</figcaption>
+</figure>
+
+ <h4 class="sectionHead"><span class="titlemark">1.5 </span> <a 
+ id="x1-20002"></a>Formants</h4>
+
+ <p> Formants are Objects that you can create from a Sound object by going to <em>Analyse Spectrum > To Formant (burg)</em>. The default settings are usually OK for most purposes, but you do need to change the <em>Maximum frequency</em> to 5500 Hz for female voices and 5000 Hz for male voices. Since Formant objects are just a bunch of numbers and time stamps, you can't visualize them unless you draw them on the Picture window (as we did on Week 3; you can do this manually by selecting a Formant object, then <em>Draw > Speckle</em>). However, you can modify the bandwidths and frequencies of a Formant object with a formula. </p>
+
+<figure>
+  <img src="week6_online/formant_drawn.png" class="responsive2">
+  <figcaption>Fig. 6. A Formant object drawn on the Picture window.</figcaption>
+</figure>
+
+ <p>There are many more types of Objects (Matrices, Tables, Tiers, Pitch, Intensity, KlattGrid...) and we will see some of these in the following sessions. Of course, the kind of Praat Objects that you get to learn about are intimately related to your research interests, so this course will cover only the very essentials.</p>
+
+  <div style="border:3px outset #04AA6D;padding:5px;padding-left:30px;">
+  <p><strong>Quick exercise:</strong> Make sure that you can create these objects manually on Praat.</p>
+  </div>
+  
+ <h3 class="sectionHead"><span class="titlemark">2 </span> <a 
+ id="x1-20002"></a>Elements of Praat scripting</h3>
+
+ <h4 class="sectionHead"><span class="titlemark">2.1 </span> <a 
+ id="x1-20002"></a>Defining variables</h4>
+
+<p>In Praat you can create string and numeric variables. While the former store strings and can be defined by giving it a custom name followed by a dollar sign, the latter store numbers and do not need any symbol. Hence:</p>
+
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>favoriteanimal$= "penguins"
+luckynumber= 2
+appendInfoLine: "There are ", luckynumber, " ", favoriteanimal$, " in this photo."</code></pre></div></div>
+
+<figure><img src="week6_online/penguins.jpg" class="responsive2"></figure>
+
+
+<p><strong>However</strong>, you can't name variables using capital letters at the beginning. Initial caps are also not allowed.</p>
+  
+<div style="border:3px outset #04AA6D;padding:5px;padding-left:30px;">
+  <p><strong>Quick exercise:</strong> Create a string variable named <strong>dir$</strong> with the path to your desktop. Make the Info window print it.</p>
+  </div>
+  
+<h4 class="sectionHead"><span class="titlemark">2.2 </span> <a 
+ id="x1-20002"></a>For-loops</h4>
+
+<p>For-loops are arguably the best thing (tied with Procedures, which we will see later on) about Praat: it allows you to perform the same operation over a set of objects.</p>
+
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>clearinfo
+appendInfoLine: "Once upon a time, there were three siblings:"
+siblings= Create Strings as tokens: "Yakko, Wakko, Dot", ", "
+numOfSibs = Get number of strings
+for i to numOfSibs
+  sib$= Get string: i
+  appendInfoLine: sib$, "is sibling number ", i, "."
+endfor</code></pre></div></div>
+  
+<h4 class="sectionHead"><span class="titlemark">2.3 </span> <a 
+ id="x1-20002"></a>Conditions</h4>
+<p>You can add a condition (also called if-statement) within a loop. You can create a more complex decision tree by using <code>elsif</code> and <code>else</code>.</p>
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>clearinfo
+appendInfoLine: "Once upon a time, there were three siblings:"
+siblings= Create Strings as tokens: "Yakko, Wakko, Dot", ", "
+numOfSibs = Get number of strings
+for i to numOfSibs
+  sib$= Get string: i
+  appendInfoLine: sib$, " is sibling number ", i, "."
+  if sib$= "Dot"
+    pronoun$= "she"
+    else
+    pronoun$="he"
+  endif
+appendInfoLine: "and ", pronoun$, " is very funny."
+endfor</code></pre></div></div>
+
+  <div style="border:3px outset #04AA6D;padding:5px;padding-left:30px;">
+  <p><strong>Quick exercise:</strong> Create an if-statement that prints the numbers between 2 and 10, but in addition it appends the string "But a special number is " before number 7. </p>
+  </div>  
+  
+<h4 class="sectionHead"><span class="titlemark">2.4 </span> <a 
+ id="x1-20002"></a>Comments</h4>
+
+<p>There are two ways of adding comments to a Praat script, but we have only seen one: the hash (#) symbol. You may also use a semicolon (;) but the recommended usage of the semicolon is for commenting out script lines that you may use later anyway; the # may be used for explaining what different parts of your script do.</p>
+
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>clearinfo
+appendInfoLine: "Once upon a time, there were three siblings:"
+#this is a Strings list with the Warner siblings
+siblings= Create Strings as tokens: "Yakko, Wakko, Dot", ", "
+numOfSibs = Get number of strings
+#this is a for-loop
+for i to numOfSibs
+  sib$= Get string: i
+  appendInfoLine: sib$, " is sibling number ", i, "."
+#this is an if-statement for pronouns. It doesn't hurt if I leave it uncommented
+   if sib$= "Dot"
+    pronoun$= "she"
+    else
+    pronoun$="he"
+  endif
+; appendInfoLine: "And ", pronoun$, " is very funny."
+endfor
+appendInfoLine: "And they were very funny."</code></pre></div></div>
+
+<h4 class="sectionHead"><span class="titlemark">2.5 </span> <a 
+ id="x1-20002"></a>"Stringification" of numeric variables</h4>
+
+<p>If you want to print a string and a numeric variable together, you might need to "stringify" your numeric variable. For instance, here I want to create three sine waves of 1, 2, and 3 seconds and want to name them <em>tone1</em>, <em>tone2</em>, and <em>tone3</em>, respectively:</p>
+
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for i to 3
+#The "tone" + string$(i) part is the name of each Sound
+Create Sound from formula: "tone" + string$(i), 1, 0, i, 44100, "1/2 * sin(2*pi*377*x) "
+Play
+endfor</code></pre></div></div>
+
+<h4 class="sectionHead"><span class="titlemark">2.6 </span> <a 
+ id="x1-20002"></a>Object selection</h4>
+
+<p>As we have stated several times throughout the course, Praat performs actions only on selected Objects. If you are going through a for-loop that creates new Objects, you need to tell Praat to come back to where it was.</p>
+
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for i to 3
+sound= Create Sound from formula: "tone" + string$(i), 1, 0, i, 44100, "1/2 * sin(2*pi*377*x) "
+To TextGrid: "tone", ""
+Set interval text: 1, 1, "tone" + string$(i)
+#Now I must add this line, or the Sound won't play
+selectObject: sound
+Play
+endfor</code></pre></div></div>
+
+
+<h4 class="sectionHead"><span class="titlemark">2.7 </span> <a 
+ id="x1-20002"></a>Removing objects</h4>
+
+<p>Each Praat window has a different way of removing elements. If you would like to remove a drawing from the Picture window, you need to go to the Picture window menu and choose <em>Edit > Erase all</em>. Likewise, this can be done from a script by using the line <code>Erase all</code>.</p>
+
+<p>If you want to clear the Info window, you can go to the corresponding menu and choose <em>File > Clear</em>. You can also script it by using the line <code>clearinfo</code>.</p>
+
+<p>Finally, you can also remove an object from the Objects window. You can just select the Object(s) and hit the <em>Remove</em> button at the bottom. Or, you can use <code>removeObject:</code> in your script. If you would like to remove all your elements from the Praat Objects window, you could use:</p>
+
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#Seriously: this is a terrible idea
+select all
+Remove</code></pre></div></div>
+
+<p>But this is a terrible idea, since it will remove EVERYTHING; even the Objects that were there before those created by your script. You can use it when a script creates Objects repeatedly.</p>
+
+  <div style="border:3px outset #04AA6D;padding:5px;padding-left:30px;">
+   <p><strong>Quick exercise:</strong> Create a script that opens the files in the <strong>palabras</strong> folder via Strings list, and removes everything except the strings list. Make sure to run the removing part later, or you won't see anything happening at all!</p>
+  </div>
+
+<h4 class="sectionHead"><span class="titlemark">2.8 </span> <a 
+ id="x1-20002"></a>String functions and regular expressions</h4>
+
+ <p>Whe we work with strings, we can use either the built-in string functions in Praat, or regular expressions. Both can help us to find patterns in strings. For instance, imagine having a long list of sound files with recordings from male and female voices, all of which you have conveniently named with an "m" or an "f" at the beginning (here I just added the "m" and "f" to the files in the <em>samples</em> folder), and we want to measure vowel formants according to their sex. Let's try a string function first:</p>
+
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#we create a strings list with file names
+dir$= "/home/fernenri/Desktop/samples/"
+files= Create Strings as file list: "fileList", dir$ + "*.wav"
+nofiles= Get number of strings
+#we make a for-loop with a condition
+for i to nofiles
+  name$= Get string: i
+  Read from file: dir$ + name$
+  if left$ (name$, 1) = "f"
+  To Formant (burg): 0, 5, 5500, 0.025, 50
+  else
+  To Formant (burg): 0, 5, 5000, 0.025, 50
+  endif
+selectObject: files
+endfor</code></pre></div></div>
+
+<p>Entering a condition of the type <code>if left$ (name$, 1) = "f"</code> allowed us to assign different maximum formant values to male and female voices: the string function used was <code>left$(a$, n)</code>, where <em>a$</em> stands for the string in question, and <em>n</em> stands for the number of characters at the left edge of your string that you want to check. You can access the list of available string functions by going to the Objects window and then <em>Help > Search Praat manual...</em> and type <em>string functions</em> in the box.</p>
+<p>You can achieve the same by using the following regular expression: <code>"^f"</code>. If you replace line 9 above with <code>  if index_regex (name$, "^f")</code>, you'll get the same result. Again, you can access the list of regular expressions by going to the Objects window and then <em>Help > Search Praat manual...</em> and type <em>regular expressions</em> in the box.</p></p>
+
+  <h3 class="sectionHead"><span class="titlemark">3 </span> <a 
+ id="x1-60006"></a>Commands</h3>
+<p> We are calling <em>commands</em> any line of code that performs an action on an Object, although this might not be a very accurate name. These actions can be found also when you use the buttons in the Objects window. Most of them take several arguments (again, might not be a very accurate name), that is, extra information on the parameters of the action. For instance:</p>
+
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#We get the duration of a given sound
+dur= Get total duration</code></pre></div></div>
+
+<p>...takes no arguments; you just need write that down and that's all. But:</p>
+
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#we create a strings list with file names
+files= Create Strings as file list: "fileList", "/home/fernanda/Desktop/palabras/"</code></pre></div></div>
+
+<p>Some other commands do take arguments. In the case above, we need to give a name to the Strings list, and a path to a folder.</p>
+
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#We create a Formant object from a Sound
+To Formant (burg): 0, 5, 5500, 0.025, 50</code></pre></div></div>
+
+<p>...And if we wanted to create a Formant object we will need to provide a lot of information: the time steps in seconds, the maximum number of formants, the Maximum formant in Hz, the window length, and the pre-emphasis. Remember that whenever you can't remember the arguments you can always perform the desired option by clicking; the line above is just the same as clicking on the following window:</p>
+
+<img src="week6_online/formantwin.png" class="responsive2" title="It's all the same">
+
+   <h3 class="sectionHead"><span class="titlemark">4 </span> <a 
+ id="x1-60006"></a>The Picture window</h3>
+<p> Finally, the Picture window is a world in itself. If you are proficient with a program that produces highly customizable graphs such as <strong>R</strong>, then you probably won't need the Picture window at all. However, let's bear in mind the following: </p> 
+
+<ul>
+  <li>Many Praat Objects can be drawn or painted on this window; when you select an Object, see if a <em>Draw...</em> or <em>Paint...</em> button shows up.</li>
+  <li>Before you draw anything, make sure that the window is clear (see 2.7 above), and that the viewport (the pink/blue box) is selecting the desired area; you can choose the drawing area with the mouse or by scripting, in which case you will need to use the coordinate system described in Week 2.</li>
+</ul>
+
+  <h3 class="sectionHead"><span class="titlemark">5 </span> <a 
+ id="x1-60006"></a>Homework</h3>
+<!--l. 124--> <p>
+This week you don't need to send anything as a homework, unless you'd like to resubmit a homework that you couldn't figure out at first. In that case, do let me know what the problem was (either by email or the forum) so I can give you some extra hints, and send by email.</p>
+</div>
+  <script src="https://cdn.jsdelivr.net/g/ace@1.2.6(min/ace.js+min/mode-praat.js+min/theme-solarized_light.js)"></script>
+
+<script>
+  function qsa(sel) {
+      return Array.apply(null, document.querySelectorAll(sel));
+  }
+
+  qsa(".ace").forEach(function (codeEl) {
+    var classes = codeEl.className;
+    classes = classes.split(" ");
+    var readonly = true;
+    classes.forEach(function (e, i, a) {
+      if (e == "editable") { readonly = false };
+    });
+
+    ace.edit(codeEl).setOptions({
+        maxLines: 20,
+        readOnly: readonly,
+        autoScrollEditorIntoView: true,
+        mode:  "ace/mode/praat",
+        theme: "ace/theme/solarized_light",
+        firstLineNumber: parseInt(codeEl.getAttribute("data-start") || 1),
+        showGutter: true,
+    });
+  });
+</script> 
+</body> 
+</html>
+                                                                                      
+
+

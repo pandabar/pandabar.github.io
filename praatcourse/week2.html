@@ -1,0 +1,308 @@
+<!DOCTYPE html> 
+<html lang="en-US" xml:lang="en-US" > 
+<head><title>Week 2: for loops and conditions</title> 
+<meta  charset="utf-8" /> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
+<meta name="viewport" content="width=device-width,initial-scale=1" /> 
+<link rel="stylesheet" type="text/css" href="index.css" />
+<meta name="src" content="week2.tex" /> 
+<style>
+mark { 
+  background-color: yellow;
+  color: black;
+  padding:6px;
+}
+</style>
+</head><body>
+
+  <!-- The sidebar -->
+<div class="sidebar">
+  <a href="index.html">Start</a>
+  <a href="week1.html">Week 1: Basics</a>
+  <a class="active" href="week2.html">Week 2: For-loops and conditions</a>
+  <a href="week3.html">Week 3: Vowels and formants</a>
+  <a href="week4.html">Week 4: Consonants</a>
+  <a href="week5.html">Week 5: Tables</a>
+  <a href="week6.html">Week 6: Annotation I</a>
+  <a href="week7.html">Week 7: Annotation II</a>
+  <a href="week8.html">Week 8: Recap
+  <a href="week9.html">Week 9: Manipulation and resynthesis</a>
+  <a href="week10.html">Week 10: The KlattGrid</a>
+  <a href="week11.html">Week 11: Perceptual experiments</a>
+  <a href="week12.html">Week 12: Procedures</a>
+</div>
+                                                                                    <!-- Page content -->
+<div class="content">
+  <div class="maketitle">
+
+<h2 class="titleHead">Week 2: for loops and conditions</h2>
+<div class="author" ><span 
+class="cmr-12x-x-120">Dr. Fernanda Barrientos</span></div><br />
+<div class="date" ><span 
+class="cmr-12x-x-120">November 8, 2022</span></div>
+  </div>
+  <h3 class="sectionHead"><span class="titlemark">1 </span> <a 
+ id="x1-10001"></a>What’s a for loop?</h3>
+<!--l. 30--><p class="noindent" >A for loop is a procedure that allows you to repeat the same operation over a set of elements. Last week we created the following script:</p>
+
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sound_directory$ = "/home/fernanda/Desktop/palabras/"
+Create Strings as file list: "fileList", sound_directory$ + "*.wav"
+anumber=3
+thisfile$ = Get string: anumber
+Read from file: sound_directory$ + thisfile$
+Play</code></pre></div></div>
+
+
+<!--l. 42--><p class="indent" >  With this script we were able to open just one ﬁle out of a bunch of ﬁles (i.e. only file number three). This is not very helpful, especially considering that we can do this using the Object window and clicking along. We will learn how to open all the ﬁles at once with a script by the end of this tutorial.
+
+</p><!--l. 45--><p class="noindent" >
+</p>
+  <h3 class="sectionHead"><span class="titlemark">2 </span> <a 
+ id="x1-20002"></a>A simple for loop</h3>
+
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for i from 2 to 10
+appendInfoLine: "This is number ", i
+endfor</code></pre></div></div>
+
+<!--l. 54--><p class="noindent" >This small script has told Praat to take all numbers from 2 to 10 and for each one of them, to write a line on the Info window. Note that <span 
+class="cmtt-10x-x-109">i </span>means here ”a given number”, but you could also replace it with
+<span class="cmtt-10x-x-109">blah</span>, <span class="cmtt-10x-x-109">x</span>, etc.
+</p>
+<!--l. 56--><p class="indent" >  The syntax is always the same: <span 
+class="cmtt-10x-x-109">for i from x to y </span>and then the following line declares what you
+want Praat to do with every element defined by <span class="cmtt-10x-x-109">i</span> (in the case of the script above, <span class="cmtt-10x-x-109">i</span> means "every number from 2 to 10"). Then, we close the loop with <span class="cmtt-10x-x-109">endfor</span>.
+</p>
+<!--l. 58--><p class="indent" >  If you want Praat to start counting from 1, then you don’t need to write <span class="cmtt-10x-x-109">for i from 1 to x</span>. You can simply write <span 
+class="cmtt-10x-x-109">for i to x</span>, since 1 is the default starting number for the
+iteration.
+                                                                                      
+</p>
+
+<p class="noindent" >
+</p>
+  <h3 class="sectionHead"><span class="titlemark">3 </span> <a 
+ id="x1-30003"></a>Create a set of sounds</h3>
+<!--l. 61--><p class="noindent" >A for loop can also create sounds. This can be done manually by going to <em>New >> Sound >> Create Sound from formula</em>. The arguments taken by this command can be seen in the dialog window, which are: 1) Name of the sound, 2) Number of channels (mono or stereo: we want mono, so there is a 1), 3) Start time, 4) End time, 5) Sampling frequency, and finally 5) A formula, which in this particular case creates a sine wave with random noise. Unless you are interested in sounds that are not very speech-like, we will rarely use this command (BUT you can create a silence by putting a 0 in the formula field!).</p>
+<p  class="indent"> Hence, this script will create 5 sine waves with random noise, which will be increasingly long (the first one will be 1 second long, the following 2 seconds long, and so on).</p>
+<span 
+class="colorbox" id="colorbox3"></p>
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for i to 5
+Create Sound from formula: "sineWithNoise" + string$(i), 1, 0, i, 44100, "1/2 * sin(2*pi*377*x) + randomGauss(0,0.1)"
+endfor</code></pre></div></div>
+
+<p  class="indent">The sound is not very interesting in this case: it's just like picking up a landline phone without doing anything. We will build more interesting sounds in the following weeks.</p>
+<!--l. 60--><p class="noindent" >
+</p>
+  <h3 class="sectionHead"><span class="titlemark">4 </span> <a 
+ id="x1-30003"></a>Drawing elements</h3>
+<!--l. 61--><p class="noindent" >A for loop can also draw to the Picture window.
+<span 
+class="colorbox" id="colorbox3"></p>
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>num= 0.1
+for i from 0 to 10
+Text: i*num, "left", i*num, "Half", "a"
+endfor</code></pre></div></div>
+
+<!--l. 70--><p class="indent" >  Here we have asked Praat to draw a diagonal line of a’s in the pink (or blue) box. Since Praat assumes that this box is 1 unit long on each side, we will have to use decimal numbers (otherwise it will draw beyond the box). In order to do this we had to ask Praat to take the numbers from 1 to 10 and divide them by 10 (or more speciﬁcally, multiply it by 0.1; you can also write <span class="cmtt-10x-x-109">i/10 </span>in the for loop but I wanted you to create a numeric variable). If you’d like to know what the other parameters are, you may simply go to the Picture window, choose <span class="cmtt-10x-x-109">Text... </span>and look at the dialogue window. What the script did was simply to write these parameters down and allow you to use the for loop instead of opening this dialogue box 10 times.
+</p>
+<!--l. 72--><p class="noindent" >
+</p>
+  <h3 class="sectionHead"><span class="titlemark">5 </span> <a 
+ id="x1-40004"></a>A for loop for strings</h3>
+<!--l. 74--><p class="noindent" >We will create a for loop that iterates through a series of strings. First, we need to create a string list. But we will use a diﬀerent option this time. Instead of the <span class="cmtt-10x-x-109">Create Strings as file list </span>option that we used last week, we will use <span class="cmtt-10x-x-109">Create Strings as tokens</span>. This command does not require us to specify a path to any ﬁle since it’s just a list of strings that we have come up with.
+<span 
+class="colorbox" id="colorbox4"></p>
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>friends= Create Strings as tokens: "Rachel Monica Phoebe Chandler Ross Joey", " ,"
+numOfFriends = Get number of strings
+for iString to numOfFriends
+friend$=Get string: iString
+appendInfoLine: friend$ + " is a fictional character"
+endfor</code></pre></div></div>
+
+<!--l. 85--><p class="indent" >  After creating the string list, we ask Praat to give us the total number of strings in our list, this way we can tell Praat when to stop iterating as the for loop goes through the strings (you can also count them yourself, but this might not be an option if you have a VERY LONG string list!).
+</p><!--l. 87--><p class="indent" >  Then we start the for loop. After this, we told Praat two things: (a) we created a string variable <span class="cmtt-10x-x-109">friend$</span>, which will give you the string corresponding to the number that Praat is at as it goes through the loop. And then (b) we told Praat to write an Info line. After that we closed the loop.
+</p><!--l. 89--><p class="noindent" >
+</p>
+  <h3 class="sectionHead"><span class="titlemark">6 </span> <a 
+ id="x1-50005"></a>Embedding a condition in your for loop</h3>
+<!--l. 91--><p class="noindent" >Likewise, we can embed a condition in your for loop. The syntax is quite simple:
+                                                                                      
+                                                                                      
+<span 
+class="colorbox" id="colorbox5"></p>
+<div class="BVerbatimInput"><span 
+class="cmtt-10x-x-109">if</span><span 
+class="cmtt-10x-x-109"> [condition]</span><br /><span 
+class="cmtt-10x-x-109">[execute</span><span 
+class="cmtt-10x-x-109"> action]</span><br /><span 
+class="cmtt-10x-x-109">endif</span></div>                                                </span>
+<!--l. 99--><p class="indent" >  The previous script printed all the names of the string list. But let’s exclude someone (we will
+exclude Joey, for he was a very weird character).
+<span 
+class="colorbox" id="colorbox6"></p>
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Create Strings as tokens: "Rachel Monica Phoebe Chandler Ross Joey", " ,"
+numOfFriends = Get number of strings
+for iString to numOfFriends
+friend$=Get string: iString
+if friend$ != "Joey"
+appendInfoLine: friend$, " is a credible fictional character"
+endif
+endfor</code></pre></div></div>
+<!--l. 112--><p class="indent" >  Here we embedded the condition <span 
+class="cmtt-10x-x-109">friend$ !=&#x0022;Joey&#x0022;</span>, with which we have excluded Joey from the
+<span 
+class="cmtt-10x-x-109">appendInfoLine </span>action; hence it was not printed.
+</p><!--l. 114--><p class="indent" >  You may have noticed a couple of things:
+     </p><dl class="enumerate-enumitem"><dt class="enumerate-enumitem">
+   1. </dt><dd 
+class="enumerate-enumitem">The ”is not equal to” symbol is <span 
+class="cmtt-10x-x-109">!= </span>(common to many computer languages). For other
+     operators and symbols, check the Praat manual as they sometimes change.
+     </dd><dt class="enumerate-enumitem">
+   2. </dt><dd 
+class="enumerate-enumitem">At  this  point  your  Info  window  must  be  a  bit  cluttered.  Try  adding  the  <span 
+class="cmtt-10x-x-109">clearinfo</span>
+     command before every script; that will wipe out the previous lines.
+     </dd><dt class="enumerate-enumitem">
+   3. </dt><dd 
+class="enumerate-enumitem">If you want to save your script, you can simply go to the menu on the script window and
+     select <span 
+class="cmtt-10x-x-109">Save as... </span>Make sure that the extension of your ﬁle is <span 
+class="cmtt-10x-x-109">.praat </span>or Praat won’t read
+     it when you open it the next time!
+     </dd><dt class="enumerate-enumitem">
+   4. </dt><dd 
+class="enumerate-enumitem">Your variables CANNOT start with a capital letter!</dd>
+<dt class="enumerate-enumitem">
+   5. </dt><dd 
+class="enumerate-enumitem">You can also make these conditions a bit more complex by adding "and" or "or" statements. Use the ampersand (&) for the former; use the pipe bar (|) for the latter. Can you now modify the script so as to exclude Phoebe as well?</dd></dl>
+
+<p>We can also print something different for Joey and Phoebe. In that case, we add another line, <span class="cmtt-10x-x-109">else </span> and then yet another line with the action that we want for the elements that do not evaluate to TRUE in the if statement. </p>
+
+<p> The syntax, then, is as follows:</p>
+
+<div class="BVerbatimInput"><span 
+class="cmtt-10x-x-109">if</span><span 
+class="cmtt-10x-x-109"> [condition]</span><br /><span 
+class="cmtt-10x-x-109">[execute action 1]</span><br /><span 
+class="cmtt-10x-x-109">else</span><br /><span 
+class="cmtt-10x-x-109">[execute action 2]</span><br /><span 
+class="cmtt-10x-x-109">endif</span></div></span>
+
+<p>Can you do it yourself? Give it a try! The answer will be after this puppy.</p>
+
+<img src="week2_online/puppy.jpg" class="responsive"></img>
+<p></p>
+
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Create Strings as tokens: "Rachel Monica Phoebe Chandler Ross Joey", " ,"
+numOfFriends = Get number of strings
+for iString to numOfFriends
+friend$=Get string: iString
+if friend$ != "Joey" 
+appendInfoLine: friend$ + " is a credible fictional character"
+else
+appendInfoLine: "But " + friend$ + " is not a very credible character."
+endif
+endfor</code></pre></div></div>
+
+<!--l. 123--><p class="noindent" >
+</p>
+  <h3 class="sectionHead"><span class="titlemark">6 </span> <a 
+ id="x1-60006"></a>Open ﬁles</h3>
+<!--l. 124--><p class="noindent" >Now, you should be able to create a script that opens all the ﬁles in your <span class="cmtt-10x-x-109">palabras </span>folder, except <span class="cmtt-10x-x-109">causa.wav. </span>Try the following:
+<span 
+class="colorbox" id="colorbox7"></p>
+
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sound_directory$ = "/home/fernanda/Desktop/palabras/"
+Create Strings as file list: "fileList", sound_directory$ + "*.wav"
+numOfFiles= Get number of strings
+for ifile to numOfFiles
+thisfile$ = Get string: ifile
+if thisfile$ != "causa.wav"
+Read from file: sound_directory$ + thisfile$
+endif
+selectObject: "Strings fileList"
+endfor</code></pre></div></div>
+
+
+<!--l. 140--><p class="indent" >  Here we had to resort to a little trick. It turns out that Praat runs the for loop as long as the
+cursor is selecting the Object containing the relevant elements (in this case, the Strings
+Object, which contains the strings). If in your for loop you asked Praat to read a ﬁle,
+Praat will be selecting this opened ﬁle; thus, we need to ask him to return to the Strings
+element. If you look at the loop, you may notice that the last line before closing the loop is
+<span 
+class="cmtt-10x-x-109">selectObject: &#x0022;Strings fileList&#x0022;</span>. This line takes Praat back to the Strings element after each
+iteration.
+ 
+  <div style="border:3px outset #04AA6D;padding:5px;padding-left:30px;">
+    <h4><mark>PRO TIP:</mark> Objects can be refered to as numeric variables</h4>
+    
+     <p>Praat basically has two different ways to use the <span class="cmtt-10x-x-109">selectObject</span> command: </p>
+      <ul>
+        <li>Either by <strong>name</strong> (the one in the script above), or</li>
+        <li>By <strong>object number</strong></li>
+</ul> 
+  <p/> Basically, Praat assigns an individual number to each object that is opened or created in a session. It's the number that we see to the left of the object name in the object window. In order to use the <span class="cmtt-10x-x-109">selectObject</span> command (and other similar commands) with the object number, we can just create a new numeric variable when we create/open this object and then later use this variable with the <span 
+class="cmtt-10x-x-109">selectObject</span> command.
+
+For the script above it would look something like this (pay attention to <strong>lines 2 and 9</strong>):
+
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sound_directory$ = "/home/fernanda/Desktop/palabras/"
+fileList = Create Strings as file list: "fileList", sound_directory$ + "*.wav"
+numOfFiles= Get number of strings
+for ifile to numOfFiles
+thisfile$ = Get string: ifile
+if thisfile$ != "causa.wav"
+Read from file: sound_directory$ + thisfile$
+endif
+selectObject: fileList
+endfor</code></pre></div></div>
+
+<p>Here we see that the Strings list created in line 2 was stored as <strong>a numeric variable</strong> whose name is </strong>fileList</strong>. There are a couple of reasons why this is a better approach:</p>
+<ol>
+  <li>It's less error prone: if you refer to the file by name, you have to know which object type it is (Strings, Sound, TextGrid, etc.) and you have to know the name of the file and also there is always typos.</li>
+
+<li>If for some reason you want to select an object in a for loop that changes with every iteration (e.g. a soundfile), this can easily be done with using the object number but it's a bit more complicated if you want to use the object name.</li>
+  </ol>
+</div>
+<h3 class="sectionHead"><span class="titlemark">7 </span> <a id="x1-70007"></a>Homework</h3>
+<!--l. 144--><p class="noindent" >Can you modify this script so that:
+<ul>
+  <li> Praat opens only the ﬁles starting with the letter <span class="cmtt-10x-x-109">C </span>(i.e. <span class="cmtt-10x-x-109">causa.wav, cancha.wav </span>and <span class="cmtt-10x-x-109">carta.wav</span>)? Search in the Praat manual for <span class="cmtt-10x-x-109">String functions</span> to get a hint.</li>
+<li> Make it print to the Info window which files are being opened, and which are not.</li>
+  <li> Whenever possible, make sure to turn your objects into numeric variables, following the pro tip above. </li>
+<li>If you want to add an extra level of difficulty, make it print the total duration of each one of the files that will be opened (You can do this manually by going to <em>Query >> Get total duration</em>). Hint: you can do this by creating a numeric variable.</li></ul>
+</p> 
+</div>
+<script src="https://cdn.jsdelivr.net/g/ace@1.2.6(min/ace.js+min/mode-praat.js+min/theme-solarized_light.js)"></script>
+
+<script>
+  function qsa(sel) {
+      return Array.apply(null, document.querySelectorAll(sel));
+  }
+
+  qsa(".ace").forEach(function (codeEl) {
+    var classes = codeEl.className;
+    classes = classes.split(" ");
+    var readonly = true;
+    classes.forEach(function (e, i, a) {
+      if (e == "editable") { readonly = false };
+    });
+
+    ace.edit(codeEl).setOptions({
+        maxLines: 20,
+        readOnly: readonly,
+        autoScrollEditorIntoView: true,
+        mode:  "ace/mode/praat",
+        theme: "ace/theme/solarized_light",
+        firstLineNumber: parseInt(codeEl.getAttribute("data-start") || 1),
+        showGutter: true,
+    });
+  });
+</script>
+
+</body> 
+</html>
+                                                                                      
+
+

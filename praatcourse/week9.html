@@ -1,0 +1,348 @@
+<!DOCTYPE html> 
+<html lang="en-US" xml:lang="en-US" > 
+<head><title>Week 9: Manipulation and resynthesis</title> 
+<meta  charset="utf-8" /> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)" /> 
+<meta name="viewport" content="width=device-width,initial-scale=1" /> 
+<link rel="stylesheet" type="text/css" href="index.css" />
+</head><body 
+>
+<div class="sidebar">
+  <a href="index.html">Start</a>
+  <a href="week1.html">Week 1: Basics</a>
+  <a href="week2.html">Week 2: For-loops and conditions</a>
+  <a href="week3.html">Week 3: Vowels and formants</a>
+  <a href="week4.html">Week 4: Consonants</a>
+  <a href="week5.html">Week 5: Tables</a>
+  <a href="week6.html">Week 6: Annotation I</a>
+  <a href="week7.html">Week 7: Annotation II</a>
+  <a href="week8.html">Week 8: Recap
+  <a class="active" href="week9.html">Week 9: Manipulation and resynthesis</a>
+  <a href="week10.html">Week 10: The KlattGrid</a>
+  <a href="week11.html">Week 11: Perceptual experiments</a>
+  <a href="week12.html">Week 12: Procedures</a>
+</div>
+                                                                                    <!-- Page content -->
+<div class="content">
+
+  <div class="maketitle">
+                                                                                      
+                                                                                      
+
+<h2 class="titleHead">Week 9: Manipulation and resynthesis</h2>
+<div class="author" ><span 
+class="cmr-12x-x-120">Dr. Fernanda Barrientos</span></div><br />
+<div class="date" ><span 
+class="cmr-12x-x-120">January 17, 2023</span></div>
+  </div>
+  <h3 class="sectionHead"><span class="titlemark">1 </span> <a 
+ id="x1-10001"></a>Manipulating pitch contours</h3>
+<!--l. 31--><p class="noindent" >Sounds can be manipulated, which is useful when it comes to creation of stimuli for perceptual
+experiments. Today we will see a couple of things that we can do with sounds (though these are not
+the only things you can do!) We will download from ILIAS (or <a href="week9_online/nominated.zip">here<a>) the Sounds <span
+class="cmtt-10x-x-109">nominated.wav </span>and
+<span 
+class="cmtt-10x-x-109">nominated2.wav</span>. Open them in Praat.
+</p><!--l. 33--><p class="indent" >  The Sound <span 
+class="cmtt-10x-x-109">nominated.wav </span>has a statement: <span 
+class="cmti-10x-x-109">he was nominated</span>. On the other hand,
+Sound <span 
+class="cmtt-10x-x-109">nominated2.wav </span>is a question/exclamation, with a diﬀerent pitch contour: <span 
+class="cmti-10x-x-109">he was</span>
+<span 
+class="cmti-10x-x-109">nominated?!</span>. We will extract the contour pitch in <span 
+class="cmtt-10x-x-109">nominated2.wav </span>and transpose it to
+<span 
+class="cmtt-10x-x-109">nominated.wav</span>.
+</p><!--l. 35--><p class="noindent" >
+</p>
+  <h4 class="subsectionHead"><span class="titlemark">1.1 </span> <a 
+ id="x1-20001.1"></a>Time scaling</h4>
+<!--l. 37--><p class="noindent" >Since these are two diﬀerent utterances made by different people, it will be very unlikely that the
+timing will be exactly the same. If we look at the total durations, we will see that <span 
+class="cmtt-10x-x-109">Sound nominated </span>is
+1.105 s, while <span 
+class="cmtt-10x-x-109">Sound nominated2 </span>is 1.039. We will scale <span 
+class="cmtt-10x-x-109">Sound nominated2 </span>so that both sounds are
+the same length.
+</p><!--l. 39--><p class="indent" >  If you select the object <span 
+class="cmtt-10x-x-109">Sound nominated2 </span>and then go to <span 
+class="cmti-10x-x-109">Modify</span>
+<!--l. 39--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" > <mo 
+class="MathClass-rel">&#x003E;</mo></math> <span 
+class="cmti-10x-x-109">Modify</span>
+<span 
+class="cmti-10x-x-109">times </span><!--l. 39--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" > <mo 
+class="MathClass-rel">&#x003E;</mo></math>
+<span 
+class="cmti-10x-x-109">Scale times to... </span>You will have a dialogue window asking for the new start and end times. We put
+1.105 as the new end time. Or, which is the same, we can create this script:
+<span 
+class="colorbox" id="colorbox1"></p>
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>selectObject: "Sound nominated2"
+Scale times to: 0, 1.105</code></pre></div></div>
+
+<!--l. 46--><p class="indent" >  If you look at <span 
+class="cmtt-10x-x-109">Sound nominated2</span>, you’ll see that it’s now 1.105 s long.
+                                                                                      
+                                                                                      
+</p><!--l. 48--><p class="noindent" >
+</p>
+  <h4 class="subsectionHead"><span class="titlemark">1.2 </span> <a 
+ id="x1-30001.2"></a>Creating a Manipulation object</h4>
+<!--l. 50--><p class="noindent" >The Manipulation object will allow you to get a Praat Object called PitchTier. These
+are points along the pitch contour which you can modify in whatever way you like
+(remove/add points, move only certain points, make them all go higher by, say, 20 Hz, etc.)
+First, let’s create a Manipulation object from <span 
+class="cmtt-10x-x-109">Sound nominated</span>: We go to <span 
+class="cmti-10x-x-109">Manipulate</span>
+<!--l. 50--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" > <mo 
+class="MathClass-rel">&#x003E;</mo></math>
+<span 
+class="cmti-10x-x-109">To Manipulation... </span>and we leave the default settings as they are. Or, you can also script
+it:
+<span 
+class="colorbox" id="colorbox2"></p>
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>selectObject: "Sound nominated"
+manipnom1=To Manipulation: 0.01, 75, 600</code></pre></div></div>
+
+
+<!--l. 57--><p class="indent" >  Now, we do the same with <span 
+class="cmtt-10x-x-109">Sound nominated2</span>.
+<span 
+class="colorbox" id="colorbox3"></p>
+
+<div class="language-plaintext ace praat editable highlighter-rouge" data-start="3"><div class="highlight"><pre class="highlight"><code> selectObject: "Sound nominated2"
+manipnom2=To Manipulation: 0.01, 75, 600</code></pre></div></div>
+
+<!--l. 64--><p class="indent" >  If you select one of these Manipulation objects and then click on <em>View &#x0026; Edit</em>, you will be able to
+see the pulses, the PitchTier, and the DurationTier, one below the other.
+</p><!--l. 66--><p class="noindent" >
+</p>
+  <h4 class="subsectionHead"><span class="titlemark">1.3 </span> <a 
+ id="x1-40001.3"></a>Extracting the PitchTier</h4>
+<!--l. 68--><p class="noindent" >Now we want to extract the PitchTier from the Manipulation object that we created from <span 
+class="cmtt-10x-x-109">Sound</span>
+<span 
+class="cmtt-10x-x-109">nominated2</span>. That can be done by simply selecting the Object <span 
+class="cmtt-10x-x-109">Manipulation nominated2 </span>and then
+clicking on <span 
+class="cmti-10x-x-109">Extract pitch tier</span>. Or:
+<span 
+class="colorbox" id="colorbox4"></p>
+<div class="language-plaintext ace praat editable highlighter-rouge" data-start="5"><div class="highlight"><pre class="highlight"><code>selectObject: "Manipulation nominated2"
+pt2= Extract pitch tier</code></pre></div></div>
+
+<!--l. 75--><p class="indent" >  This will create a Praat object called <span 
+class="cmtt-10x-x-109">PitchTier nominated2</span>.
+</p>
+  <h4 class="subsectionHead"><span class="titlemark">1.4 </span> <a 
+ id="x1-50001.4"></a>Replace the PitchTier</h4>
+
+<!--l. 78--><p class="noindent" >Finally, we want to replace the pitch contour of <span 
+class="cmtt-10x-x-109">Sound nominated </span>with the one from <span 
+class="cmtt-10x-x-109">Sound</span>
+<span 
+class="cmtt-10x-x-109">nominated2</span>. In order to do so, we simply select BOTH <span 
+class="cmtt-10x-x-109">PitchTier nominated2 </span>AND <span 
+class="cmtt-10x-x-109">Manipulation</span>
+<span class="cmtt-10x-x-109">nominated</span>. When doing so, you will see in the Objects window the option <span class="cmti-10x-x-109">Replace pitch tier</span>. Click on that, and then check the object <span class="cmtt-10x-x-109">Manipulation nominated</span>. You will see that instead of the original pitch contour, it will now have the rising one from <span class="cmtt-10x-x-109">Sound nominated2</span>. The following chunk does that:<span class="colorbox" id="colorbox5"></p>
+
+<div class="language-plaintext ace praat editable highlighter-rouge" data-start="7"><div class="highlight"><pre class="highlight"><code>selectObject: "PitchTier nominated2"
+plusObject: "Manipulation nominated"
+Replace pitch tier</code></pre></div></div>
+                                                                                      
+<!--l. 86--><p class="noindent" >
+</p>
+  <h4 class="subsectionHead"><span class="titlemark">1.5 </span> <a 
+ id="x1-60001.5"></a>Create a new PitchTier</h4>
+
+<!--l. 87--><p class="noindent" >What we have done is a somewhat crude approach to pitch manipulation. You can make better manipulations by creating an empty PitchTier: <span class="cmti-10x-x-109">New</span>
+<!--l. 87--><math  xmlns="http://www.w3.org/1998/Math/MathML" display="inline" > <mo class="MathClass-rel">&#x003E;</mo></math> <span class="cmti-10x-x-109">Tiers</span> <!--l. 87--><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline" > <mo class="MathClass-rel">&#x003E;</mo></math> <span
+class="cmti-10x-x-109">Create PitchTier... </span>You can use the time speciﬁcations from <span class="cmtt-10x-x-109">Sound nominated</span>: from 0 to 1.105 s. We will call it <span class="cmtt-10x-x-109">better</span>.
+<span class="colorbox" id="colorbox6"></p>
+
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>better = Create PitchTier: "better", 0, 1.105</code></pre></div></div>
+
+
+<!--l. 93--><p class="indent" >  Now we can check the times from the Manipulation nominated object so we can create a simpliﬁed
+PitchTier. We will create a rising pitch contour with two points:
+<span class="colorbox" id="colorbox7"></p>
+
+<div class="language-plaintext ace praat editable highlighter-rouge" data-start="2"><div class="highlight"><pre class="highlight"><code>selectObject: "PitchTier better"
+Add point: 0.07, 200
+Add point: 0.89, 230</code></pre></div></div>
+
+<!--l. 101--><p class="indent" >  The times correspond to the beginning and end of the original pitch contour. After you add all the
+necessary points to your new PitchTier, you can replace the PitchTier just as we did in
+1.4. Of course, you can add more complexity to this new PitchTier object by adding as many points as you like.
+</p><!--l. 103--><p class="noindent" >
+</p>
+  <h3 class="sectionHead"><span class="titlemark">2 </span> <a 
+ id="x1-70002"></a>Manipulate formants</h3>
+<!--l. 105--><p class="noindent" >You can also manipulate formants, and here we will transform a Spanish [a] into a Spanish
+[o]. Let’s take the <span 
+class="cmtt-10x-x-109">carta.wav </span>sound from Week 1 (it’s still available on ILIAS). We will
+manually extract the ﬁrst [a] sound from it. The resynthesis process will trim the 0.025
+seconds before and after the sound, so bear that in mind when you slice the sound. Also
+take into account the loci from the previous plosive, etc. We will called the sliced sound
+<span 
+class="cmtt-10x-x-109">car</span>.
+</p><!--l. 107--><p class="indent" >  In order to change the quality of a given vowel (that is, from [a] to [o]), we will have to
+run a resynthesis. This means that we will ask Praat to remove the <span 
+class="cmti-10x-x-109">source </span>(which is just
+a funny trumpet-like noise, this equals to talking about the noise that your vocal folds
+do without having the rest of your head attached to them) from the signal, and then we
+will manipulate the <span 
+class="cmti-10x-x-109">ﬁlter </span>(that is, what the rest of your vocal tract does to your glottal
+pulses).
+</p><!--l. 109--><p class="noindent" >
+</p>
+  <h4 class="subsectionHead"><span class="titlemark">2.1 </span> <a 
+ id="x1-80002.1"></a>Extracting the source</h4>
+<!--l. 111--><p class="noindent" >We run the following script:
+                                                                                      
+                                                                                      
+<span 
+class="colorbox" id="colorbox8"></p>
+
+<div class="language-plaintext ace praat editable highlighter-rouge" data-start="1"><div class="highlight"><pre class="highlight"><code>selectObject: "Sound car"
+Resample: 11000, 50
+To LPC (burg): 16, 0.025, 0.005, 50
+selectObject: "Sound car_11000"
+plusObject: "LPC car_11000"
+Filter (inverse)
+Rename: "source"</code></pre></div></div>
+
+
+<!--l. 123--><p class="indent" >  Let’s see what the script does. Line 2 resamples our sound, which is needed in order to do resynthesis
+(Praat won’t let you resynthesize if you don’t do this ﬁrst). This can also be achieved by going to <span 
+class="cmti-10x-x-109">Convert</span>
+<!--l. 123--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" > <mo 
+class="MathClass-rel">&#x003E;</mo></math>
+<span 
+class="cmti-10x-x-109">Resample... </span>The sampling frequency is 11000 Hz for female voices and 10000 for male voices. This will
+create a sound called <span 
+class="cmtt-10x-x-109">Sound car</span><span 
+class="cmtt-10x-x-109">_11000</span>.
+</p><!--l. 125--><p class="indent" >  Line 3 creates an LPC object. This is a rather obscure object and it’s essentially just coeﬃcients
+that Praat calculates from the signal. You can create an LPC object by clicking on <span 
+class="cmti-10x-x-109">Analyze spectrum</span>
+<!--l. 125--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" > <mo 
+class="MathClass-rel">&#x003E;</mo></math> <span 
+class="cmti-10x-x-109">To</span>
+<span 
+class="cmti-10x-x-109">LPC (burg)</span>. We will use the default values.
+</p><!--l. 127--><p class="indent" >  Now we do the inverse ﬁltering: we select both the LPC object and the resampled sound, and then
+we click on <span 
+class="cmti-10x-x-109">Filter (inverse)</span>. This is done in lines 5 to 7. This will give us the <span 
+class="cmti-10x-x-109">source</span>, and we will thus
+rename it <span 
+class="cmtt-10x-x-109">Sound source</span>.
+</p><!--l. 129--><p class="noindent" >
+</p>
+  <h4 class="subsectionHead"><span class="titlemark">2.2 </span> <a 
+ id="x1-90002.2"></a>Manipulating the ﬁlter</h4>
+<!--l. 130--><p class="noindent" >So that was the source. Now we move on to the manipulation of the ﬁlter:
+<span 
+class="colorbox" id="colorbox9"></p>
+
+<div class="language-plaintext ace praat editable highlighter-rouge" data-start="8"><div class="highlight"><pre class="highlight"><code>selectObject: "Sound car_11000"
+To Formant (burg): 0, 5, 5500, 0.025, 50
+Formula (frequencies): "if row = 1 then self - 400 else self fi"
+Formula (frequencies): "if row = 2 then self - 600 else self fi"</code></pre></div></div>
+
+<!--l. 139--><p class="indent" >  First we need to extract the formant information from the resampled sound (lines 8-9). The Formant object,
+as we have already seen in previous sessions, has the speciﬁcations for the female voice, 5500 Hz. Make
+sure to change this if your recording was made by a male speaker. You can do this via clicking if you go to <span
+class="cmti-10x-x-109">Analyze</span>
+<span 
+class="cmti-10x-x-109">spectrum </span><!--l. 139--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" > <mo 
+class="MathClass-rel">&#x003E;</mo></math>
+<span 
+class="cmti-10x-x-109">To Formant (burg).</span>
+</p><!--l. 141--><p class="indent" >  Now, the crucial bit: Lines 10 and 11 use the command <span class="cmti-10x-x-109">Formula (frequencies): </span>(if you select the Formant object, you will ﬁnd this under <span class="cmti-10x-x-109">Modify</span>). These lines are rather straightforward: ”if
+the formant is F1 (<span class="cmti-10x-x-109">if row = 1</span>), <span class="cmti-10x-x-109">then </span>take whichever value it has at a given point in time (<span class="cmti-10x-x-109">self </span>) and subtract 400 Hz to it; if the formant is not F1, then just leave it alone (<span
+class="cmti-10x-x-109">else self</span> <span class="cmti-10x-x-109">ﬁ</span>). This will change the F1 values of the current sound (around 900 Hz) to ca. 500 Hz,which is a fairly acceptable value for a Spanish [o]. We will assume that for F2, (currently
+reaching 1800 Hz), lowering the values by 600 Hz will leave us with an F2 of 1200 Hz, which
+is acceptable for a Spanish [o]. With these formulas we have manipulated the formant
+values.
+</p><!--l. 143--><p class="noindent" >
+</p>
+  <h4 class="subsectionHead"><span class="titlemark">2.3 </span> <a 
+ id="x1-100002.3"></a>Resynthesis</h4>
+
+<div class="language-plaintext ace praat editable highlighter-rouge" data-start="12"><div class="highlight"><pre class="highlight"><code>selectObject: "Sound source"
+plusObject: "Formant car_11000"
+Filter</code></pre></div></div>
+                                                                                      
+<!--l. 151--><p class="noindent" >Finally, with lines 12 to 14 we get to feed the altered formant values to the source. In order to do this
+with the clicking method, we select both <span 
+class="cmtt-10x-x-109">Sound source </span>and <span 
+class="cmtt-10x-x-109">Formant car</span><span 
+class="cmtt-10x-x-109">_11000</span>, and hit
+<span 
+class="cmti-10x-x-109">Filter</span>. This will create a new sound called <span 
+class="cmtt-10x-x-109">Sound source</span><span 
+class="cmtt-10x-x-109">_filt</span>. You will hear an [o]-like
+sound.
+</p>
+   
+  <h3 class="subsectionHead"><span class="titlemark">3 </span> <a
+ id="x1-100002.3"></a>Homework</h3>
+
+ <p>Choose one of these two homeworks:</p>
+
+ <ul>
+ <li> Record yourself with Praat saying something like "Who is responsible here?" as if you were an angry costumer and are already talking to the manager (so you're trying to imply "dude, you are not doing your work"). Then record yourself asking the same but as if you don't know the answer. Make sure that when you use View and Edit the "show pitch" option is on. Check the pitch contour -is it a raising curve, a falling one? Now create a Praat script that (a) creates a Manipulation and PitchTier objects, and (b) replaces the pitch contours.</li>
+ <li> Record yourself saying "I say bat once". Create a script that modifies the vowel so the word becomes "bot" instead of "bat".</li>
+ </ul>
+
+ <p>Upload a pdf file with the script and a screenshot of the View and Edit screen before and after the manipulation. Don't forget to add your name to the file name (e.g. <strong>praathomework_mylastname.pdf</strong>). </p>
+
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/g/ace@1.2.6(min/ace.js+min/mode-praat.js+min/theme-solarized_light.js)"></script>
+
+<script>
+  function qsa(sel) {
+      return Array.apply(null, document.querySelectorAll(sel));
+  }
+
+  qsa(".ace").forEach(function (codeEl) {
+    var classes = codeEl.className;
+    classes = classes.split(" ");
+    var readonly = true;
+    classes.forEach(function (e, i, a) {
+      if (e == "editable") { readonly = false };
+    });
+
+    ace.edit(codeEl).setOptions({
+        maxLines: 20,
+        readOnly: readonly,
+        autoScrollEditorIntoView: true,
+        mode:  "ace/mode/praat",
+        theme: "ace/theme/solarized_light",
+        firstLineNumber: parseInt(codeEl.getAttribute("data-start") || 1),
+        showGutter: true,
+    });
+  });
+</script>
+</body> 
+</html>
+                                                                                      
+
+

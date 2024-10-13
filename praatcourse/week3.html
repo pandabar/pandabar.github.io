@@ -1,0 +1,303 @@
+<!DOCTYPE html> 
+<html lang="en-US" xml:lang="en-US" > 
+<head><title>Week 3: Vowels and formants</title> 
+<meta  charset="utf-8" /> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
+<meta name="viewport" content="width=device-width,initial-scale=1" /> 
+<link rel="stylesheet" type="text/css" href="index.css" />
+<meta name="src" content="week3.tex" /> 
+</head><body >
+  <!-- The sidebar -->
+<div class="sidebar">
+  <a href="index.html">Start</a>
+  <a href="week1.html">Week 1: Basics</a>
+  <a href="week2.html">Week 2: For-loops and conditions</a>
+  <a class="active" href="week3.html">Week 3: Vowels and formants</a>
+  <a href="week4.html">Week 4: Consonants</a>
+  <a href="week5.html">Week 5: Tables</a>
+  <a href="week6.html">Week 6: Annotation I</a>
+  <a href="week8.html">Week 7: Annotation II</a>
+  <a href="week9.html">Week 8: Recap
+  <a href="week9.html">Week 9: Manipulation and resynthesis</a>
+  <a href="week10.html">Week 10: The KlattGrid</a>
+  <a href="week11.html">Week 11: Perceptual experiments</a>
+  <a href="week12.html">Week 12: Procedures</a>
+</div>
+                                                                                    <!-- Page content -->
+<div class="content">
+  <div class="maketitle">
+                                                                                      
+                                                                                      
+
+<h2 class="titleHead">Week 3: Vowels and formants</h2>
+<div class="author" ><span 
+class="cmr-12x-x-120">Dr. Fernanda Barrientos</span></div><br />
+<div class="date" ><span 
+class="cmr-12x-x-120">November 15, 2022</span></div>
+  </div>
+  <h3 class="sectionHead"><span class="titlemark">1 </span> <a 
+ id="x1-10001"></a>The spectrogram</h3>
+<!--l. 31--><p class="noindent" >A spectrogram is a type of Object in Praat that shows the concentrations of energy across the frequency spectrum. You can create a Spectrogram object in Praat by selecting the sound in the Objects window, then going to <em>Analyze spectrum > to Spectrogram</em> (you may leave the default settings as they are this time). You can also select the sound and click on <em>View and Edit</em>, which will show you both the oscillogram and the spectrogram. You can see me doing this <a href="https://youtu.be/FaIp4Q3_YLw" target="_blank">here</a>.</p>
+     <ul class="itemize1">
+     <li class="itemize">The Y-axis shows the frequency, from 0 to whichever value you declare. The default is 5500 Hz, which is the recommended setting for female voices. For men, the settings should be adjusted to 5000 Hz.
+     </li>
+     <li class="itemize">The X-axis shows you the time.
+     </li>
+     <li class="itemize">The darker the spots, the higher the intensity.</li></ul>
+<!--l. 37--><p class="noindent" >Let’s look at this example. In addition to the spectrogram itself, this sound file has been <em>annotated</em> (i.e. every part of the acoustic signal has been identified with the corresponding segment and word). This can be done by creating a <code>TextGrid</code> object in Praat, which you can do by selecting your sound in question, then go to <em>Annotate > To TextGrid</em>. However, we will discuss annotation in detail in a few more weeks (an we will also assume that we want to do so via scripting, rather than clicking) 
+</p>
+  <hr class="figure" /><div class="figure" 
+>
+                                                                           
+<!--l. 41--><p class="noindent" > <img 
+src="week3_online/tigermouse.png" alt="This is a spectrogram" class="responsive"
+ />
+                                                                                      
+                                                                                      
+</p>
+  </div><hr class="endfigure" />
+<!--l. 44--><p class="indent" >  
+Note how the vowels have very dark horizontal (ish) lines between 0 and 3000 Hz. Those are the <span class="cmbx-10x-x-109">formants </span>and they determine the quality of the vowel: that is, whether it's an /a/, an /e/, an /o/, etc. You may recall from your phonetics classes that vowels can be identified in a spectrogram by looking at the first two formants, <strong>F1</strong>, which is the acoustic correlate for <strong>vowel height</strong> (the <em>lower</em> the F1 value, the higher the vowel; while /i/ is a high vowel with an F1 of around 300 Hz, /a/ is a low vowel with an F1 of about 800 Hz), and <strong>F2</strong>, which relates to vowel <strong>frontness/backness</strong>. The more fronted the vowel is, the higher the F2; /i/ is a front vowel with an F2 of about 2800 Hz, while /u/ is a back vowel with an F2 of around 900 Hz. 
+</p><!--l. 46--><p class="indent" >  On the other hand, the <strong>consonants</strong> will show you diﬀerent things according to their manner of articulation: <strong>plosives</strong> show a very sharp vertical line, which corresponds to the burst (look at the /t/ in the spectrogram above). <strong>Fricatives</strong> will show a lot of aperiodic noise, which looks mostly like a dark, shapeless cloud (look at the /s/ in the spectrogram above). <strong>Sonorants</strong> are kind of vowel-like insofar as they also show formants; you can look at the /m/ and /n/ in the spectrogram (approximants are a bit more tricky as they look very much like a vowel!). We will talk a bit more about consonants next week; in the meantime, let’s just bear in mind that in order to look into vowels, we will need to obtain information regarding formants (for vowel quality) and duration (for vowel quantity). If you need more info on this, I strongly suggest you to check the book <em>A course in phonetics</em> by Peter Ladefoged. 
+</p>
+  <h3 class="sectionHead"><span class="titlemark">2 </span> <a 
+ id="x1-20002"></a>Formants: how to get them</h3>
+<!--l. 50--><p class="noindent" >If you want to perform an acoustic analysis on vowels, then you will definitely require to measure their formants and get the values of each vowel into a table in the most automatic way possible, that is, a way that doesn't involve clicking and checking every single formant value in each one of the vowels. If you don't know how to do that, you can see me doing it <a href="https://youtu.be/WyZ9oZLgCAc" target="_blank">here</a>.</p>
+<p>Ready? Download the <span class="cmtt-10x-x-109">tigermouse.wav</span> file from <a href="week3_online/tigermouse.wav"> this link</a>. Open it with Praat. Now, let’s extract the diphthong <span class="tipa-10x-x-109">[aɪ] </span>in the word <span class="cmti-10x-x-109">tiger</span>. We go to <em>View and Edit</em>, select the diphthong with the mouse (look at the spectrogram above to get an idea of where the diphthong starts and ends), and then we go to <span class="cmti-10x-x-109">File </span><span class="cmsy-10x-x-109">→ </span><span class="cmti-10x-x-109">Extract selected sound (preserve times). </span>This will create a new Sound object in the Objects window called <span class="cmtt-10x-x-109">Sound untitled</span>. Let’s change its name using the <em>Rename... </em>button:
+<span class="cmtt-10x-x-109">diph1</span>.
+</p><!--l. 53--><p class="indent" >  Now, select that Object and go to <span 
+class="cmti-10x-x-109">View and Edit</span>. It might be the case that your Praat is already showing the formants with little red dots along them. If not, then go to <span 
+class="cmti-10x-x-109">Formants </span><span class="cmsy-10x-x-109">→ </span><span 
+class="cmti-10x-x-109">Show formants</span>. Likewise, make sure that the settings are adjusted to a male voice. To do so, go again to <span class="cmti-10x-x-109">Formant </span>and then to <span class="cmti-10x-x-109">Formant settings... </span>Make sure to set the <span class="cmti-10x-x-109">Maximum formant (Hz) </span>ﬁeld to 5000
+Hz.
+</p><!--l. 55--><p class="indent" >  Now we create the following script. Note that this script is <em>annotated</em>: we can leave small notes to ourselves about what part of the code does what. In Praat, annotations start with a hash (<strong>#</strong>); this way Praat knows that this is not an executable line of code. Lines 7 an 9 are annotations for us. 
+<span 
+class="colorbox" id="colorbox1"></p>
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>appendInfoLine: "Formant", tab$, "Start", tab$, "Mid", tab$, "End", tab$, "Mean", tab$, "Median"
+selectObject: "Sound diph1"
+beg= Get start time
+end= Get end time
+total= Get total duration
+mid= end-(total/2)
+#this part creates a Formant object
+formant= To Formant (burg): 0, 5, 5000, 0.025, 50
+#Now we extract the info from the Formant object
+for i to 3
+  begval= Get value at time: i, beg+0.025, "hertz", "Linear"
+  endval=Get value at time: i, end-0.025, "hertz", "Linear"
+  midval= Get value at time: i, mid, "hertz", "Linear"
+  meanval= Get mean: i, 0, 0, "hertz"
+  medianval= Get quantile: i, 0, 0, "hertz", 0.5
+  appendInfoLine: "F"+string$(i), tab$, begval, tab$, midval, tab$, endval, tab$, meanval, tab$, medianval
+endfor</code></pre></div></div>
+
+<!--l. 79--><p class="indent" >  This script is one of the several possible ways to create a table from the Info window. What does it
+do? Let’s see:
+     </p><dl class="enumerate-enumitem"><dt class="enumerate-enumitem">
+   1. </dt><dd 
+class="enumerate-enumitem">First we create the headings for a <span 
+class="cmbx-10x-x-109">table</span>. The columns are ”Formant”, ”Start”, ”Mid”, ”End”, ”Mean”, and ”Median”. So, we will measure the formants at the start, mid, and end points of our Sound object, plus the mean and the median of the values throughout the entire diphthong. Note that between each column we are introducing <span 
+class="cmtt-10x-x-109">tab$</span>; this will read as an actual tab space when we print the values to the Info window.
+     </dd><dt class="enumerate-enumitem">
+   2. </dt><dd 
+class="enumerate-enumitem">Secondly, we select the Object <span 
+class="cmtt-10x-x-109">Sound diph1</span>. Then, between lines 3 and 6, we <span  class="cmbx-10x-x-109">query the time domain </span>of the diphthong and <span class="cmbx-10x-x-109">deﬁne numeric variables</span> for beginning, end, total, and mid point. Note that the mid point had to be calculated by
+     using the variables above: that is, whe subtract the total divided by 2 to the end time.
+     </dd><dt class="enumerate-enumitem">
+   3. </dt><dd 
+class="enumerate-enumitem">Then we <span class="cmbx-10x-x-109">create a Formant object</span>. This command takes 5 arguments, which are the following settings: <em>time step</em> (the default is 0), <em>number of formants</em>, <em>highest formant (Hz)</em>, <em>window length</em>, and <em>pre-emphasis from (Hz)</em>. We will use the default settings for this, except for <em>highest formant</em>, which should be modified to 5000 since this is a male voice. You can create a Formant object manually by going to the Objects window, select your Sound object, and then go to <em>Analyze spectrum <span 
+class="cmsy-10x-x-109">→ </span> To Formant (burg)</em>. If you do that you will see the meanings of the values that we have entered in the <span class="cmtt-10x-x-109">To Formant (burg)</span> command on line 8. <strong>IMPORTANT:</strong> Every Object in the Objects window has an ID number (the number on the left of each Object). If we want to invoke this Object later in our script, we can store the ID number of this Object as a numeric variable. Line 7 has stored this Formant object as a numeric variable named <span class="cmtt-10x-x-109">formant</span>.
+     </dd><dt class="enumerate-enumitem">
+   4. </dt><dd 
+class="enumerate-enumitem">Then <span 
+class="cmbx-10x-x-109">we created a for loop </span>that goes from 1 to 3; this refers to the number of formants that we want to look at. We deﬁned numeric variables again which are the <span 
+class="cmbx-10x-x-109">formant</span>
+     <span 
+class="cmbx-10x-x-109">values </span>at the times deﬁned above.
+     </dd><dt class="enumerate-enumitem">
+   5. </dt><dd 
+class="enumerate-enumitem"><strong>IMPORTANT:</strong> Note that we have added 0.025 to the start time, and subtracted 0.025 to the end time. Since Praat cannot calculate values within this time frame, we had to ask Praat to read the immediately following one. You can see what happens if you change the settings of the Formant object above to 0.0025 and then add/subtract 0.0025 to the start and end times respectively.
+     </dd><dt class="enumerate-enumitem">
+   6. </dt><dd 
+class="enumerate-enumitem">Before closing the loop, we tell Praat to <span 
+class="cmbx-10x-x-109">print the values </span>to the Info window with the <span 
+class="cmtt-10x-x-109">appendInfoLine</span> command.</dd></dl>
+<!--l. 89--><p class="noindent" >
+</p>
+  
+<div style="border:3px outset #04AA6D;padding:5px;padding-left:30px;">
+    <h4><mark>PRO TIP:</mark> You can turn a numeric variable into a string variable</h4>
+    
+  <p>Let's remember that trying to concatenate (that is, joining them by using the <strong>+</strong> symbol) strings with numbers does not work well. We can, however, use a comma to just append them, one next to the other. But this may not be a good idea, especially if you're working on something that will be saved as a .csv file. The script above wanted to add "F" + i , which won't work. However, we can use one of Praat's in-built functions, <strong>string$()</strong>.</p>
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>statement$= "I love the fantastic "
+numberofthem=5
+appendInfoLine: statement$ + string$(numberofthem)</code></pre></div></div>
+
+  <p>This will be super important for scripts that save files. For instance, I might want to open the same file 10 times (say, <code>carta.wav</code>), rename them as <code>carta1.wav, carta2.wav</code>, etc. and then save them with these names, in order to manipulate them for a perceptual experiment. </p>
+  </div>
+  
+  <h3 class="sectionHead"><span class="titlemark">3 </span> <a 
+ id="x1-30003"></a>A quicker approach</h3>
+
+<span 
+class="colorbox" id="colorbox1"></p>
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>selectObject: "Sound dip1"
+formant= To Formant (burg): 0, 5, 5000, 0.025, 50
+List: "yes", "yes", 6, "no", 3, "yes", 3, "no"</code></pre></div></div>
+
+<!--l. 97--><p class="noindent" >This tiny script is a more automatic approach to the idea above. If you want to list the
+formant values that correspond to every single time step, then you can simply use the
+List command. If you want to know the meaning of the settings used in the script, you
+can go to the Objects window, and then <span 
+class="cmti-10x-x-109">Tabulate </span><span 
+class="cmsy-10x-x-109">→ </span><span 
+class="cmti-10x-x-109">List... </span>to see what they correspond
+to.
+</p><!--l. 99--><p class="noindent" >
+</p>
+  <h3 class="sectionHead"><span class="titlemark">4 </span> <a 
+ id="x1-40004"></a>How to save the Info window</h3>
+<!--l. 100--><p class="noindent" >You can go to the menu on the Info window and go to <span 
+class="cmti-10x-x-109">File </span><span 
+class="cmsy-10x-x-109">→ </span><span 
+class="cmti-10x-x-109">Save as...</span>. You can save it as either a
+.txt or .csv ﬁle, which you can later open with R, Excel, Calc, SPSS, etc.
+</p>
+  <h3 class="sectionHead"><span class="titlemark">5 </span> <a 
+ id="x1-50005"></a>Draw formants to the Picture window</h3>
+<!--l. 103--><p class="noindent" >Now we want to create a nice .png ﬁle that we can paste to a Word ﬁle, just like the one at the
+beginning of this document. (If you would like to see how to manually draw to the Picture window, you can see it <a href="https://youtu.be/ZB8-lEoopaQ" target="_blank">here</a>.) We will create the image for <span 
+class="cmtt-10x-x-109">diph1</span>. First, we will create three Objects: a TextGrid, a Spectrogram, and a Formant; and we will save their ID numbers as  numeric variables (<code>tg, spec</code> and <code>formant</code>, respectively). We can create the TextGrid with a script but this might not always be case; if in the future you already have a Sound ﬁle with the corresponding TextGrid filled in manually, then skip lines 3 and 4.
+
+<span 
+class="colorbox" id="colorbox1"></p>
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#we create three objects: a TextGrid, a Spectrogram, and a Formant
+selectObject: "Sound diph1"
+tg=To TextGrid: "phone", ""
+Set interval text: 1, 1, "a\ic"
+selectObject: "Sound diph1"
+spec=To Spectrogram: 0.005, 5000, 0.002, 20, "Gaussian"
+selectObject: "Sound diph1"
+formant= To Formant (burg): 0, 5, 5000, 0.025, 50</code></pre></div></div>
+                                                                                      
+                                                                                      
+<!--l. 117--><p class="indent" > 
+
+Line 3 creates a TextGrid from scratch, with just one tier called <em>phone</em> and no point tiers (we will talk more about this later). Line 4 sets the text for this TextGrid: since it's just one tier with one interval, we fill in the first argument with a 1 (refering to the tier number), the second with a 1 (refering to the interval number), and the third with the string we want to annotate it with. the \ic bit is the way Praat prints the IPA character [&#618;].</p>
+<p>However, what if we wanted to add boundaries to a TextGrid? We can do so manually, but we can also script it in the (somewhat unlikely) case you know the exact time for the boundary; say, at 0.5 sec there is a boundary between one segment or word and another. After the line where you created the TextGrid, you can add the following: </p>
+
+<span 
+class="colorbox" id="colorbox1"></p>
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#This would go after line 3 in the script above
+Insert boundary: 1, 0.219 
+#the 1 means the tier number and the other number is the time where we insert the boundary (this is more or less right in the middle)</code></pre></div></div>
+
+<p>Line 5 selects the Sound back again, and line 6 creates a Spectrogram object. We don't need to touch these settings, except for the second one which corresponds to <em>Maximum frequency (Hz)</em>. We use the value for the male voice, which is 5000. Again, you can consult the meaning of these values by going to <em>Analyze spectrum <span class="cmsy-10x-x-109">→ </span> To Spectrogram</em>. And finally, line 7 selects our Sound object again, and line 8 creates the Formant object.</p>
+
+
+ <p>At this point, we can inspect the Objects that the script has created. The Spectrogram object is simply an image. You can’t see the Formant element because it’s just a series of formant values, but we will draw them over the Spectrogram as red speckles in the following step.</p>
+
+<span 
+class="colorbox" id="colorbox1"></p>
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#drawing time!
+Select outer viewport: 0, 4.5, 0, 3 
+#the viewport is the pink/blue (depends on the OS) box in the Praat picture window
+#the line above gives the coordinates for the drawing; "outer viewport"= the outer part of the viewport. 
+selectObject: spec
+Black
+Paint: 0, 0, 0, 0, 100, "yes", 50, 6, 0, "no"
+selectObject: formant
+Red
+Speckle: 0, 0, 5000, 30, "no"
+Select outer viewport: 0, 4.5, 0, 3.5
+selectObject: tg
+Black
+Draw: 0, 0, "yes", "yes", "yes"
+Select outer viewport: 0, 4.5, 0, 3
+Axes: 0.16, 0.29, 0, 5000
+Marks left: 6, "yes", "yes", "yes"
+Text left: "yes", "Frequency (Hz)"
+Select outer viewport: 0, 4.5, 0, 3.5
+Save as 300-dpi PNG file: "/home/fernanda/Desktop/diph1.png"</code></pre></div></div>
+
+
+
+<p class="indent">  Now we draw. The commands that you see here can be found when you select each Object and go
+to the option <span 
+class="cmtt-10x-x-109">Draw...</span>. That will show the dialogue window with the settings. The commands <span 
+class="cmtt-10x-x-109">Axes,</span>
+<span 
+class="cmtt-10x-x-109">Marks left</span>, and <span 
+class="cmtt-10x-x-109">Text left </span>create the nice Y-axis for the spectrogram, and they can be found if you
+go to the menu on the Picture window. If everything went well, you should be able to see something like this in your Praat Picture window:</p>
+
+<img 
+src="week3_online/window.png" title="This is a beautiful drawing of a spectrogram with the TextGrid annotation and formants as red speckles" class="responsive2"
+ />
+
+<p class="indent" >On the other hand, the last line of the script created a .png file which you can find in the path you specified. Mine looks like this, which is cooler than the screenshot since it doesn't have the annoying viewport (the blue/pink box of the Picture window) around it.</p>
+
+<img 
+src="week3_online/diph1.png" title="This is a beautiful drawing of a spectrogram with the TextGrid annotation and formants as red speckles, but even better because it does not have the blue box around it" class="responsive2"
+ />
+
+ <h3 class="sectionHead"><span class="titlemark">6 </span> <a 
+ id="x1-60006"></a>A couple of annoying details about the Picture window</h3>
+
+<p>The Picture window always looks <del>like a total pain in the a</del> a bit confusing at first, but is rather simple once you understand the logic behind it. Here are some hints:</p>
+<ul><li>The pink/blue box is called the <strong>viewport</strong>, and if you draw something, it will be drawn inside that box. </li>
+
+<li>You can either select the area that you want the viewport to cover with the mouse, of you can give Praat the coordinates with a script. Lines 2, 11, 15, and 19 in the script above give the coordinates for the <em>outer</em> viewport, which means the outer borders of the box. You can also replace the word "outer" by "inner" in your script and it will give the coordinates for the inner borders; that is, the drawing area itself.</li>
+<li>The coordinate system is based on the tick marks around the Picture window; every unit is one inch, and the order is: upper left, total width, lower left, total height. Hence, line 2 in the script above locates the outer part of the viewport on 0 (uppermost place in the window), 4.5 for the total width of the picture, 0 again for the lower left, and 3 is the height of the picture. </li>
+<li>If you look at the script above closely, you will notice that the coordinates for drawing the Spectrogram and Formant objects are <strong>not</strong> the same as those for the TextGrid; you need to give the TextGrid a bit more room or it will print on top of the formant. Every tier takes about half an inch.</li>
+<li>If you get your drawing wrong the first time, you will need to go to the Picture window and go to <em>Edit > Erase all</em>; otherwise, Praat will print one image on top of the other.</li>
+</ul>
+  <h3 class="sectionHead"><span class="titlemark">7 </span> <a 
+ id="x1-60006"></a>Homework</h3>
+<!--l. 144--><p class="noindent" ><ol>
+  <li>Extract the word <em>mouse</em> from <code>Sound tigermouse</code> manually, following the steps in section 2. Rename the new sound as <code>mouse</code>.</li>
+  <li>Create a TextGrid for the object <code>Sound mouse</code> with two tiers: one called <code>segment</code> and another one called <code>word</code>. See line 3 in the script under section 5 to create a TextGrid (HINT: when you have more than one tier, just keep adding the names of the other ones in the first argument, without commas, just a space in between). </li>
+  <li>Add two boundaries in the <code>segment</code> tier; one at time 0.634 and the second one at time 0.793.</li>
+  <li>Fill in every corresponding interval in the TextGrid (m, au, and s on the <code>segment</code> tier; and the word <em>mouse</em> on the <code>word</code> tier. Tip: the &#650; symbol is made in Praat by typing <strong>\hs</strong>.</li>
+  <li>Create an image like the one below:</li>
+
+  <img 
+src="week3_online/mouse.png" title="No, don't copy-paste this image, please" class="responsive2"
+ />
+
+  <li>Upload on ILIAS a PDF document where you copy-paste a) a script that covers steps 2 to 5, and b) the image that you created. You don't need to add anything else to the document other than your name.</li>
+</ol>
+</p>
+
+</div>
+<script src="https://cdn.jsdelivr.net/g/ace@1.2.6(min/ace.js+min/mode-praat.js+min/theme-solarized_light.js)"></script>
+
+<script>
+  function qsa(sel) {
+      return Array.apply(null, document.querySelectorAll(sel));
+  }
+
+  qsa(".ace").forEach(function (codeEl) {
+    var classes = codeEl.className;
+    classes = classes.split(" ");
+    var readonly = true;
+    classes.forEach(function (e, i, a) {
+      if (e == "editable") { readonly = false };
+    });
+
+    ace.edit(codeEl).setOptions({
+        maxLines: 20,
+        readOnly: readonly,
+        autoScrollEditorIntoView: true,
+        mode:  "ace/mode/praat",
+        theme: "ace/theme/solarized_light",
+        firstLineNumber: parseInt(codeEl.getAttribute("data-start") || 1),
+        showGutter: true,
+    });
+  });
+</script>
+</body> 
+</html>
+                                                                                      
+
+

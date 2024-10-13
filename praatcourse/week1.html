@@ -1,0 +1,211 @@
+<!DOCTYPE html> 
+<html lang="en-US" xml:lang="en-US" > 
+<head><title>Week 1: Praat basics</title> 
+<meta  charset="utf-8" /> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
+<meta name="viewport" content="width=device-width,initial-scale=1" /> 
+<link rel="stylesheet" type="text/css" href="index.css" />
+<meta name="src" content="week1.tex" /> 
+</head>
+
+<body>
+ <!-- The sidebar -->
+<div class="sidebar">
+  <a href="index.html">Start</a>
+  <a class="active" href="week1.html">Week 1: Basics</a>
+  <a href="week2.html">Week 2: For-loops and conditions</a>
+  <a href="week3.html">Week 3: Vowels and formants</a>
+  <a href="week4.html">Week 4: Consonants</a>
+  <a href="week5.html">Week 5: Tables</a>
+  <a href="week6.html">Week 6: Annotation I</a>
+  <a href="week8.html">Week 7: Annotation II</a>
+  <a href="week9.html">Week 8: Recap
+  <a href="week9.html">Week 9: Manipulation and resynthesis</a>
+  <a href="week10.html">Week 10: The KlattGrid</a>
+  <a href="week11.html">Week 11: Perceptual experiments</a>
+  <a href="week12.html">Week 12: Procedures</a>
+</div>
+
+<!-- Page content -->
+<div class="content">
+  <div class="maketitle">
+                                                                                      
+                                                                                      
+
+<h2 class="titleHead">Week 1: Praat basics</h2>
+<div class="author" ><span 
+class="cmr-12x-x-120">Dr. Fernanda Barrientos</span></div><br />
+<div class="date" ><span 
+class="cmr-12x-x-120">October 21, 2021</span></div>
+  </div>
+  <h3 class="sectionHead"><span class="titlemark">1 </span> <a 
+ id="x1-10001"></a>The basics</h3>
+<!--l. 30--><p class="noindent" >Praat is one of the best tools available for research with speech sounds, and even though the interface might not look incredibly user-friendly, it is indeed a quite versatile program, especially when you can write your own scripts.  We will become familiar with the wide range of possibilities that Praat offers as we go.
+
+</p><!--l. 32--><p class="indent" >  If you already have experience with programming, you might recall that <em>Hello world </em>is always the ﬁrst assignment. After opening Praat, we go to the menu and choose <em>Praat >> New Praat script</em>. A
+window called <em>Untitled script </em>will appear.
+</p><!--l. 35--><p class="noindent" >
+</p>
+  <h4 class="subsectionHead"><span class="titlemark">1.1 </span> <a 
+ id="x1-20001.1"></a>Writing to the Info Window: Hello world</h4>
+<!--l. 37--><p class="noindent" >We type down the following (do not type the number 1; that is just showing you the line number! And mind the capitals too).
+
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>writeInfoLine: "Hello world!"</code></pre></div></div>
+
+
+<!--l. 43--><p class="indent" >  And then we go to the menu on the script window and hit <em> Run >> Run</em>. This is pretty much all you need in order to get some text printed. However, make sure that these texts are always in quotation marks.
+
+</p><!--l. 46--><p class="indent" >  Now, right below the previous line, type the following and then hit <em>Run</em>:
+
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>writeInfoLine: "Yikes, I deleted the previous line!"</code></pre></div></div>
+
+<!--l. 52--><p class="indent" >  You will see that ”Hello world” will disappear. So, now we will use  <span class="cmtt-10x-x-109">appendInfoLine </span>instead of <span 
+class="cmtt-10x-x-109">writeInfoLine</span>. See what happens.
+</p>
+
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>appendInfoLine: "I will not delete the line above"</code></pre></div></div>
+
+<!--l. 54--><p class="indent" >  You may also use the operator + to concatenate text:
+
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>writeInfoLine: "Hello, " + "I am a Praat line"</code></pre></div></div>
+
+<!--l. 60--><p class="indent" >  Or you can also use a comma:
+
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>writeInfoLine: "Hello, " , "I am a Praat line"</code></pre></div></div>
+
+<!--l. 66--><p class="noindent" >
+</p>
+ 
+  <h4 class="subsectionHead"><span class="titlemark">1.3 </span> <a 
+ id="x1-40001.3"></a>String variables</h4>
+<!--l. 80--><p class="noindent" >Scripting often requires to store strings of text as variables; for instance, a file name. More importantly, we will see that these string variables will be very useful in for loops; we will talk more about it next week.
+
+So, we can store a string in Praat's short term memory by creating a string variable. The syntax is:  <span class="cmtt-10x-x-109">nameofyourvariable$ = "String of text"</span>. You may name this variable in whatever way you want, as long as (a) You don't start with a capital letter; and (b) you add the dollar sign at the end of it. Here are examples:
+
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>first$= "Praat scripting"
+second$= "makes things easier"</code></pre></div></div>
+
+
+<!--l. 85--><p class="noindent" >Importantly, we can do things with these variables. For instance, we can make them be part of a certain text. Type the script below and hit <em>Run</em> when ready.</p>
+
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>myname$="Fernanda"
+string1$= "Praat"
+string2$= "makes things easier"
+writeInfoLine: "I am not entirely sure whether " , string1$, " ", string2$
+appendInfoLine: "Maybe it's not ", string1$ 
+appendInfoLine: "It's " , myname$, " who ", string2$</code></pre></div></div>
+
+
+<!--l. 91--><p class="indent" >  Remember that the dollar sign is how we tell Praat
+that <span class="cmtt-10x-x-109">myname$, string1$, string2$ </span>are string variables and not commands or an undeﬁned numeric variable. We will use string variables for opening ﬁles in section 2.
+ 
+  <h4 class="subsectionHead"><span class="titlemark">1.2 </span> <a 
+ id="x1-30001.2"></a>Numeric variables</h4>
+<!--l. 68--><p class="noindent" >We can also create numeric variables; that is, we store a given number under a name. This is a very frequent procedure in Praat. We will write a small script that shows the total number of letters in your name. We create the variable <span class="cmtt-10x-x-109">firstname</span> and we put the number of letters in your ﬁrst name. Then we create <span class="cmtt-10x-x-109">lastname</span>. Note: you can also call these variables whatever way you want, as long as they don't start with a capital letter.
+
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>firstname= 8
+lastname=10
+writeInfoLine: "My name has ", firstname + lastname , " letters in total"</code></pre></div></div>
+
+<!--l. 76--><p class="indent" >  So this way we have asked the computer to store a number under a certain name, so that we can invoke this value later by using this name instead of typing the number again. Note that numeric variables do not go in quotation marks and that their names do not end with a dollar sign.
+</p><!--l. 78--><p class="noindent" > Note also that Praat remembers only the variables that are within the script you're running. 
+</p>
+
+<p><strong>Quick exercise:</strong> Which of these are "legal" variable assignments/operations? If you're unsure open a new script, try to do the operations and see if Praat complains. If it does, correct the mistakes!</p>
+
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>soundfile$ = "recording.wav"
+age = 28
+age$ = "28"
+sound file$ = "recording.wav"
+Dir$ = "/home/User/Desktop/praat scripting/"
+dir$ = "/home/User/Desktop/praat_scripting/"
+filepath$ = dir$ + soundfile$
+2timesAge = 2 * age
+agePlusAge$ = age$ + age$</code></pre></div></div>
+                                                                                      
+</p><!--l. 93--><p class="noindent" >
+</p>
+  <h3 class="sectionHead"><span class="titlemark">2 </span> <a 
+ id="x1-50002"></a>A small example: open and play ﬁle number 3</h3>
+<!--l. 95--><p class="noindent" > In Praat you can do things two different ways: one is to click on the buttons that you see in the Objects window, and the other one is by scripting. However, what a script does is to basically replace your clicks with lines of code; the code is still telling Praat to "click" on the options.</p> 
+
+
+<p class="indent" >In order to illustrate this point, we will play with a little bunch of words in Spanish. You can download them from 
+<a href=http://pandabar.github.io/palabras.zip>this link</a>. Unzip the ﬁle and put the folder on the Desktop.
+
+</p><!--l. 97--><p class="indent" >  Now we will open the files the old fashioned way (by clicking). Go to <em>Open >> Read from file...</em> and select the files that you want to open. That's pretty much it, and sometimes it may be more useful than typing a script, but if you work with lots of files and something in your scripts is not working properly, you might not be so inclined to open the files manually everytime your scripts give you error messages (and this will happen a lot, unfortunately).</p>
+
+<p class="indent" >Now, type down this script. Pay attention to line 1: you will see that we are defining a string variable with the path to the folder on my computer. Here you need to type down the path to the <em>palabras</em> folder on your computer. If you actually have the palabras folder on the desktop, and if you are on a Windows computer, a path would look something like this: <strong>C:/Users/username/Desktop/palabras/</strong>; on a Mac, it would be something like  <strong>/Users/username/Desktop/palabras/</strong>, and on Linux, something like <strong>/home/username/Desktop/palabras/</strong>. The rest of the script can be left as is. Hit <em>Run</em> when ready.
+
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sound_directory$ = "/home/fernanda/Desktop/palabras/"
+Create Strings as file list: "fileList", sound_directory$ + "*.wav"
+anumber = 3
+thisfile$ = Get string: anumber
+Read from file: sound_directory$ + thisfile$
+Play</code></pre></div></div>
+
+<p class="indent" >Let's analyze what happened here. But first, look at the script and try to figure out which line does what. The answers are after this panda picture. </p>
+
+<img src="week1_online/pandabear.jpg" class="responsive"></img>
+
+<p class="indent" >Line 1 creates a string variable called <span class="cmtt-10x-x-109">sound_directory$</span>, which contains the path to the folder <em>palabras</em>. Line 2 creates a Strings list (creatively called <span class="cmtt-10x-x-109">"fileList"</span>; this is the first argument of the <em>Create Strings as file list</em> command). Strings lists are one of the many objects you can create with Praat (we will see throughout the course that Strings lists can be very useful). The second argument of this command is the path to the folder, which is stored as the string variable <span class="cmtt-10x-x-109">sound_directory$</span>. After that comes a <span class="cmtt-10x-x-109">"*.wav"</span> string, which means that we want Praat to open all the files with the .wav extension (the asterisk * is a wildcard).</p>
+
+<p class="indent" >You can also create a strings list by clicking. In order to do so, go to the Objects window and go to <em>New >> Strings >> Create Strings as file list</em>. You will see that this window has two text fields, which correspond to the arguments that we passed to the <em>Create Strings as file list</em> command in the script. </p>
+
+<p class="indent" >Now, you will see that there is a new Object in the Objects window, called <em>Strings fileList</em>. If you open it, you will see that it's the list of the .wav files that were in the folder you specified in the steps above.</p> Since Praat scripts can only operate with things that are in its own world, we needed to create this list of elements to the Objects window when we are scripting.</p>
+
+<p class="indent" >Back to the script. Line 3 creates a numeric variable with a value of 3. Line 4 recovers the string number 3 from the Strings list, i.e. <em>carta.wav</em>, through the command <span class="cmtt-10x-x-109">Get string</span>, and stores it as a string variable called <span class ="cmtt-10x-x-109">thisfile$</span>. The <span class ="cmtt-10x-x-109">Get string</span> command takes a number as an argument, and the number refers to the elements in the Strings list. Line 5 reads the file and takes it to the Objects window; finally, line 6 plays it. 
+<!--l. 108-->
+
+<p class="indent" > Did the script run? If so, you should have been able to hear file number 3, i.e. <em>carta.wav</em>. If you get an error message, make sure that the path to your folder is correct, and that there are no typos in your script (mind the capitals and commas!).
+
+
+
+<!--l. 112--><p class="indent" >IMPORTANT: You can save your scripts by going to <em>File >> Save as</em>. Name your script and make sure that the extension is <strong>.praat</strong>. After this you will be able to open your script with Praat and run it again.
+</p>
+  <h3 class="sectionHead"><span class="titlemark">3 </span> <a 
+ id="x1-60003"></a>Homework</h3>
+<!--l. 114--><p class="noindent" >As a homework, you will have to: </p>
+     <ul class="itemize1">
+     <li class="itemize">Open a new Praat script.
+     </li>
+     <li class="itemize">Create a small script that opens and plays the sound <em>melon.wav</em> (note: you don't need to create a Strings list for this). Make it print an info line that gives you the name of the file being opened, e.g. something like "Opening sound melon.wav" as the script runs. Pro tip: Check the Praat manual for string functions (<em>Help >> Search Praat manual</em>) </li>
+     <li class="itemize">Save your script as <strong>hw1_yourlastname.praat</strong> and upload it to the Assignments folder on ILIAS. You won't be graded for this, but it counts as a prerequisite to pass the course and it will give me the opportunity to provide feedback on your work.</li>
+     <li class="itemize">Now, go to <em>Edit >> Clear history</em> (in the script window). Then, open and play <em>melon.wav</em> manually. Go back to the Praat script, and go to <em>Edit >> Paste history.</em> What did you get?</li>
+     
+     </ul>
+<!--l. 120-->
+<p class="noindent" ></p>
+</div>
+<script src="https://cdn.jsdelivr.net/g/ace@1.2.6(min/ace.js+min/mode-praat.js+min/theme-solarized_light.js)"></script>
+
+<script>
+  function qsa(sel) {
+      return Array.apply(null, document.querySelectorAll(sel));
+  }
+
+  qsa(".ace").forEach(function (codeEl) {
+    var classes = codeEl.className;
+    classes = classes.split(" ");
+    var readonly = true;
+    classes.forEach(function (e, i, a) {
+      if (e == "editable") { readonly = false };
+    });
+
+    ace.edit(codeEl).setOptions({
+        maxLines: 20,
+        readOnly: readonly,
+        autoScrollEditorIntoView: true,
+        mode:  "ace/mode/praat",
+        theme: "ace/theme/solarized_light",
+        firstLineNumber: parseInt(codeEl.getAttribute("data-start") || 1),
+        showGutter: true,
+    });
+  });
+</script>
+
+</body> 
+</html>
+                                                                                      
+
+

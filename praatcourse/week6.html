@@ -1,0 +1,180 @@
+<!DOCTYPE html> 
+<html lang="en-US" xml:lang="en-US" > 
+<head><title>Week 6: Annotation I</title> 
+<meta  charset="utf-8" /> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
+<meta name="viewport" content="width=device-width,initial-scale=1" /> 
+<link rel="stylesheet" type="text/css" href="index.css" />
+<meta name="src" content="week5.tex" /> 
+</head><body 
+>
+<div class="sidebar">
+  <a href="index.html">Start</a>
+  <a href="week1.html">Week 1: Basics</a>
+  <a href="week2.html">Week 2: For-loops and conditions</a>
+  <a href="week3.html">Week 3: Vowels and formants</a>
+  <a href="week4.html">Week 4: Consonants</a>
+  <a href="week5.html">Week 5: Tables</a>
+  <a class="active" href="week6.html">Week 6: Annotation I</a>
+  <a href="week7.html">Week 7: Annotation II</a>
+  <a href="week8.html">Week 8: Recap
+  <a href="week9.html">Week 9: Manipulation and resynthesis</a>
+  <a href="week10.html">Week 10: The KlattGrid</a>
+  <a href="week11.html">Week 11: Perceptual experiments</a>
+  <a href="week12.html">Week 12: Procedures</a>
+</div>
+                                                                                    <!-- Page content -->
+<div class="content">
+  <div class="maketitle">            
+
+<h2 class="titleHead">Week 6: Annotation I</h2>
+<div class="author" ><span 
+class="cmr-12x-x-120">Dr. Fernanda Barrientos</span></div><br />
+<div class="date" ><span 
+class="cmr-12x-x-120">December 13, 2022</span></div>
+  </div>
+    <h3 class="sectionHead"><span class="titlemark">1 </span> <a 
+ id="x1-10001"></a>The TextGrid object</h3>
+    
+ <p>Let's recall that Praat allows you to annotate your Sound files. That is, if you have a recording of a person saying "hello" and you want to mark exactly where the /&#601;/ sound starts and ends, you can do so with a TextGrid. A TextGrid is a type of Object that allows you to assign a tag (e.g. a word, an IPA symbol, a syllable... Praat calls them <em>interval labels</em>) to a given point in your Sound file.</p>
+  <p>Furthermore, you can add more than one layer (Praat calls them <em>Tiers</em>) to your TextGrid. While you can easily tag at a broader level (say, words) just by listening, doing more fine-grained analysis (for instance, VOT, duration, etc.) requires that you learn the contents from weeks 3 and 4: this way you can align a given tag by looking at the spectrogram while you listen.</p> 
+    
+    <img src="week6_online/tg.png" class="responsive3" alt="A TextGrid with two tiers">
+
+     <h3 class="sectionHead"><span class="titlemark">2 </span> <a 
+ id="x1-10001"></a>Creating a TextGrid</h3>
+    
+   <p> When you select a Sound file, the Objects window will show you the option <em>Annotate</em>, from which you can select <em>To TextGrid</em>. After that, you will get a somewhat confusing window where you have to input the names of your tiers, and state which one of the above are <em>Point tiers</em>. You will need a point tier if you want to pinpoint something very specific (e.g. to make tone annotations) instead of getting the duration and time stamps of a certain interval of time. The picture above shows you the window in question, where we added two tiers (the number of tiers is implicit in the two names you are entering here), one called <em>phone</em> and the other <em>phone</em>.</p>
+ 
+  <img src="week6_online/create_tg.png" class="responsive2" alt="Creating a TextGrid with two interval tiers">
+  
+  <p>This can be done by clicking, but you can also script it. By default, the name of the TextGrid object will be the same as the name of the Sound object, so no need to worry about that.</p>
+  
+  <div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>selectObject: "Sound hello"
+mytg=To TextGrid: "word phone", ""
+endfor</code></pre></div></div>
+  
+  <br>
+  
+ <div style="border:3px outset #04AA6D;padding:5px;padding-left:30px;">
+  <p><strong>Quick exercise</strong>: Create a script that opens the file <em>soles.wav</em> from the folder <em>palabras</em>, and creates a TextGrid with four tiers, named <em>phone, syllable, word, language.</em>
+  </div> 
+ <h3 class="sectionHead"><span class="titlemark">3 </span> <a 
+ id="x1-10001"></a>Adding boundaries to your TextGrid</h3>
+  
+  <p>When you create a TextGrid with the lines shown above, you will get a TextGrid with one interval per tier. In order to create more intervals, you need to add boundaries to each tier. Now, you can do so by using the <em>View and Edit</em> window and clicking where you want your boundaries to be, but you can also script it. Let's take the case of Sound hello, which is 0.51 ms long. We can add a boundary on Tier 1 at 0.1 seconds, then a second one at 0.2, and a third one at 0.3 (we can adjust them later so that they fit with the sound):</p>
+  
+   <div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>selectObject: mytg
+Insert boundary: 1, 0.01
+Insert boundary: 1, 0.02
+Insert boundary: 1, 0.03</code></pre></div></div>
+  
+  <p>But adding boundaries this way is not very smart. However, we can get the total duration of our Sound file and then create a for-loop that sets boundaries within the duration of the Sound. For instance, we know that we want four intervals for <em>Sound hello</em>'s Tier 1 (that is, three boundaries):</p>
+    
+   <div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>selectObject: mytg
+tgdur= Get total duration
+for i to 3
+Insert boundary: 1, (tgdur/4) *i ; this line adds one boundary every tgdur/4 (that is, 0.51/4 = 0.12)
+endfor</code></pre></div></div>
+  
+<p>Now we can adjust the boundaries manually. Granted, you still need to do this by using your mouse and clicking, but at least it saves you a couple of clicks (it will save you A LOT of clicks as your Sound files get longer).</p>
+  <br>
+  
+<div style="border:3px outset #04AA6D;padding:5px;padding-left:30px;">
+  <p><strong>Quick exercise</strong>: Create a script that modifies your <em>TextGrid soles</em> by adding four boundaries to Tier 1, and one boundary to Tier 2.</p>
+  </div> 
+  
+  <h3 class="sectionHead"><span class="titlemark">4 </span> <a 
+ id="x1-10001"></a>Adding labels to your TextGrid</h3>
+  
+  <p>Again, you can add labels by using the <em>View and Edit</em> window. However, this is also possible to do via scripting. Let's add the "h" to interval 1 on Tier 1 of <em>Sound hello</em>:
+    
+ <div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>selectObject: mytg
+Set interval text: 1, 1, "h"</code></pre></div></div>
+ 
+<p>But, is there a way to feed my TextGrid with the labels I want? Here is when the (in)famous Strings list may come in handy. We can create a Strings list from scratch by going to <em>New > Generics > Strings > Create Strings from tokens</em>, where we give our Strings list a name and we input the strings that conform our labels. Like so:</p>
+  
+ <img src="week6_online/stringsfromtokens.png" class="responsive2" alt="Creating a Strings list from scratch">
+  
+  <p>This can be done with the following line:</p>
+  
+  <div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Create Strings from tokens: "hello", "h \sw l \sw\hs", " ,"</code></pre></div></div>
+  
+  <br>
+  
+   <div style="border:5px outset red;padding:5px;padding-left:30px;">
+     <h4><strong>CAUTION - VORSICHT - CUIDADO - ATTENZIONE - ATTENTION - DIKKAT - VAR&Uacute;&ETH;- OPREZ - VAROITUS</strong></h4>
+     
+     <p>Some Praat versions have a different command for creating Strings lists. In these versions, all Strings lists have the name <em>tokens</em> as a default and you cannot change it; if you try the "point-and-click" method, the dialogue window only gives you a text field to input the tags and another one for the separator. If you have such Praat versions, you will need to use the following line:</p>
+     
+     <div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mylist1 = Create Strings as tokens: "h \sw l \sw\hs", " ,"</code></pre></div></div>
+       
+       <p>Additionally, you will see that this line <strong>stores your Strings list's ID number as a numeric variable</strong>. This is because if you are creating more than one Strings list and both are called <em>tokens</em>, you won't be able to tell them apart if you refer to them by their names. </p>
+  </div>
+  
+  <br>
+  <br>
+  
+  <div style="border:3px outset #04AA6D;padding:5px;padding-left:30px;">
+   <p><strong>Quick exercise</strong>: Create a script with two Strings lists: one with the labels for Tier 1, and another with the labels for Tier 2. Tier 2 is for the syllable structure, which in this word is so-les. Thus, your labels will be <em>CV</em> and <em>CVC</em>.</p>
+  </div>
+<p>Now comes the interesting part: We make a for-loop that iterates through the strings in our Strings list and fills in the TextGrid with them.</p>
+  
+ <div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>selectObject: "Strings hello"
+n= Get number of strings
+for i to n
+label$= Get string: i
+selectObject: mytg ; Don't forget to select the tg
+Set interval text: 1, i, label$ ; this line says: on tier 1, interval i, add the label corresponding to i
+selectObject: "Strings hello" ; And don't forget to get back to your list
+endfor</code></pre></div></div>
+
+<p>Now check your TextGrid: the intervals will be labeled with the strings from the Strings list.</p>
+<br>
+  
+  <div style="border:3px outset #04AA6D;padding:5px;padding-left:30px;">
+  <p><strong>Quick exercise</strong>: Create a script that feeds both Strings lists from the previous exercise to your <em>TextGrid soles</em>. After this, you may adjust the boundaries so they match with the Sound file.</p>
+  </div>
+  
+<br>
+    
+  <h3 class="sectionHead"><span class="titlemark">5 </span> <a 
+ id="x1-60006"></a>Homework</h3>
+  <!--l. 124--><p class="noindent" >Download the file <em>seizure.wav</em> <a href="week6_online/seizure.wav">here</a> (you can also find it on ILIAS). Create a script that: (a) Opens the file; (b) Creates a TextGrid with two tiers (word and phone); (c) Adds the corresponding intervals; and (d) Adds labels to both tiers. For those who like challenges, you can create a small follow-up script that (e) Gets the start and end times plus duration of each fricative and (f) Puts these values in a Table object. Upload your script to ILIAS as usual.</p> 
+   
+<br>
+  <br>
+  
+</div>
+
+
+
+  <script src="https://cdn.jsdelivr.net/g/ace@1.2.6(min/ace.js+min/mode-praat.js+min/theme-solarized_light.js)"></script>
+
+<script>
+  function qsa(sel) {
+      return Array.apply(null, document.querySelectorAll(sel));
+  }
+
+  qsa(".ace").forEach(function (codeEl) {
+    var classes = codeEl.className;
+    classes = classes.split(" ");
+    var readonly = true;
+    classes.forEach(function (e, i, a) {
+      if (e == "editable") { readonly = false };
+    });
+
+    ace.edit(codeEl).setOptions({
+        maxLines: 20,
+        readOnly: readonly,
+        autoScrollEditorIntoView: true,
+        mode:  "ace/mode/praat",
+        theme: "ace/theme/solarized_light",
+        firstLineNumber: parseInt(codeEl.getAttribute("data-start") || 1),
+        showGutter: true,
+    });
+  });
+</script> 
+</body> 
+</html>
+                                                                                     

@@ -1,0 +1,348 @@
+<!DOCTYPE html> 
+<html lang="en-US" xml:lang="en-US" > 
+<head><title>Week 5: Tables</title> 
+<meta  charset="utf-8" /> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)" /> 
+<meta name="viewport" content="width=device-width,initial-scale=1" /> 
+<link rel="stylesheet" type="text/css" href="index.css" />
+<meta name="src" content="week5.tex" /> 
+</head><body 
+>
+<div class="sidebar">
+  <a href="index.html">Start</a>
+  <a href="week1.html">Week 1: Basics</a>
+  <a href="week2.html">Week 2: For-loops and conditions</a>
+  <a href="week3.html">Week 3: Vowels and formants</a>
+  <a href="week4.html">Week 4: Consonants</a>
+  <a class="active" href="week5.html">Week 5: Tables</a>
+  <a href="week6.html">Week 6: Annotation I</a>
+  <a href="week7.html">Week 7: Annotation II</a>
+  <a href="week8.html">Week 8: Recap
+  <a href="week9.html">Week 9: Manipulation and resynthesis</a>
+  <a href="week10.html">Week 10: The KlattGrid</a>
+  <a href="week11.html">Week 11: Perceptual experiments</a>
+  <a href="week12.html">Week 12: Procedures</a>
+</div>
+                                                                                    <!-- Page content -->
+<div class="content">
+  <div class="maketitle">
+                                                                                      
+                                                                                      
+
+<h2 class="titleHead">Week 5: Tables</h2>
+<div class="author" ><span 
+class="cmr-12x-x-120">Dr. Fernanda Barrientos</span></div><br />
+<div class="date" ><span 
+class="cmr-12x-x-120">November 29, 2022</span></div>
+  </div>
+  <h3 class="sectionHead"><span class="titlemark">1 </span> <a 
+ id="x1-10001"></a>Using Tables</h3>
+<!--l. 31--><p class="noindent" >So far we have been creating tables by writing to the Info window. This week we will learn how to
+create Tables, which is one of the many different types of Objects in Praat. One of the beneﬁts of using Tables is that they can be reopened with Praat, as well as calculate several statistical tests from a Table object.
+</p><!--l. 33--><p class="indent" >  First, let’s analyze an existing dataset (Praat has a couple of these). Go to the main menu and then
+<span 
+class="cmti-10x-x-109">New </span><!--l. 33--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" > <mo 
+class="MathClass-rel">&#x003E;</mo></math>
+<span 
+class="cmti-10x-x-109">Tables </span><!--l. 33--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" > <mo 
+class="MathClass-rel">&#x003E;</mo></math>
+<span 
+class="cmti-10x-x-109">Create formant table (Peterson &#x0026; Barney 1952)</span>. In more recent versions, this option is found under <em>New > Tables > Data sets from the literature</em>. Or, you can simply write a script with:
+</p>
+
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>data = Create formant table (Peterson & Barney 1952)</code></pre></div></div> 
+
+<p>This will create a new object in your Objects window called <span 
+class="cmtt-10x-x-109">Table pb</span>. Select it and then try <span 
+class="cmti-10x-x-109">View</span>
+<span 
+class="cmti-10x-x-109">&#x0026; Edit. </span>You will get a pop-up window like this:
+</p>
+  <figure class="figure"> 
+     
+<img 
+src="week8_online/atable.png" alt="Table with formant values" title="Table with formant values" width="362" height="362" class="responsive2" />
+</figure>
+<!--l. 45--><p class="indent" >  This table has the F0 and formant values from 10 monophthongal vowels produced by 76 native
+speakers of American English (women, men, and children). The <span 
+class="cmtt-10x-x-109">Vowel </span>column has the vowel notation
+in the American sociolinguistic tradition, while the <span 
+class="cmtt-10x-x-109">IPA </span>column has the corresponding
+symbol.
+</p><!--l. 47--><p class="indent" >  A Table can be queried for speciﬁc values. For instance, we can check how
+many rows the Table has. If you select the Table object, you can then try <span 
+class="cmti-10x-x-109">Query</span>
+<!--l. 47--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" > <mo 
+class="MathClass-rel">&#x003E;</mo></math> <span 
+class="cmti-10x-x-109">Get</span>
+<span 
+class="cmti-10x-x-109">number of rows</span>. You could make your previous script line grow by querying the number of rows and printing the answers to the Info window with something like this:</p>
+
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>data= Create formant table (Peterson & Barney 1952)
+selectObject: data
+nrows= Get number of rows
+appendInfoLine: "This table contains ", nrows, " rows." </code></pre></div></div>
+
+<p>Likewise, you can calculate some descriptive stats, such as the mean: <span 
+class="cmti-10x-x-109">Query</span>
+<!--l. 47--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" > <mo 
+class="MathClass-rel">&#x003E;</mo></math> <span 
+class="cmti-10x-x-109">Get</span>
+<span 
+class="cmti-10x-x-109">mean... </span>and then enter the column label where the data to be calculated is (e.g. <span 
+class="cmtt-10x-x-109">F1</span>). Similarly, by using the options under the <em>Query</em> button on the Objects list when you select a Table you can calculate a quartile, minimum/maximum values, or the standard deviation. Let's make the script above grow with this info as well: 
+</p>
+
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>data= Create formant table (Peterson & Barney 1952)
+selectObject: data
+nrows= Get number of rows
+meanf0=Get mean: "F0"
+median= Get quantile: "F0", 0.5
+min= Get minimum: "F0"
+max= Get maximum: "F0"
+appendInfoLine: "This table contains ", nrows, " rows, the mean F0 is ", meanf0, ", the minimum value is ", min, ", the maximum is ", max, ", and the median is ", median</code></pre></div></div>
+
+  <h3 class="sectionHead"><span class="titlemark">2 </span> <a 
+ id="x1-20002"></a>More elaborate queries</h3>
+<!--l. 51--><p class="noindent" >
+</p>
+  <h4 class="subsectionHead"><span class="titlemark">2.1 </span> <a 
+ id="x1-30002.1"></a>Calculate a group mean</h4>
+<!--l. 52--><p class="noindent" >However, calculating the mean for the entire dataset might not be of much use, especially if we are
+trying to ﬁnd diﬀerences among groups. Let’s now try to calculate the mean of a given group in the <span 
+class="cmtt-10x-x-109">pb</span>
+dataset.
+</p><!--l. 54--><p class="indent" >  For instance, we will ﬁnd the mean F0 in females. We go to <span 
+class="cmti-10x-x-109">Query</span>
+<!--l. 54--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" > <mo 
+class="MathClass-rel">&#x003E;</mo></math> <span 
+class="cmti-10x-x-109">Get</span>
+<span 
+class="cmti-10x-x-109">group mean...</span>. In <span 
+class="cmtt-10x-x-109">Column label </span>we put the name of the column where the values are, in this case, <span 
+class="cmtt-10x-x-109">F0</span>.
+Then, in <span 
+class="cmtt-10x-x-109">Group column label</span>, we put the name of the column where the groups are,
+that is, <span 
+class="cmtt-10x-x-109">Sex</span>. Finally, in <span 
+class="cmtt-10x-x-109">Group </span>we put the label used for the observations, in this case,
+<span 
+class="cmtt-10x-x-109">f</span>.
+</p><!--l. 56--><p class="indent" >  If you paste the history on a Praat script, you’ll get this:
+<span 
+class="colorbox" id="colorbox2"></p>
+
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Get group mean: "F0", "Sex", "f"</code></pre></div></div>
+
+<!--l. 61--><p class="noindent" >As usual, you can store this as a numeric variable by adding the name of your variable followed by =
+right before the line above, such as 
+<span 
+class="colorbox" id="colorbox3"></p>
+
+
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>femMeanf0= Get group mean: "F0", "Sex", "f"</code></pre></div></div>
+
+  <h4 class="subsectionHead"><span class="titlemark">2.2 </span> <a 
+ id="x1-40002.2"></a>Calculate difference in means</h4>
+                                                                                      
+                                                                                      
+<!--l. 68--><p class="noindent" >Now we can do something a bit more complex: we can ask Praat to perform a Student t-test
+on these values. Let’s calculate the diﬀerences in F0 in males and females. The question
+that we ask ourselves is: are these means diﬀerent? and if so, is this diﬀerence statistically
+signiﬁcant?
+</p><!--l. 70--><p class="indent" >  So, we go to <span 
+class="cmti-10x-x-109">Query </span><!--l. 70--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" > <mo 
+class="MathClass-rel">&#x003E;</mo></math>
+<span 
+class="cmti-10x-x-109">Report group diﬀerence (Student t)... </span>and we ﬁll in the parameters. In <span 
+class="cmtt-10x-x-109">Column </span>we put <span 
+class="cmtt-10x-x-109">F0</span>, then in
+<span 
+class="cmtt-10x-x-109">Group column </span>we put again <span 
+class="cmtt-10x-x-109">Sex</span>. <span 
+class="cmtt-10x-x-109">Group 1 </span>will be the males (hence we put <span 
+class="cmtt-10x-x-109">m</span>), and <span 
+class="cmtt-10x-x-109">Group 2 </span>the
+females (<span 
+class="cmtt-10x-x-109">f</span>). Which one is group 1 and which one is Group 2, is irrelevant. We leave the un-conﬁdence
+level with the default value. The script would look like this:
+<span 
+class="colorbox" id="colorbox4"></p>
+
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code> Report group difference (Student t): "F0", "Sex", "f", "m", 0.025</code></pre></div></div>
+
+
+<!--l. 75--><p class="indent" >  You will get a report on the Info window with the results of your t-test, including the p-value, the
+degrees of freedom, and the conﬁdence intervals.
+</p>
+  <h4 class="subsectionHead"><span class="titlemark">2.3 </span> <a 
+ id="x1-50002.3"></a>Subsetting your Table</h4>
+<!--l. 78--><p class="noindent" >But what if we wanted to look into the values of the <span 
+class="tipa-10x-x-109">ɛ </span>vowel only? We
+can subset our Table by using an Extract command. <span 
+class="cmti-10x-x-109">We go to Extract</span>
+<!--l. 78--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" > <mo 
+class="MathClass-rel">&#x003E;</mo></math> <span 
+class="cmti-10x-x-109">Extract</span>
+<span 
+class="cmti-10x-x-109">rows where column (text)... </span>and ﬁll in the parameters: we put ﬁrst <span 
+class="cmtt-10x-x-109">IPA</span>, we leave the drop-down menu
+as <span 
+class="cmti-10x-x-109">...is equal to</span>, and then we use the Praat way to code <span 
+class="tipa-10x-x-109">ɛ</span>: <span 
+class="cmtt-10x-x-109">\ef</span>. That will create a second table in the
+Objects window, called <span 
+class="cmtt-10x-x-109">Table pb</span><span 
+class="cmtt-10x-x-109">_</span><span 
+class="cmtt-10x-x-109">_ef</span>.
+</p><!--l. 80--><p class="indent" >  The script line looks like this:
+<span 
+class="colorbox" id="colorbox5"></p>
+
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Extract rows where column (text): "IPA", "is equal to", "\ef"</code></pre></div></div>
+
+<!--l. 85--><p class="noindent" >And then you can, for instance, see whether there is a diﬀerence in F1 between males and females, but
+only for this vowel.
+</p>
+  <h3 class="sectionHead"><span class="titlemark">3 </span> <a 
+ id="x1-60003"></a>Create your own table</h3>
+<!--l. 88--><p class="noindent" >For this part, we will use the files <code>excerpt.wav</code> (that you can download <a href="week8_online/excerpt.wav">here</a>) and <code>excerpt.TextGrid</code> (which you can get <a href="week8_online/excerpt.TextGrid">here</a>).
+
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#Opening files
+dir$= "/media/fernanda/1A46-9D0A/praatscripting/week08/"
+name$= "excerpt"
+tg= Read from file: dir$ + name$ + ".TextGrid"
+sound= Read from file: dir$ + name$ + ".wav"</code></pre></div></div>
+
+
+<!--l. 101--><p class="indent" >  Inspect the Objects: you will see that there is a Sound file with a sentence and a Textgrid with two Tiers: Tier 1 has the words, and Tier 2 has only the intervals with the vowels (whatever interval is between two  vowels is empty, i.e. has no label). The goal is to obtain formant values and duration for each one of the vowels in the sentence. The following lines will extract all the non-empty intervals from Tier 2 in the TextGrid.
+</p>
+
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#Extract
+selectObject: tg
+plusObject: sound
+Extract non-empty intervals: 2, "no"</code></pre></div></div>
+
+<!--l. 103--><p class="indent" >  Now, to the Table. First, we will create a table with zero rows (we will start appending them later) and the column headers <em>Sound, F1, F2</em> and <em> Duration</em>. Then, we will select all the extracted sounds and leave the Table, plus the TextGrid and the original Sound unselected. </p>
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#Create table
+mytable= Create Table with column names: "table", 0, "Sound F1 F2 Duration"
+#Select everything, EXCEPT: original sound, tg, and table
+select all
+minusObject: mytable, tg, sound</code></pre></div></div>
+
+<p>Now that we have extracted all the vowels, we will create a <strong>vector</strong>, which is an array of numbers that are grouped as a single object. A vector is created by using the hash symbol (#). In the following lines we created a vector called <strong>sounds#</strong> which has the ID numbers of every selected object. Since the step above selected the extracted vowel sounds, the vector will contain the IDs of each extracted vowel.</p>
+
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#Create a vector containing the ID numbers of all extracted vowels
+sounds# = selected# ("Sound")</code></pre></div></div>
+
+<p>The following chunk creates a for-loop that iterates through all the extracted vowel sounds and gets info such as formant values, duration, and the name of the vowel sound. Then, the for-loop appends a row to the Table that we created.</p>
+
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#Create a for-loop that retrieves the name of the vowel, creates a formant, and gets F1, F2, and duration
+for i to size (sounds#)
+selectObject: sounds# [i]
+name$ = selected$ ("Sound")
+dur= Get total duration
+To Formant (burg): 0, 5, 5000, 0.025, 50
+f1= Get mean: 1, 0, 0, "hertz"
+f2= Get mean: 2, 0, 0, "hertz"
+#This part of the for-loop appends a row for each vowel, and sets values for each cell.
+selectObject: mytable
+Append row
+Set string value: i, "Sound", name$
+Set numeric value: i, "F1", f1
+Set numeric value: i, "F2", f2
+Set numeric value: i, "Duration", dur
+endfor</code></pre></div></div>
+
+<!--l. 128--><p class="indent" >Let's see what each line does:</p>
+     <ul class="itemize1">
+<li class="itemize">Line 2 opens the loop.
+     </li>
+<li class="itemize">Line 3 selects one of the extracted sounds which are now part of the vector called <strong>sounds#</strong>.
+     </li>
+     <li class="itemize">Line 4 stores the name of the sound as a string variable.
+     </li>
+     <li class="itemize">Line 5 gets the total duration of the sound.
+     </li>
+     <li class="itemize">Line 6 creates a formant element.
+     </li>
+     <li class="itemize">Line 7 queries the Formant element, and obtains the mean F1 of the sound, which is stored as
+     a numeric variable called <span 
+class="cmtt-10x-x-109">f1 </span>.
+     </li>
+     <li class="itemize">Line 8 does the same for F2.
+     </li>
+     <li class="itemize">Line 10 selects the Table object and line 11 appends a new row to the Table.
+     </li>
+     <li class="itemize">Line 12 adds a string value to the table, which is the name of the sound (stored as <span 
+class="cmtt-10x-x-109">name</span><span 
+class="tctt-1095">$</span>), under
+     the column called ”Sound”.
+     </li>
+     <li class="itemize">Lines 13 to 15 add numeric values to the Table (F1, F2, and duration) under the other columns.</li></ul>
+
+  <div style="border:3px outset #04AA6D;padding:5px;padding-left:30px;">
+    <h4><mark>PRO TIP:</mark> Access the magic of Praat's history</h4>
+    <p> As we have mentioned several times, scripting is mostly about telling Praat where to click. <strong>HOWEVER,</strong> this doesn't work if you want to create variables and/or run for-loops: that why we need scripting. Still, you can obtain the history of all your previous clicks since you opened Praat. So, basically, if you were to perform operations only once, you could get away with pasting the history as a script; but again, this does not work if you want to perform the same operation many times, as we do with for-loops. That being said, accessing the history might be very useful for debugging: if for some reason you script is not working, you can check whether there is a typo, a wrong command, a problem with the number of parameters, missing commas or quotation marks, etc. by following these steps:
+      <ul>
+        <li> Step 1: Go to the Praat script window, and then to <em>Edit > Clear history.</em> </li>
+        <li> Step 2: Perform the desired operation by clicking. For instance, if you wanted to get the table with the vowels of American English, you can go to the Objects window and then <em>New > Tables > Data sets from the literature > Create formant table (Peterson & Barney 1952).</em></li>
+        <li> Step 3: Go back to the script window, place the cursor at the end of the script, and then go to <em>Edit > Clear history</em>. You can cut this line and paste it on your script where you want it to be.</li>
+    </ul>
+    <p>As an example, I was having trouble with my script because I wrote the following line:</p>
+    <div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>femMeanf0= Get mean by group: "F0", "Sex", "f"</code></pre></div></div>
+    <p> ...Which won't work: Praat gave me an error message and I couldn't figure out why. So I did this by clicking and only then I noticed that the command is <em>Get group mean</em> and NOT <em>Get mean by group</em>, which is what I had typed.</p>
+  </div>
+  
+ <h3 class="sectionHead"><span class="titlemark">4 </span> <a 
+ id="x1-60003"></a>Homework</h3>
+
+<p>Put together all the code lines under section 3 to create a script. Now modify it so that you get the mean values for each vowel's F1 and F2 (so, mean F1 and F2 of all the /a/'s, mean F1 and F2 of all /e/'s, etc), and print it to the Info window. Upload your script to ILIAS as <strong>hw8_yourlastname.txt</strong>.</p>
+
+</div>
+
+ <script src="https://cdn.jsdelivr.net/g/ace@1.2.6(min/ace.js+min/mode-praat.js+min/theme-solarized_light.js)"></script>
+
+<script>
+  function qsa(sel) {
+      return Array.apply(null, document.querySelectorAll(sel));
+  }
+
+  qsa(".ace").forEach(function (codeEl) {
+    var classes = codeEl.className;
+    classes = classes.split(" ");
+    var readonly = true;
+    classes.forEach(function (e, i, a) {
+      if (e == "editable") { readonly = false };
+    });
+
+    ace.edit(codeEl).setOptions({
+        maxLines: 20,
+        readOnly: readonly,
+        autoScrollEditorIntoView: true,
+        mode:  "ace/mode/praat",
+        theme: "ace/theme/solarized_light",
+        firstLineNumber: parseInt(codeEl.getAttribute("data-start") || 1),
+        showGutter: true,
+    });
+  });
+</script>  
+</body> 
+</html>
+                                                                                      
+
+

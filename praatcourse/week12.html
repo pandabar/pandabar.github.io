@@ -1,0 +1,220 @@
+<!DOCTYPE html> 
+<html lang="en-US" xml:lang="en-US" > 
+<head><title>Week 12: Procedures</title>
+<meta  charset="utf-8" /> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)" /> 
+<meta name="viewport" content="width=device-width,initial-scale=1" /> 
+<link rel="stylesheet" type="text/css" href="index.css" />
+<meta name="src" content="week12.tex" />
+</head><body 
+><div class="sidebar">
+  <a href="index.html">Start</a>
+  <a href="week1.html">Week 1: Basics</a>
+  <a href="week2.html">Week 2: For-loops and conditions</a>
+  <a href="week3.html">Week 3: Vowels and formants</a>
+  <a href="week4.html">Week 4: Consonants</a>
+  <a href="week5.html">Week 5: Tables</a>
+  <a href="week6.html">Week 6: Annotation I</a>
+  <a href="week7.html">Week 7: Annotation II</a>
+  <a href="week8.html">Week 8: Recap
+  <a href="week9.html">Week 9: Manipulation and resynthesis</a>
+  <a href="week10.html">Week 10: The KlattGrid</a>
+  <a href="week11.html">Week 11: Perceptual experiments</a>
+  <a class="active" href="week12.html">Week 12: Procedures</a>
+</div>
+                                                                                    <!-- Page content -->
+<div class="content">
+
+<div class="maketitle">
+                                                                                      
+                                                                                      
+
+<h2 class="titleHead">Week 12: Procedures</h2>
+<div class="author" ><span 
+class="cmr-12x-x-120">Dr. Fernanda Barrientos</span></div><br />
+<div class="date" ><span 
+class="cmr-12x-x-120">February 07, 2023</span></div>
+  </div>
+  <h3 class="sectionHead"><span class="titlemark">1 </span> <a 
+ id="x1-10001"></a>Intro</h3>
+<!--l. 31--><p class="noindent" >In previous weeks we have seen how for-loops can help us perform operations on a series of Objects, variables, etc.: they are one of the most important tools for scripting.
+</p><!--l. 33--><p class="indent" >  However, there is a second tool that is even more powerful than loops. They are called <strong>procedures</strong>, and have the virtue of (a) in some cases, make the scripts shorter; and (b) add a boost to the power of your script by being able to stack variables for one single process.
+</p>
+  <h3 class="sectionHead"><span class="titlemark">2 </span> <a 
+ id="x1-20002"></a>A minimal example</h3>
+<!--l. 37--><p class="noindent" >
+</p>
+<p>
+Basically, a procedure is a set of actions that can be defined somewhere in the script and then be "called" by a variable or set of them. Let's create an example with string variables (yes, procedures can be run over string and numeric variables). Let's say that we have two long words (<em>hippopotamus</em> and <em>dodecahedron</em>), and we want to count the number of letters in them. We want to use the <strong>length (mystring$)</strong> function to calculate the length, of each word, and then we want to print the result to the info window.
+</p>
+<div class="language-plaintext ace praat editable highlighter-rouge" data-start="1"><div class="highlight"><pre class="highlight"><code>@myProc: "hippopotamus"
+@myProc: "dodecahedron"
+
+procedure myProc: .longword$
+.number= length (.longword$)
+appendInfoLine: .longword$, tab$, .number
+endproc</code></pre></div></div>
+
+<p>What is this? Let's see:</p>
+
+<ul>
+<li>Let's take a look at the procedure lines first (lines 4-7): </li>
+<ul>
+<li>Every procedure starts with the word <strong>procedure</strong> and ends with <strong>endproc</strong>.</li>
+<li>Take a look at line 4. Immediately after you write the word <strong>procedure</strong>,you give your procedure a name (we called it here <strong>myproc</strong>), followed by a colon. What comes after is the name you will give to the variable storing the values on which the procedure will operate. So <strong>.longword$</strong> here refers to the words <em>hippopotamus</em> and <em>dodecahedron</em>. <strong>IMPORTANT:</strong> Note that variables within procedures are preceded by a full-stop. This way, if you have a variable called <strong>longword$</strong> elsewhere in your script, the procedure will not look at that variable.
+</li>
+<li>Line 5 creates a new numeric variable called <strong>.number</strong>, which will store the number obtained by applying the <strong>length (mystring$)</strong> function to the words in question. </li>
+<li>Line 6 is just our good ol' <strong>appendInfoLine</strong>, which will print both the word stored into the variable <strong>.longword$</strong> and the number stored as the variable <strong>.number</strong>. </li>
+<li>Finally, line 7 closes the procedure with <strong>endproc</strong>. </li>
+</ul>
+
+<li>Now let's look at the lines before the procedure (lines 1 and 2). Each of the words to which we want to apply the procedure is preceded by<strong>@myProc</strong>. Recall that we called the procedure myProc on line 4. So what we are doing here is to use the <strong>@</strong> to call a procedure named <strong>myProc</strong>, which can be anywhere in your script. Bear in mind that procedures will jump and do their work whenever there is an @ followed by their name. For instance, if later on in your script you would like to execute this procedure again on different values (let's say, that you have the word <em>triskaidekaphobia</em>) you can simply add <strong>@myProc: "triskaidekaphobia"</strong> wherever you want in your script and the procedure will execute. </li>
+</ul>
+
+<p>
+</p>
+
+  <h3 class="sectionHead"><span class="titlemark">3 </span> <a
+ id="x1-20002"></a>More examples</h3>
+
+  <h4 class="sectionHead"><span class="titlemark">3.1 </span> <a
+ id="x1-20002"></a>Get pitch values at different times</h3>
+
+ <p>Let's pretend that we have a vowel from a speaker of Mandarin and we would like to get pitch values throughout the vowel at three points: start, mid, and end. In this case, we have just visually inspected them and know that these times are 0.17, 0.3, and 0.58. We want to print the values to the Info window.</p>
+
+<div class="language-plaintext ace praat editable highlighter-rouge" data-start="1"><div class="highlight"><pre class="highlight"><code>appendInfoLine: "Time", tab$, "Pitch"
+#upon visual inspection, we enter start, mid, and end times of the vowel. We write down the following:
+@getValue: 0.17
+@getValue: 0.3
+@getValue: 0.58</div></div></pre></code>
+
+<p>Where <strong>getValue</strong> is the name of the procedure, followed by the times from which we want to get the pitch values. Remember that the @ is the way we say "Praat, call the procedure on these values". Now we create the procedure itself, which can go anywhere in your script.</p>
+
+<div class="language-plaintext ace praat editable highlighter-rouge" data-start="6"><div class="highlight"><pre class="highlight"><code>procedure getValue: .time
+selectObject: "Sound ma2"
+p=To Pitch: 0, 75, 600
+ps=Smooth: 10
+.val= Get value at time: .time, "Hertz", "linear"
+appendInfoLine: .time, tab$, .val
+endproc</code></pre></div></div>
+
+<p>Line 6 defines the procedure as <strong>getValue</strong>, which is the name we used in lines 3-5 when calling it. Then we have a assigned an internal name to the variables above for future reference: we called it <strong>.time </strong>. Then we select the Sound and create the Pitch Object and smoothen it (lines 7-9). Afterwards we create a new variable called <strong>.val</strong>, which stores the pitch value at the time stated on line 3 of this script. Finally, we print the information to the Info window. The last line closes the procedure. After this, the script will move on to the following <strong>@getValue</strong> (line 4), repeat, then apply to the next <strong>@getValue</strong> (line 5). You can call the same procedure as many times as you like throughout your script.</p>
+
+<p>You can add as many actions inside your procedure. Here we added the creation of a Formant object (line 7), in case we wanted to get the F1 values at the same times stated above:</p>
+<div class="language-plaintext ace praat editable highlighter-rouge" data-start="1"><div class="highlight"><pre class="highlight"><code>procedure getValue: .time
+selectObject: "Sound ma2"
+p=To Pitch: 0, 75, 600
+ps=Smooth: 10
+.val= Get value at time: .time, "Hertz", "linear"
+selectObject: "Sound ma2"
+form= To Formant (burg): 0, 5, 5500, 0.025, 50
+.meanf1= Get value at time: 1, .time, "hertz", "linear"
+appendInfoLine: .time, tab$, .val, tab$, .meanf1
+endproc</code></pre></div></div>
+
+   <h4 class="sectionHead"><span class="titlemark">3.2 </span> <a
+ id="x1-20002"></a>Create several continua</h4>
+
+   <h4 class="sectionHead"><span class="titlemark">3.2.1 </span> <a
+ id="x1-20002"></a>Without procedure</h4>
+
+<p class="indent"> Let's assume that we are creating a continuum between /i/ and /u/, as we did as a homework last week. We will need to create a few variables, and then feed them to a KlattGrid:</p>
+
+
+<div class="language-plaintext ace praat editable highlighter-rouge" data-start="1"><div class="highlight"><pre class="highlight"><code>#We define f1, the f2 for the frontmost vowel, and the f2 for the backmost one
+f1=300
+f2_front=2800
+f2_back=1200</div></div></pre></code>
+
+<p>After opening the for-loop (line 5), we create a KlattGrid named "vowel", which will be 0.05 s long, will have a maximum of 6 formants, etc. (line 6). We will add two pitch points in order to give a more natural, descending pitch contour (lines 7-8); then we add an amplitude point (line 9), and one formant frequency point and bandwidth point for each formant (lines 10-13). Finally, we synthesize the sounds (line 14) and save them in a folder called <em>continuum</em> on our Desktop (line 15). Line 16 closes the for-loop.</p>
+
+<div class="language-plaintext ace praat editable highlighter-rouge" data-start="5"><div class="highlight"><pre class="highlight"><code>for i from 1 to 5
+    Create KlattGrid: "vowel", 0, 0.5, 6, 1, 1, 6, 1, 1, 1
+    Add pitch point: 0.05, 180
+    Add pitch point: 0.45, 170
+    Add voicing amplitude point: 0.25, 90
+    Add oral formant frequency point: 1, 0.25, f1
+    Add oral formant bandwidth point: 1, 0.25, 50
+    Add oral formant frequency point: 2, 0.25, f2_front -(((f2_front - f2_back)/4)*i-1)
+    Add oral formant bandwidth point: 2, 0.25, 50
+    To Sound
+    Save as WAV file: "/home/fernanda/Desktop/continuum/" + "vowel_"+string$(i)+".wav"
+endfor</code></pre></div></div>
+
+<p class="indent"> However, this is not a good approach, as we will need to repeat the same for-loop for the other continuum. A procedure will be useful in this case beacuse it would allow us to create one for-loop for both continua.</p>
+
+ <h4 class="sectionHead"><span class="titlemark">3.2.1 </span> <a
+ id="x1-20002"></a>With procedure</h4>
+
+<p>Let's look at the following script:</p>
+
+<div class="language-plaintext ace praat editable highlighter-rouge" data-start="1"><div class="highlight"><pre class="highlight"><code>@createCont: 300, "high", 2800, 1100
+@createCont: 800, "low", 1800, 1200</code></pre></div></div>
+
+<p>What did we just do? Here we are going to call a procedure named <strong>createCont</strong>, which will apply to a series of variables. The first instance has the parameters for creating a continuum between high vowels /i/ and /u/. In order to create this continuum, we need the values for the F1 (300 Hz for both vowels), and then the F2 values for /i/ (the frontest vowel: 2800 Hz) and /u/ (the backest vowel: 1100 Hz). The procedure will calculate the steps.</p>
+
+<p>The second instance contains the parameters for creating the continuum between low vowels /æ/ and <span class="tipa-10x-x-109">ɑ</span>/. Note that we have listed the parameters in the same order as above; this is crucial.</p>
+
+<p>Now let's move on to the procedure chunk:</p>
+<div class="language-plaintext ace praat editable highlighter-rouge" data-start="3"><div class="highlight"><pre class="highlight"><code>procedure createCont: .f1, .height$, .f2_front, .f2_back
+for i from 1 to 5
+    Create KlattGrid: .height$+string$(i), 0, 0.5, 6, 1, 1, 6, 1, 1, 1
+    Add pitch point: 0.05, 180
+    Add pitch point: 0.45, 170
+    Add voicing amplitude point: 0.25, 90
+    Add oral formant frequency point: 1, 0.25, .f1
+    Add oral formant bandwidth point: 1, 0.25, 50
+    Add oral formant frequency point: 2, 0.25, .f2_front -(((.f2_front - .f2_back)/4)*i-1)
+    Add oral formant bandwidth point: 2, 0.25, 50
+    To Sound
+    Save as WAV file: "/home/fernanda/Desktop/continua/" + .height$+string$(i)+".wav"
+    endfor
+endproc</div></div></pre></code>
+
+<p>Line 3 gives names to each one of the parameters stated in the lines above, so that the procedure can use them. So the first variable was called <strong>.f1</strong>, the second one was called <strong>.height$</strong>, the third one is <strong>.f2_front</strong>, and the fourth one is <strong>.f2_back</strong>. Then, the procedure refers to these variables and operates on them. So we turned the for-loop in section 3.2.1. into a procedure that can be applied to different sets of values, with very little changes.</p>
+
+  <h3 class="sectionHead"><span class="titlemark">4 </span> <a
+ id="x1-90005"></a>Homework</h3>
+<!--l. 136--><p>Download the following sound from <a href="week12_online/ma.wav">here</a> (you can also find it on ILIAS). We will create four Sound objects, each one with different Mandarin tones. For this:
+<ul>
+<li>Look at the following table with the start, mid, and end values for each tone of Mandarin Chinese.</li>
+<img src="week12_online/table.png" class="responsive2">
+<li>Create a procedure that (a) Creates a Manipulation object for the Sound object that you downloaded; (b) Creates an empty PitchTier; (c) Adds the three values above; (d) Takes the Manipulation object and replaces the PitchTier with the one you just created; and (e) Resynthesizes the sound (the command for this is <strong>Get resynthesis (overlap-add)</strong>, which has to be applied to the Manipulation object).</li>
+<li>Upload your Praat script on ILIAS as a .praat file.
+</ul></p>
+
+</div>
+
+</body> 
+
+    <script src="https://cdn.jsdelivr.net/g/ace@1.2.6(min/ace.js+min/mode-praat.js+min/theme-solarized_light.js)"></script>
+
+<script>
+  function qsa(sel) {
+      return Array.apply(null, document.querySelectorAll(sel));
+  }
+
+  qsa(".ace").forEach(function (codeEl) {
+    var classes = codeEl.className;
+    classes = classes.split(" ");
+    var readonly = true;
+    classes.forEach(function (e, i, a) {
+      if (e == "editable") { readonly = false };
+    });
+
+    ace.edit(codeEl).setOptions({
+        maxLines: 20,
+        readOnly: readonly,
+        autoScrollEditorIntoView: true,
+        mode:  "ace/mode/praat",
+        theme: "ace/theme/solarized_light",
+        firstLineNumber: parseInt(codeEl.getAttribute("data-start") || 1),
+        showGutter: true,
+    });
+  });
+</script>
+
+</html>
+                                                                                      
+
+

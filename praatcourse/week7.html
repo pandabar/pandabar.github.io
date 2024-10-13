@@ -1,0 +1,195 @@
+<!DOCTYPE html> 
+<html lang="en-US" xml:lang="en-US" > 
+<head><title>Week 7: Annotation II</title> 
+<meta  charset="utf-8" /> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
+<meta name="viewport" content="width=device-width,initial-scale=1" /> 
+<link rel="stylesheet" type="text/css" href="index.css" />
+<meta name="src" content="week5.tex" /> 
+</head><body 
+>
+<div class="sidebar">
+  <a href="index.html">Start</a>
+  <a href="week1.html">Week 1: Basics</a>
+  <a href="week2.html">Week 2: For-loops and conditions</a>
+  <a href="week3.html">Week 3: Vowels and formants</a>
+  <a href="week4.html">Week 4: Consonants</a>
+  <a href="week5.html">Week 5: Tables</a>
+  <a href="week6.html">Week 6: Annotation I</a>
+  <a class="active" href="week7.html">Week 7: Annotation II</a>
+  <a href="week8.html">Week 8: Recap
+  <a href="week9.html">Week 9: Manipulation and resynthesis</a>
+  <a href="week10.html">Week 10: The KlattGrid</a>
+  <a href="week11.html">Week 11: Perceptual experiments</a>
+  <a href="week12.html">Week 12: Procedures</a>
+</div>
+                                                                                    <!-- Page content -->
+<div class="content">
+  <div class="maketitle">
+                                                                                      
+                                                                                      
+
+<h2 class="titleHead">Week 7: Annotation II</h2>
+<div class="author" ><span 
+class="cmr-12x-x-120">Dr. Fernanda Barrientos</span></div><br />
+<div class="date" ><span 
+class="cmr-12x-x-120">December 21, 2022</span></div>
+  </div>
+  <h3 class="sectionHead"><span class="titlemark">1 </span> <a 
+ id="x1-10001"></a>A somewhat quicker way to annotate Sound ﬁles</h3>
+<!--l. 31--><p class="noindent" >From the exercises in previous weeks, it has become clear to us that annotation can be a slow, painful process. There are, however, a couple of steps that you can take to make it easier:
+</p>
+     <ul class="itemize1">
+     <li class="itemize">You can create a for loop that creates boundaries in your TextGrid every x number of (mili)seconds. You may either decide to space these boundaries evenly. This is what we learned last week. You could also put all the boundaries very close to each other at the begining or end of your script.
+     </li>
+     <li class="itemize">You can make .txt ﬁles with transcriptions using a simple programme such as Notepad. If you already have one, then you can ask Praat to read these as a Strings list. Last week we saw that we can use a Strings list to feed our TextGrids with labels; today we will see a small variation of that trick.
+     If you’re already wandering what the use of this is, see below...
+     </li>
+     <li class="itemize">A Strings list with tokens in it may be used to be the interval texts for your TextGrids. Therefore, you can tell Praat not only to create boundaries for your TextGrid, but also fill in the intervals with the desired text.</li></ul>
+<!--l. 38--><p class="noindent" >
+</p>
+  <h3 class="sectionHead"><span class="titlemark">2 </span> <a 
+ id="x1-20002"></a>Preliminaries: Feeding a .txt ﬁle to Praat as Strings list</h3>
+<!--l. 40--><p class="noindent" >Download from ILIAS the .zip ﬁle called <span 
+class="cmtt-10x-x-109">samples</span> (or click <a href="week5_online/samples.zip">here </a> to download), unzip it and put it in your Desktop or your desired
+folder. Inside you’ll ﬁnd six .wav ﬁles (corresponding to 6 different people reading the same text aloud: "the tiger tried to swallow all of the cheese at once, but it got stuck in his throat") and a ﬁle called <span 
+class="cmtt-10x-x-109">annotation.txt</span>. If you open this ﬁle, you will
+ﬁnd the following text: <br 
+class="newline" />
+</p><!--l. 44--><p class="noindent" ><span class="fbox">The tiger tried to swallow all of the cheese at once, but it got stuck in his throat.            </span>
+                                                                                      
+                                                                                      
+</p><!--l. 52--><p class="indent" >  However, it will be written vertically, that is, one word per line, and without any orthographic
+symbols such as commas, full stops, etc.
+</p><!--l. 54--><p class="indent" > Let's create a Strings list where the strings will be the words in the file <em>annotation.txt</em>. We type:
+
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dir$ = "/home/fernanda/Desktop/samples/"
+myann = Read Strings from raw text file: dir$ + "annotation.txt"</code></pre></div></div>
+
+<!--l. 60--><p class="indent" >  Remember that the ﬁrst line is my own computer path. If you are still unsure about how to get the
+right path to your ﬁles, try opening one of the .wav ﬁles in the <span 
+class="cmtt-10x-x-109">samples </span>folder normally (i.e. by
+clicking in the Objects window). Then go back to your script and click <span 
+class="cmti-10x-x-109">Edit </span><span 
+class="cmmi-10x-x-109">&#x003E; </span><span 
+class="cmti-10x-x-109">Paste History</span>. It will
+show there. If you have been clicking before, check the last line. If not, it will be the only line you'll see.
+</p><!--l. 62--><p class="indent" >  Now, let's go back to the Objects window. There will be a Strings object called <span 
+class="cmtt-10x-x-109">annotation</span>. Open it: it
+will be a list of strings with the words in the <em>annotation.txt</em> file, which we will use to annotate the Sound ﬁles.
+</p><!--l. 65--><p class="noindent" >
+</p>
+  <h3 class="sectionHead"><span class="titlemark">3 </span> <a 
+ id="x1-30003"></a>TextGrid generation</h3>
+ <h4 class="sectionHead"><span class="titlemark"> 3.1 </span> <a 
+ id="x1-30003"></a>Create a textGrid for each sound file</h4>
+<!--l. 66--><p class="noindent" >Now, right below the previous lines, we add the following bit:
+
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wav_files = Create Strings as file list: "wavlist", dir$ + "/*.wav"
+nowav_files = Get number of strings
+for ifile to nowav_files
+selectObject: wav_files
+wavfilename$ = Get string... ifile
+wav_file= Read from file: dir$ + "/" + wavfilename$
+mytg=To TextGrid: "word phon vot", ""
+endfor</code></pre></div></div>
+
+
+<!--l. 79--><p class="indent" >  If you go back to the Objects window, you will notice that each one of the three Sound ﬁles has now
+its corresponding TextGrid. They have three tiers, but they are empty. 
+
+<h4 class="sectionHead"><span class="titlemark">3.2 </span> <a 
+ id="x1-30003"></a>Add boundaries to the TextGrid</h4>
+
+We will ﬁll the ﬁrst tier with boundaries. We know that if we have an <em>x</em> number of words, the total number of boundaries that we need is <em>x-1</em>. This is what the following chunk does: it counts the number of words contained in the Object <code>Strings myann</code> and stores it as the numeric variable <code>numwords</code>, i.e. 18(lines 2-3), and then, lines 4-11 create a for loop for all numbers that are smaller than <code>numwords</code> (i.e. 1 to 17) and places a boundary on Tier of the TexgGrid. It is important that you add the following chunk <span 
+class="cmbx-10x-x-109">RIGHT BEFORE </span>the
+<span 
+class="cmtt-10x-x-109">endfor </span>line of the script above:</p>
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dur= Get total duration
+selectObject: myann
+numWords= Get number of strings
+for iword to numWords
+string$ = Get string: iword
+if iword < numWords
+selectObject: mytg
+Insert boundary: 1, (dur/numWords) *iword
+endif
+selectObject: myann
+endfor</code></pre></div></div>
+<!--l. 95--><p class="indent" >  Now, check the TextGrids. They should have 17 boundaries, which you can later move and adjust to
+match the Sound.
+</p>
+  <h4 class="sectionHead"><span class="titlemark">3.3 </span> <a 
+ id="x1-40004"></a>Add the text to the TextGrid</h4>
+<!--l. 98--><p class="noindent" >Now we are ready to put the text inside each interval in the TextGrid. Your script should now have
+two <span 
+class="cmtt-10x-x-109">endfor </span>lines at the end, one after the other. The following lines should be added <span class="cmbx-10x-x-109">BEFORE </span>these
+two <span class="cmtt-10x-x-109">endfor </span>lines:
+
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>selectObject: mytg
+Set interval text: 1, iword, string$
+selectObject: myann</code></pre></div></div>
+
+<p>Now look at the TextGrids. They should have the corresponding text inside each interval.
+                                                                                      
+                                                                                      
+</p><!--l. 108--><p class="noindent" >
+</p>
+  <h3 class="sectionHead"><span class="titlemark">4 </span> <a 
+ id="x1-50005"></a>Boundary adjustment: Add a dialogue box</h3>
+<!--l. 110--><p class="noindent" >We can leave the script as is and take care of the boundary adjustment later, or we can add a little pause in our script so it gives us time to adjust the boundaries after each iteration. We add these lines <span class="cmbx-10x-x-109">BETWEEN </span>the two <span class="cmtt-10x-x-109">endfor </span>lines at the end of the script:
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>selectObject: mytg
+plusObject: wav_file
+View & Edit
+pauseScript: "This is a pause in the script so you can adjust the boundaries. Click Continue when you’re finished."
+minusObject: wav_file</code></pre></div></div>
+
+
+</p>
+  <h3 class="sectionHead"><span class="titlemark">5 </span> <a 
+ id="x1-60006"></a>Homework</h3>
+<!--l. 124--><p class="noindent" >Modify the script so that:
+  <ul>
+    <li>The word "stuck" is extracted from all 6 sound files.</li>
+    <li>Each instance of the word "stuck" gets its own TextGrid with one tier called <code>segment</code>.</li>
+    <li>Last week we created a for-loop using the command <code>Create Strings from tokens</code>. Create a Strings list like this, with the phonetic symbols for each sound in the word <em>stuck</em> (hint: the [&#652;] symbol is rendered with <strong>\vt</strong>). Add the line of code that creates this Object at the beginning of your script.</li> 
+    <li><strong>HINT:</strong> The chunk of script that you will be creating goes between the last <code>endfor</code> lines.</li>
+    <li>Feed each one of the TextGrids with the phonetic annotation contained in your <code>Strings tokens</code> object.</li>
+    
+
+  </ul>
+</div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/g/ace@1.2.6(min/ace.js+min/mode-praat.js+min/theme-solarized_light.js)"></script>
+
+<script>
+  function qsa(sel) {
+      return Array.apply(null, document.querySelectorAll(sel));
+  }
+
+  qsa(".ace").forEach(function (codeEl) {
+    var classes = codeEl.className;
+    classes = classes.split(" ");
+    var readonly = true;
+    classes.forEach(function (e, i, a) {
+      if (e == "editable") { readonly = false };
+    });
+
+    ace.edit(codeEl).setOptions({
+        maxLines: 20,
+        readOnly: readonly,
+        autoScrollEditorIntoView: true,
+        mode:  "ace/mode/praat",
+        theme: "ace/theme/solarized_light",
+        firstLineNumber: parseInt(codeEl.getAttribute("data-start") || 1),
+        showGutter: true,
+    });
+  });
+</script> 
+</body> 
+</html>
+                                                                                      
+
+

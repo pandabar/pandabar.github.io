@@ -1,0 +1,311 @@
+<!DOCTYPE html> 
+<html lang="en-US" xml:lang="en-US" > 
+<head><title>Week 4: Consonants in the spectrogram</title> 
+<meta  charset="utf-8" /> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
+<meta name="viewport" content="width=device-width,initial-scale=1" /> 
+<link rel="stylesheet" type="text/css" href="index.css" />
+<meta name="src" content="week4.tex" /> 
+</head><body 
+>
+<div class="sidebar">
+  <a href="index.html">Start</a>
+  <a href="week1.html">Week 1: Basics</a>
+  <a href="week2.html">Week 2: For-loops and conditions</a>
+  <a href="week3.html">Week 3: Vowels and formants</a>
+  <a class="active" href="week4.html">Week 4: Consonants</a>
+  <a href="week5.html">Week 5: Tables</a>
+  <a href="week6.html">Week 6: Annotation I</a>
+  <a href="week8.html">Week 7: Annotation II</a>
+  <a href="week9.html">Week 8: Recap
+  <a href="week9.html">Week 9: Manipulation and resynthesis</a>
+  <a href="week10.html">Week 10: The KlattGrid</a>
+  <a href="week11.html">Week 11: Perceptual experiments</a>
+  <a href="week12.html">Week 12: Procedures</a>
+</div>
+                                                                                    <!-- Page content -->
+<div class="content">
+  <div class="maketitle">
+                                                                                      
+                                                                                      
+
+<h2 class="titleHead">Week 4: Consonants in the spectrogram</h2>
+<div class="author" ><span 
+class="cmr-12x-x-120">Dr. Fernanda Barrientos</span></div><br />
+<div class="date" ><span 
+class="cmr-12x-x-120">November 22, 2022</span></div>
+  </div>
+  <h3 class="sectionHead"><span class="titlemark">1 </span> <a 
+ id="x1-10001"></a>Plosives</h3>
+<!--l. 31--><p class="noindent" >Let’s recall that a plosive is a consonant made by a momentary closure of the articulators (e.g. lips, or the tongue against the palate),followed by a sudden release of the air. We can look at a plosive in the spectrogram and analyze them in different ways: </p>
+     <ul class="itemize1">
+     <li class="itemize">By measuring the duration of the <strong>Voice Onset Time (VOT)</strong>: this is, the time between the burst (which looks like a dark vertical bar after a white, silence zone; this is called an <em>explosion bar</em>) and the moment in which the vocal folds start vibrating for the next vowel. Regarding VOT, we can expect the following possibilities:
+          <ul class="itemize2">
+          <li class="itemize"><strong>Positive VOT</strong>: This is found in voiceless plosives [p t k]. Languages with aspiration (such as German or English) have long VOT values that may reach about 80 ms and are quite easy to spot in the spectrogram. Voiceless plosives in languages without aspiration (such as Spanish, Italian, or French) have much shorter VOT values, of around 20 ms.
+          </li>
+<figure>
+<img src="week4_online/kaese_gerspan.png" title="long and short VOT" class="responsive"/>
+<figcaption>Fig. 1: VOT of /k/ in the word <em>K&auml;se</em>: German speaker (left) and Spanish speaker.</figcaption>
+</figure>
+          <li class="itemize"><strong>0 VOT</strong>: In languages with aspiration, a voiced plosive [b d g] has either very short VOT values (close to 0) or simply a VOT of 0 ms.
+          </li>
+          <li class="itemize"><strong>Negative VOT</strong>: Voiced plosives in languages without aspiration usually have negative VOT: that is, the vocal folds start vibrating <em>before</em> the burst.</li><figure>
+  <img src="week4_online/bitte_gerspan.png" title="short and negative VOT" class="responsive"/>
+  <figcaption>Fig. 2: VOT of /b/ and /t/ in the word <em>Bitte</em>: German speaker (left) and Spanish speaker.</figcaption>
+  </figure>
+  </ul>
+
+     <li class="itemize">By looking at the <strong>formant movement</strong>: we distinguish the place of articulation by looking at the movement of F2 and F3, from the burst to the following vowel. The starting point is what we are particularly interested in; we will call it <span class="cmbx-10x-x-109">locus. </span>Note that in voiceless plosives the formants go THROUGH the aspiration!
+          <ul class="itemize2">
+          <li class="itemize">Bilabials:  Since  lip  closure  causes  a  lowering  of  all  formants,  the  formants
+          corresponding to the following vowel will start at a lower point.
+                                                                                      
+                                                                                      
+          </li>
+          <li class="itemize">Alveolars: alveolars have very little inﬂuence on vowel formants, therefore you can expect little movement.
+          </li>
+          <li class="itemize">Velars: these are easy to spot as F2 and F3 usually depart from the same part (i.e.the so-called <em>velar pinch</em>).</li></ul>
+     <!--l. 45--><p class="noindent" >The pictures above correspond to the LeaP corpus (Gut 2009), which has recordings of native and nonnative speakers of English and German. Look at the diﬀerences in the VOT of [k], [t], and [g] between the native speaker of German (left pictures) and the native speaker of Spanish (right pictures): voiceless plosives [k] and [t] are consistently shorter in the speaker of Spanish. Likewise, the voiced plosive [b] shows negative VOT in the Spanish speaker: the voicing bar at the bottom of the spectrogram before the burst is much longer.</p></li></ul>
+<!--l. 52--><p class="noindent" >
+</p>
+  <h3 class="sectionHead"><span class="titlemark">2 </span> <a 
+ id="x1-20002"></a>Nasals</h3>
+<!--l. 53--><p class="noindent" >Nasals are easy to identify as there is an abrupt change in the spectrogram: you will be able to see one formant at a low frequency (say, 250 Hz), and an empty spot above it, with no energy. A second formant can be seen, though rather faint, at about 2000 Hz. Similar to plosives, you can tell the place of articulation of a nasal by looking at the following vowel: its formants will lower if a bilabial nasal comes, or will show the velar pinch if it’s a velar nasal. The image below shows how nasals [m], [&#626;], and [n] in the word <em>ma&#241;ana</em> look in the spectrogram.
+<figure>
+	<img src="week4_online/manana.png" title="long and short VOT" class="responsive2"/>
+	<figcaption>Fig. 3: Nasals [m], [&#626;], and [n] in the Spanish word <em>ma&#241;ana</em>.</figcaption>
+	</figure>
+</p>
+  <h3 class="sectionHead"><span class="titlemark">3 </span> <a 
+ id="x1-30003"></a>Fricatives</h3>
+<!--l. 55--><p class="noindent" >Fricatives look like little black clouds of aperiodic energy. They can be distinguished in two ways:
+</p>
+     <ul class="itemize1">
+     <li class="itemize"><span 
+class="cmbx-10x-x-109">Intensity:  </span>fricatives  have  diﬀerent  intensities:  [f]  and  [<span 
+class="tipa-10x-x-109">θ</span>]  look  very  faint  in  the
+     spectrogram, but sibilants are a lot more intense.
+     </li>
+     <li class="itemize"><span 
+class="cmbx-10x-x-109">Center of gravity (COG): </span>A good way of measuring fricatives is by dividing the spectrum in two, so that you have the same amount of energy in both halves (sort of like a median in terms of amplitudes). This, plus a measure of the dispersion (i.e. whether the energy distributes more or less evenly across the spectrum, or if it stays close to the COG) is how we know which fricative we are looking at. This usually requires an adjustment of the spectrogram settings so that the highest frequency to show is around 8000 Hz. Measuring COG involves creating a Praat Object called Spectrum and then
+     using a smoothing function as well, which we will see in section 6.3. Here is a spectrogram of the German word <em>verschwindest</em>, with fricatives [f], [&#643;], [v], and [s].</li>
+
+<figure>
+	<img src="week4_online/verschwindest.png" title="fricatives" class="responsive2"/>
+	<figcaption>Fig. 4: Fricatives in the German word <em>verschwindest</em>.</figcaption>
+	</figure>
+
+ </ul>
+<!--l. 60--><p class="noindent" >
+</p>
+  <h3 class="sectionHead"><span class="titlemark">4 </span> <a 
+ id="x1-40004"></a>Taps and trills</h3>
+<!--l. 61--><p class="noindent" >Taps look essentially like a voiced plosive (i.e. a dark vertical bar), although the bar is crossed by formants. Trills, on the other hand, are easy to observe since they show a sequence of 3 little vertical bars, one followed by the other. 
+      
+      <figure>
+	<img src="week4_online/peroperro.png" title="tap and trill" class="responsive"/>
+	<figcaption>Fig. 5: A tap (left) and a trill, in Spanish words <em>pero</em> (left) and <em>perro</em>.</figcaption>
+	</figure>                                                                    
+                                                                                      
+</p>
+  <h3 class="sectionHead"><span class="titlemark">5 </span> <a 
+ id="x1-50005"></a>Approximants</h3>
+<!--l. 63--><p class="noindent" >Approximants are wery vowel-like sounds, both articulatorily and acoustically. We will distinguish between laterals, English [r], and glides. </p>
+     <ul class="itemize1">
+     <li class="itemize"><span 
+class="cmbx-10x-x-109">Laterals: </span>they have a clear formant below, akin to nasals, although usually a bit more faint. Formants F2 and F3 are around about 1500 and 3000 Hz.
+     </li>
+     <figure>
+     <img src="week4_online/along.png" title="clearl" class="responsive2"/>
+	<figcaption>Fig. 6: A "clear-l" (alveolar lateral) in the English word <em>along</em>.</figcaption>
+	</figure>  
+     
+     <li class="itemize"><span 
+class="cmbx-10x-x-109">The approximant [r] </span>shows a sudden drop in F2 and F3, for which again looking into
+     vowel formants from vowels before the sound in question are the best way to recognize them.
+     </li>
+    <figure> 
+     <img src="week4_online/ireally.png" title="an approximant r" class="responsive2"/>
+	<figcaption>Fig. 7: An approximant /r/ in the English sequence <em>I really</em>. Note how F2 and F3 show a sudden drop.</figcaption>
+	</figure>  
+     
+     <li class="itemize">Finally, <span 
+class="cmbx-10x-x-109">glides </span>are very similar to vowels as they have formants, though they usually look a bit more faint (less energy). On a spectrogram they can be seen as a pure trajectory of formants: depending on the vowel that they come from/go to, you will see formants with either a raising or a falling slope. Below we can see the continuous transition from the high F2 of [j] to a much lower F2 in [u] (Fig 7, left), while the transition form [w] to [e] causes a continuous increase in F2.</li>
+
+<figure>
+	<img src="week4_online/glides.png" title="glides" class="responsive"/>
+	<figcaption>Fig. 8: Glides: [j] in the sequence <em>if you</em> and [w] in the sequence <em>went away</em>.</figcaption>
+	</figure>
+
+
+</ul>
+<!--l. 69--><p class="noindent" >
+</p>
+  <h3 class="sectionHead"><span class="titlemark">6 </span> <a 
+ id="x1-60006"></a>Measuring consonants</h3>
+<!--l. 70--><p class="noindent" >
+</p>
+  <h4 class="subsectionHead"><span class="titlemark">6.1 </span> <a 
+ id="x1-70006.1"></a>Exercise 1: VOT (and time dimension in general)</h4>
+<!--l. 71--><p class="noindent" >First, download the sound tigermouse2.wav from <a href="week4_online/tigermouse2.wav">this link</a> and its corresponding TextGrid <a href="week4_online/tigermouse2.TextGrid">from this other link here</a> and open them with Praat (you can do this manually, since it's just two files).</p>
+<p>
+Let's inspect these files. Select <strong>both files together</strong> and go to <em>View and Edit</em>. You should see something like this:</p>
+<figure>
+	<img src="week4_online/tgandsound.png" title="Sound and TextGrid" class="responsive"/>
+	<figcaption>Fig. 9: When you select both a Sound and a TextGrid object together, you can see and edit the TextGrid.</figcaption>
+	</figure>
+<p>This TextGrid has three tiers: the first is called <code>words</code>, the second <code>phone</code>, and the third <code>VOT</code>. This sentence has only three plosives: the /t/ and /g/ in <em>tiger</em>, and the /t/ in <em>to</em>. However, and upon closer inspection of the Textgrid, the /g/ does not have an explosion bar, which suggests that this was actually produced as a fricative sound. </p>
+<p>Now we measure both VOTs with the following script:
+<span 
+class="colorbox" id="colorbox1"></p>
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>selectObject: "Sound tigermouse2"
+plusObject: "TextGrid tigermouse2"
+appendInfoLine: "sound", tab$, "start", tab$, "end", tab$,"VOT"
+Extract intervals where: 3, "yes", "starts with", "VOT"
+n = numberOfSelected ("Sound")
+for i to n
+    sound [i] = selected ("Sound", i)
+endfor
+for i to n
+        selectObject: sound [i]
+        start= Get start time
+        end= Get end time
+        vot = Get total duration
+appendInfoLine: i, tab$, start, tab$, end, tab$, vot
+endfor</code></pre></div></div>
+
+<!--l. 88--><p class="noindent" >
+
+Note that lines 1 and 2 are selecting two elements together: <code>Sound tigermouse2</code> and <code>TextGrid tigermouse2</code>. We are doing this because we will extract parts from the Sound tigermouse2 by taking the time stamps on the TextGrid as reference points.</p>
+
+<p>The third line is an <code>appendInfoLine</code> that prints the column names of a table that the script will start filling up as we go through the for loop at the end. The column names are <em>Sound, start, end</em>, and <em>VOT</em>. They are separated by a tab, which can be scripted as a string variable: <code>tab$</code>.</p>
+
+<p>Line 4 performs the extraction: it will take all the intervals marked on Tier 3 of the TextGrid with the label <em>VOT</em>. This will create a bunch of Sound objects, which will be queried along the time dimension (i.e. we will only look at durations; we won't be measuring formant values or anything else).</p>
+
+<p>Now note that we have two for loops. Since the <em>Extract intervals</em> function ﬁnishes with all the extracted sounds selected at once (you may just run the ﬁrst 4 lines of the script to see what I mean), we will take advantage of that and we will run a for loop that gives the selected sounds a name, i.e. <code>Sound [1]</code> and <code>Sound [2]</code>. After that, we run a second for loop that iterates through the selected sounds. </p>
+<p>Measuring along the time dimension is rather simple: we mostly use the functions <span 
+class="cmtt-10x-x-109">Get start time, Get</span>
+<span 
+class="cmtt-10x-x-109">end time, </span>and <span 
+class="cmtt-10x-x-109">Get total duration</span>, which take no arguments. After the query, we add an info line with the sound name and the start, end, and total duration. Since this action is inside the loop, it will repeat for each one of the sounds in the vector. 
+</p><!--l. 92--><p class="noindent" >
+</p>
+  <h4 class="subsectionHead"><span class="titlemark">6.2 </span> <a 
+ id="x1-80006.2"></a>Exercise 2: Formants in consonants</h4>
+<!--l. 93--><p class="noindent" >Let’s try this script:
+
+    <div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>selectObject: "Sound tigermouse2"
+plusObject: "TextGrid tigermouse2"
+appendInfoLine: "sound", tab$, "F1", tab$, "F2", tab$,"F3"
+Extract intervals where: 2, "yes", "matches (regex)", "n|l|m"
+n = numberOfSelected ("Sound")
+for i to n
+    sound [i] = selected ("Sound", i)
+endfor
+for i to n
+    selectObject: sound [i]
+    form= To Formant (burg): 0, 5, 5500, 0.025, 50
+    f1mean= Get mean: 1, 0, 0, "hertz"
+    f2mean= Get mean: 2, 0, 0, "hertz"
+    f3mean= Get mean: 3, 0, 0, "hertz"
+    appendInfoLine: i, tab$, f1mean, tab$, f2mean, tab$, f3mean
+endfor</code></pre></div></div>                                                                                  
+                                                                                      
+<!--l. 111--><p class="indent" >  This script gives you the formant values of laterals and nasals, which are stable throughout time;
+hence measuring the mean values is ok.
+</p><!--l. 113--><p class="indent" >  Now look at the script. The <span 
+class="cmtt-10x-x-109">Extract intervals where </span>line is now set to the ”matches (regex)” option. This allows you to make searches based on string patterns using <strong>regular expressions</strong>. A regular expression is a sequence of characters that specifies a search patterns. For instance, you can use a regex to find through a text something like: "all the words that start with a C and end with a D". These are common to many computer languages, so for those of you who are familiar with other programming languages, you can check the Praat manual and notice that most of them will ring a bell. In Praat, the pipe bar stands for ”or”. So basically, here we are telling the script to look for TextGrid intervals on the tier number 2 that are labeled as [n] OR [l] OR [m]. Apart from this, the structure of this script up to line 7 is very similar to the one above.</p>
+
+<p>Now let's look into the second for loop. Line 8 creates a <em>Formant</em> object, just like the one we used in the previous week for measuring vowels. After that, lines 9 to 11 query the Formant object: since F3 is also important when analyzing nasals and laterals, we have three lines of code getting the values for F1, F2, and F3. Finally, line 12 collects the information. 
+
+</p><!--l. 116--><p class="noindent" >
+</p>
+  <h4 class="subsectionHead"><span class="titlemark">6.3 </span> <a 
+ id="x1-90006.3"></a>Exercise 3: COG</h4>
+<!--l. 118--><p class="noindent" >Now this script is a bit more complicated as it does various things: </p>
+     <ul class="itemize1">
+     <li class="itemize">Since fricatives are aperiodic noise, they a bit more tricky to measure. There is a <code>Multiply by window</code> line (which amplifies the sound a bit), and the creation of a Spectrum object. A Spectrum shows the relative amplitudes across frequencies; it's like taking a slice from a spectrogram and looking at which frequencies the sound is more intense. Then, the <code>Cepstral smoothing</code> line will create yet another Spectrum object, but this time we get a more "summarized" version of it. </li></ul>
+ <div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>selectObject: "Sound tigermouse2"
+ plusObject: "TextGrid tigermouse2"
+ appendInfoLine: "sound", tab$, "intensity", tab$, "COG", tab$,"dispersion"
+ Extract intervals where: 2, "yes", "matches (regex)", "^f|^s"
+ n = numberOfSelected ("Sound")
+for i to n
+    sound [i] = selected ("Sound", i)
+endfor
+for i to n
+    selectObject: sound [i]
+    int = Get intensity (dB)
+    Multiply by window... Gaussian1
+    To Spectrum: "no"
+    Cepstral smoothing: 200
+    cog = Get centre of gravity: 2
+    std = Get standard deviation: 2
+    appendInfoLine: i,tab$, int,tab$,cog, tab$, std
+ endfor</code></pre></div></div>
+
+<!--l. 140--><p class="indent" >  Now let’s pay attention once more to the <span 
+class="cmtt-10x-x-109">Extract intervals where </span>line. It has a little caret
+before [f] and [s]. The caret stands for ”beginning of string”. So the search will not take into
+account any TextGrid intervals where there might be an f or an s that are NOT at the very
+beginning of the string (can you guess why this is necessary? Remove the carets and see what
+happens).
+</p>
+	
+<div style="border:3px outset #04AA6D;padding:5px;padding-left:30px;">
+    <h4><mark>PRO TIP:</mark> You can use regular expressions in Praat (but beware the backslash)</h4>
+ <ul>   
+  <li>Since you will be working with string variables most of the time, you will need to constantly tell Praat things like "fetch me all the files in this folder starting with the letter C", or "extract all the TextGrid intervals containing an F but that won't have a M before it", or "Get me all the files with this extension", etc. In many cases, you will be able to use Praat's in-built functions (which can be conveniently found under "String functions" in the Praat Manual). </li>
+<li> However, sometimes you might need to use <strong>regular expressions</strong> (also called <strong>regex</strong>, which are a series of characters you can use in order to search for patterns in text. They are more or less standard across programming languages and Praat allows for their use; you can find a list of them under "Regular expressions" in the Praat manual. The <strong>caret (^)</strong> in the script above is one of them and as we saw, it means "the caracter must be at the beginning of the string"; the <strong>asterisk</strong> or <strong>star(*)</strong> is another one and means "any (sequence of) character(s)". Now if you want Praat NOT to read a character used in a regex as such, you can <strong>escape</strong> the character by using a <strong>backslash</strong> character.</li> 
+	 <li><strong>BUT</strong>, Praat also uses backslashes for certain IPA symbols; for instance, the symbol for the voiced dental fricative (also called <strong>eth</strong>, or [&eth;], is produced with the sequence <strong>\dh</strong>. So, if you want Praat to use regex AND extract intervals from a TextGrid with IPA characters, you will need to "escape the escape", that is, you will need to tell Praat that the backslash in the phonetic symbol is NOT an escape symbol... with a backslash (that's right, one backslash cancels the other).</li>
+	</ul>	
+	  
+<div class="language-plaintext ace praat editable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#I want to extract intervals with vowels i and \ic (the second stands for the high, front, lax, unrounded vowel).
+Extract intervals where: 2, "yes", "matches (regex)", "i|\\ic"</code></pre></div></div>
+
+<ul>
+	<li>As an exercise, you can find out about using regular expressions on Google. Try for instance, a Google search with the pipe bar (which means OR, as seen in the script above): <strong>"cat|dog|raccoon" memes</strong> and see what you get.</li>
+</ul>
+	
+  </div>
+  <h3 class="sectionHead"><span class="titlemark">7 </span> <a 
+ id="x1-100007"></a>Homework</h3>
+<!--l. 142--><p class="noindent" >Download the .zip file tigermouse3 from <a href="week4_online/tigermouse3.zip">this link</a>. Unzip it and open the files with Praat (they are a Sound and a TextGrid). Now modify today's first script so that you know which sound from which word you're getting the data from (as you might have already noticed, the script only gives you a number for the <code>sound</code> column). Here are some hints:
+<ul>
+<li> Select the <code>TextGrid tigermouse3</code> object and go to <em>Query > Query interval tier.</em> You will see a couple of possible options, i.e. <em>Get label at time</em> and <em>Get interval label</em>.</li>
+<li>Create string variables and numeric variables that allow you to recover that info and put it into the table on the Info window.</ul>
+</p> 
+<p>Once you're done, create a pdf with the script and the table that you created (remember that you can save the output of the Info window by going to the Menu on that window and go to <em>File > Save as...</em> and save as .csv file. 
+
+</div>
+<script src="https://cdn.jsdelivr.net/g/ace@1.2.6(min/ace.js+min/mode-praat.js+min/theme-solarized_light.js)"></script>
+
+<script>
+  function qsa(sel) {
+      return Array.apply(null, document.querySelectorAll(sel));
+  }
+
+  qsa(".ace").forEach(function (codeEl) {
+    var classes = codeEl.className;
+    classes = classes.split(" ");
+    var readonly = true;
+    classes.forEach(function (e, i, a) {
+      if (e == "editable") { readonly = false };
+    });
+
+    ace.edit(codeEl).setOptions({
+        maxLines: 20,
+        readOnly: readonly,
+        autoScrollEditorIntoView: true,
+        mode:  "ace/mode/praat",
+        theme: "ace/theme/solarized_light",
+        firstLineNumber: parseInt(codeEl.getAttribute("data-start") || 1),
+        showGutter: true,
+    });
+  });
+</script>
+</body> 
+</html>
+                                                                                      
+
+
