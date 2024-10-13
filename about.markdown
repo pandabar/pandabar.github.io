@@ -4,15 +4,7 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
 
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
-
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
-
-
-[jekyll-organization]: https://github.com/jekyll
+- My name is Fernanda Barrientos Contreras, following the Spanish naming customs (Barrientos is my dad's last name; Contreras is my mum's). However, people often use their paternal name only for simplicity's sake and use both only in official paperwork. Google Scholar does not understand this and some of my work appears under my maternal name (e.g. "Contreras, FB"). I also have two middle names which no one needs to know about. 
+- The IPA is [feɾnanda βarjentos].
+- I was born and raised in Concepción, Chile, which does not look like the city that was shown in the movie [The Reaping](https://www.imdb.com/title/tt0444682/).
