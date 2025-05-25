@@ -4,7 +4,7 @@ title: CV
 permalink: /CV/
 ---
 
-Here is my CV, up to March 2024. Full printable version [here](cv.pdf).
+Here is a short version of my CV, up to May 2025. Full printable version [here](cv.pdf).
 
 #### Education
 
@@ -13,21 +13,19 @@ Here is my CV, up to March 2024. Full printable version [here](cv.pdf).
 - 2007: Título de Profesor de Español (Professional Title of Spanish Teacher). University of Concepción (Chile).
 - 2007: Grado de Licenciada en Educación (BA degree in Education). University of Concepción (Chile).
 
-#### Publications
+#### Selected publications
 
 - Barrientos, F (2024). [Out with the old, in with the new: contrasts involving new features with acoustically salient cues are more likely to be acquired than those that redeploy L1 features](https://www.frontiersin.org/journals/language-sciences/articles/10.3389/flang.2024.1295265/full) _Frontiers in Language Sciences 3_.
 - Barrientos, F (2023). [On segmental representations in second language phonology: a perceptual account.](https://doi.org/10.1177/02676583211030637) _Second Language Research 39(1)_, 259-285.
-- Salcedo, P; Ferreira, A & Barrientos, F (2013): A Bayesian Model for Lexical Availability of Chilean High School Students in Mathematics. Natural and Artificial Models in Computation and Biology, 245-253.
-- Barrientos, F; Ferreira, A; & Salcedo, P (2012): Modelado del estudiante para el STI ELE-TUTOR: diseño de un componente adaptativo para apoyar la competencia lingüística del español como lengua extranjera. Boletín de Filología 47 (1), 11-32.
-- Ferreira, A; Salcedo,P; Kotz, G, & Barrientos, F (2012): La Arquitectura de ELE-TUTOR: Un Sistema Tutorial Inteligente para el Español como Lengua Extranjera. Signos 45 (79), 102-131.
 
 #### Selected talks
 
-- Don’t buy, recycle? Acquiring new features versus feature redeployment in L2 speech perception. New Sounds 2022.University of Barcelona, Spain.
+- The role of the prosodic hierarchy on learning postlexical rules: /b d g/ spirantization by L1 German learners of Spanish. New Sounds 2025. University of Toronto, Canada.
+- Don’t buy, recycle? Acquiring new features versus feature redeployment in L2 speech perception. New Sounds 2022. University of Barcelona, Spain.
 - What is a perceptual category in L2? On the nature of sound representations in late learners of a second language with a smaller L1 phonological inventory. 2016 Annual Meeting of the Linguistics Association of Great Britain (LAGB).University of York, UK.
 - Perceptual L2 vowel categories in L1 Spanish speakers: What late L2 speakers (do not) learn. New Sounds 2016. University of Aarhus, Denmark, 10-12 June 2016.
 - Is L1 category splitting possible? On representations of L2 sounds and their role in lexical activation. Sound To Word 2016. University of Iowa, IA, USA, 1-2 April 2016.
-- Effects of L2 knowledge into L1 speech perception: boundary movement in the vowel perceptual space. 2015 Annual Meeting of the Linguistics Association of Great Britain (LAGB). University College London, UK, 15-18 September 2015.
+
 
 #### Selected posters
 
@@ -39,14 +37,15 @@ Here is my CV, up to March 2024. Full printable version [here](cv.pdf).
 
 As a lecturer at UniKn:
 
--Praat scripting
+- Praat scripting
+- History of English
 - Statistics
 - Fonología del español
 - Fonética del español
-- La enseñanza del español como segunda lengua
 - Phonological acquisition in L2 English
-- English Phonology
-- English Morphology
+- Intro to phonological theory and analysis
+- English phonology
+- English morphology
 
 #### Awards
 
