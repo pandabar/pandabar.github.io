@@ -1,9 +1,11 @@
---
+---
 layout: post
-title:  "Linguistic hills I'm willing to die on:"
+title:  "Linguistic hills"
 date:   2025-05-25 
 categories: Linguistics
 ---
+
+These are some of the many linguistic hills  I'm willing to die on:
 
 - Linguistic theory is shamefully monolingual.
 - Prosodic words are not isomorphic with morphological words.
