@@ -9,4 +9,4 @@ categories: Linguistics, Cursed screenshots
 - Reviewer 2: Sorry Author, but you can't write that.
 - Author: ok, then let me rephrase it:
 
-[Neck](neck.jpg)
+[](neck.jpg)
