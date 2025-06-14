@@ -1,0 +1,24 @@
+<h1 id="answers-week-12">Answers, week 12</h1>
+<h2 id="part-1-calling-the-procedure">Part 1: Calling the procedure</h2>
+<p>We make a list of instances, each one corresponding to a tone. We add four values: the start point, the mid point, the end point, and the name of the tone in question. The procedure will be called <strong>addTone</strong>.</p>
+<pre><code>@addTone: 230, 230, 230, &quot;ma1&quot;
+@addTone: 190, 210, 230, &quot;ma2&quot;
+@addTone: 170, 150, 210, &quot;ma3&quot;
+@addTone: 230, 190, 150, &quot;ma4&quot;</code></pre>
+<h2 id="part-2-the-procedure">Part 2: The procedure</h2>
+<p>Now we prepare the procedure. The first line defines it: we give it the name <strong>addTone</strong>. Then we name the variables, so that the first value in each one of the instances above corresponds to <strong>.start</strong>, the second one to <strong>.mid</strong>, etc.</p>
+<pre><code>procedure addTone: .start, .mid, .end, .tone$</code></pre>
+<p>The following lines are very similar to those seen in Week 9: we select the Sound object and create a Manipulation object. Then we create an empty PitchTier object, which we then fill in with the values stated in the procedure.</p>
+<pre><code>selectObject: &quot;Sound ma&quot;
+man=To Manipulation: 0.1, 75, 600
+Create PitchTier: &quot;.$tone&quot;, 0, 0.5
+Add point: 0, .start
+Add point: 0.25, .mid
+Add point: 0.5, .end</code></pre>
+<p>After that, we replace the PitchTier. Then we do the resynthesis, which will create a Sound object with the new pitch contour.</p>
+<pre><code>plusObject: man
+Replace pitch tier
+selectObject: man
+Get resynthesis (overlap-add)
+Rename: .tone$
+endproc</code></pre>

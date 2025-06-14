@@ -1,0 +1,62 @@
+File type = "ooTextFile"
+Object class = "TextGrid"
+
+xmin = 72.16183084248922 
+xmax = 74.85832904617526 
+tiers? <exists> 
+size = 1 
+item []: 
+    item [1]:
+        class = "IntervalTier" 
+        name = "words" 
+        xmin = 72.16183084248922 
+        xmax = 74.85832904617526 
+        intervals: size = 12 
+        intervals [1]:
+            xmin = 72.16183084248922 
+            xmax = 72.19752 
+            text = "" 
+        intervals [2]:
+            xmin = 72.19752 
+            xmax = 72.627763 
+            text = "finally" 
+        intervals [3]:
+            xmin = 72.627763 
+            xmax = 73.14089881911065 
+            text = "" 
+        intervals [4]:
+            xmin = 73.14089881911065 
+            xmax = 73.21365714305942 
+            text = "the" 
+        intervals [5]:
+            xmin = 73.21365714305942 
+            xmax = 73.648557 
+            text = "tiger" 
+        intervals [6]:
+            xmin = 73.648557 
+            xmax = 73.85167226162348 
+            text = "went" 
+        intervals [7]:
+            xmin = 73.85167226162348 
+            xmax = 74.000875 
+            text = "to" 
+        intervals [8]:
+            xmin = 74.000875 
+            xmax = 74.13736765426704 
+            text = "where" 
+        intervals [9]:
+            xmin = 74.13736765426704 
+            xmax = 74.22680273370328 
+            text = "the" 
+        intervals [10]:
+            xmin = 74.22680273370328 
+            xmax = 74.562442 
+            text = "mouse" 
+        intervals [11]:
+            xmin = 74.562442 
+            xmax = 74.847292 
+            text = "lived" 
+        intervals [12]:
+            xmin = 74.847292 
+            xmax = 74.85832904617526 
+            text = "" 

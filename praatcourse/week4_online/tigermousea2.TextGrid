@@ -1,0 +1,202 @@
+File type = "ooTextFile"
+Object class = "TextGrid"
+
+xmin = 0 
+xmax = 2.6964982036860334 
+tiers? <exists> 
+size = 3 
+item []: 
+    item [1]:
+        class = "IntervalTier" 
+        name = "words" 
+        xmin = 0 
+        xmax = 2.6964982036860334 
+        intervals: size = 10 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.4659321575107782 
+            text = "finally" 
+        intervals [2]:
+            xmin = 0.4659321575107782 
+            xmax = 0.9790679766214225 
+            text = "" 
+        intervals [3]:
+            xmin = 0.9790679766214225 
+            xmax = 1.0518263005701982 
+            text = "the" 
+        intervals [4]:
+            xmin = 1.0518263005701982 
+            xmax = 1.4867261575107733 
+            text = "tiger" 
+        intervals [5]:
+            xmin = 1.4867261575107733 
+            xmax = 1.689841419134254 
+            text = "went" 
+        intervals [6]:
+            xmin = 1.689841419134254 
+            xmax = 1.83904415751077 
+            text = "to" 
+        intervals [7]:
+            xmin = 1.83904415751077 
+            xmax = 1.9755368117778147 
+            text = "where" 
+        intervals [8]:
+            xmin = 1.9755368117778147 
+            xmax = 2.064971891214057 
+            text = "the" 
+        intervals [9]:
+            xmin = 2.064971891214057 
+            xmax = 2.400611157510781 
+            text = "mouse" 
+        intervals [10]:
+            xmin = 2.400611157510781 
+            xmax = 2.6964982036860334 
+            text = "lived" 
+    item [2]:
+        class = "IntervalTier" 
+        name = "phone" 
+        xmin = 0 
+        xmax = 2.6964982036860334 
+        intervals: size = 27 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.11580180442697952 
+            text = "f" 
+        intervals [2]:
+            xmin = 0.11580180442697952 
+            xmax = 0.2314622549987746 
+            text = "a\ic" 
+        intervals [3]:
+            xmin = 0.2314622549987746 
+            xmax = 0.253820409012647 
+            text = "n" 
+        intervals [4]:
+            xmin = 0.253820409012647 
+            xmax = 0.269299131022251 
+            text = "\sw" 
+        intervals [5]:
+            xmin = 0.269299131022251 
+            xmax = 0.3385234155652199 
+            text = "l" 
+        intervals [6]:
+            xmin = 0.3385234155652199 
+            xmax = 0.4659321575107782 
+            text = "i" 
+        intervals [7]:
+            xmin = 0.4659321575107782 
+            xmax = 0.9790679766214225 
+            text = "" 
+        intervals [8]:
+            xmin = 0.9790679766214225 
+            xmax = 1.0114050094875466 
+            text = "\dh" 
+        intervals [9]:
+            xmin = 1.0114050094875466 
+            xmax = 1.0518263005701982 
+            text = "\sw" 
+        intervals [10]:
+            xmin = 1.0518263005701982 
+            xmax = 1.186563937512389 
+            text = "t" 
+        intervals [11]:
+            xmin = 1.186563937512389 
+            xmax = 1.3293858326711074 
+            text = "a\ic" 
+        intervals [12]:
+            xmin = 1.3293858326711074 
+            xmax = 1.3751966292314535 
+            text = "g" 
+        intervals [13]:
+            xmin = 1.3751966292314535 
+            xmax = 1.4867261575107733 
+            text = "\sw" 
+        intervals [14]:
+            xmin = 1.4867261575107733 
+            xmax = 1.6004063396979973 
+            text = "w\ef" 
+        intervals [15]:
+            xmin = 1.6004063396979973 
+            xmax = 1.689841419134254 
+            text = "n" 
+        intervals [16]:
+            xmin = 1.689841419134254 
+            xmax = 1.7966666529053157 
+            text = "t" 
+        intervals [17]:
+            xmin = 1.7966666529053157 
+            xmax = 1.83904415751077 
+            text = "\sw" 
+        intervals [18]:
+            xmin = 1.83904415751077 
+            xmax = 1.9655995807293465 
+            text = "w\ef" 
+        intervals [19]:
+            xmin = 1.9655995807293465 
+            xmax = 2.027707274782287 
+            text = "\dh" 
+        intervals [20]:
+            xmin = 2.027707274782287 
+            xmax = 2.064971891214057 
+            text = "\sw" 
+        intervals [21]:
+            xmin = 2.064971891214057 
+            xmax = 2.1419854318397142 
+            text = "m" 
+        intervals [22]:
+            xmin = 2.1419854318397142 
+            xmax = 2.276138050994092 
+            text = "a\hs" 
+        intervals [23]:
+            xmin = 2.276138050994092 
+            xmax = 2.400611157510781 
+            text = "s" 
+        intervals [24]:
+            xmin = 2.400611157510781 
+            xmax = 2.452523902104474 
+            text = "l" 
+        intervals [25]:
+            xmin = 2.452523902104474 
+            xmax = 2.524568827205883 
+            text = "\ic" 
+        intervals [26]:
+            xmin = 2.524568827205883 
+            xmax = 2.6189725221663736 
+            text = "v" 
+        intervals [27]:
+            xmin = 2.6189725221663736 
+            xmax = 2.6964982036860334 
+            text = "t" 
+    item [3]:
+        class = "IntervalTier" 
+        name = "vot" 
+        xmin = 0 
+        xmax = 2.6964982036860334 
+        intervals: size = 7 
+        intervals [1]:
+            xmin = 0 
+            xmax = 1.098310785315249 
+            text = "" 
+        intervals [2]:
+            xmin = 1.098310785315249 
+            xmax = 1.1919534429900835 
+            text = "VOT" 
+        intervals [3]:
+            xmin = 1.1919534429900835 
+            xmax = 1.3327044075051901 
+            text = "" 
+        intervals [4]:
+            xmin = 1.3327044075051901 
+            xmax = 1.3711046340337134 
+            text = "" 
+        intervals [5]:
+            xmin = 1.3711046340337134 
+            xmax = 1.7370441575107805 
+            text = "" 
+        intervals [6]:
+            xmin = 1.7370441575107805 
+            xmax = 1.7938620818450204 
+            text = "VOT" 
+        intervals [7]:
+            xmin = 1.7938620818450204 
+            xmax = 2.6964982036860334 
+            text = "" 
