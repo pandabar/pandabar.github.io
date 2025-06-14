@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Weird flexes in linguistics I: The giraffe"
-date:   2025-05-25 
+date:   2025-06-14
 categories: Linguistics, Cursed screenshots
 ---
 
