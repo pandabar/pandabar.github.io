@@ -31,7 +31,6 @@ github_username:  pandabar
 theme: minima
 plugins:
   - jekyll-feed
-basewebsite: /blog
 permalink: date
 website: https://pandabar.github.io
 # Exclude from processing.
