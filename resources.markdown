@@ -18,7 +18,7 @@ For complete beginners - part of the course Fonética del Español.
 
 - [Praat Tutorial 1](tutorial1.pdf): Navigating the user interface (recording, the Objects window, the Picture window, TextGrids).
 - [Praat Tutorial 2](tutorial2.pdf): Basic scripting (Opening files, TextGrid creation, Formant measurement, Table creation).
-- [Excel Tutorial](tutorial_excel.pdf): Basic operations (descriptive statistics, Pearson's R, Chi-Square, T-test and ANOVA). I do not endorse nor recommend Excel -R is my software of choice for these purposes.
+- [Excel Tutorial](tutorial_excel.pdf): Basic operations (descriptive statistics, Pearson's R, Chi-Square, T-test and ANOVA). I neither endorse nor recommend Excel -R is my software of choice for these purposes.
 
 #### Tutorials (in English) 
 
