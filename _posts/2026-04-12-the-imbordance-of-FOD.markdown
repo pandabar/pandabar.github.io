@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: sidebar-post
 title:  "Vuck foicing: The imbordance of FOD"
 date:   2026-04-12
 categories: liguistics, phonetics, Cursed screenshots

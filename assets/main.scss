@@ -1,0 +1,15 @@
+.post-with-sidebar {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+}
+
+.main-content {
+  flex: 3;
+  min-width: 0;
+}
+
+.sidebar {
+  flex: 1;
+  font-size: 0.9em;
+}
