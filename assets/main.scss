@@ -7,7 +7,7 @@
 .page-content-wrapper {
   display: flex;
   flex-direction: row; // Pushes content side-by-side
-  gap: 20px; // Adds space between sidebar and content
+  gap: 40px; // Adds space between sidebar and content
   
   @media (max-width: 800px) {
     flex-direction: column; // Stacks them on mobile
@@ -17,6 +17,7 @@
 .sidebar {
   flex: 1; // Takes up 1 part of space
   max-width: 250px; // Fixes the width
+  min-width: 250px; // Fixes the width
 }
 
 .post {
