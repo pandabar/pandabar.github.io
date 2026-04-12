@@ -1,28 +1,20 @@
-.layout-with-sidebar {
-  display: flex;
-  gap: 30px;
+---
+---
+
+.wrapper.layout-with-sidebar {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 40px !important;
+  align-items: flex-start !important;
+  border: 3px solid green;
 }
 
 .main-content {
-  flex: 3;
-  min-width: 0;
+  flex: 3 !important;
+  border: 2px solid red;
 }
 
 .sidebar {
-  flex: 1;
-  font-size: 0.9em;
-}
-
-.sidebar h3 {
-  margin-top: 0;
-}
-
-@media (max-width: 800px) {
-  .layout-with-sidebar {
-    flex-direction: column;
-  }
-
-  .sidebar {
-    margin-top: 20px;
-  }
+  flex: 1 !important;
+  border: 2px solid blue;
 }
