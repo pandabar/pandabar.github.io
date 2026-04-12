@@ -1,0 +1,28 @@
+---
+layout: default
+---
+
+<div class="site-with-sidebar">
+
+  <main class="main-content">
+    {{ content }}
+  </main>
+
+  <aside class="sidebar">
+    <h3>Welcome 👋</h3>
+    <p>This is my sidebar</p>
+
+    <hr>
+
+    <h4>Recent Posts</h4>
+    <ul>
+      {% for post in site.posts limit:5 %}
+        <li>
+          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+
+  </aside>
+
+</div>

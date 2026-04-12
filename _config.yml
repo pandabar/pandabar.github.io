@@ -32,6 +32,17 @@ plugins:
   - jekyll-feed
 permalink: date
 website: https://pandabar.github.io
+#####ADDED BY ME ON 12.04.2026####
+defaults:
+  - scope:
+      type: posts
+    values:
+      layout: sidebar
+  - scope:
+      type: pages
+    values:
+      layout: sidebar
+####
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
