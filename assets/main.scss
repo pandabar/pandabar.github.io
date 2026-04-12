@@ -5,12 +5,8 @@
 @import "minima";
 
 .wrapper {
-  max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit} * 2));
-  max-width:         calc(#{$content-width} - (#{$spacing-unit} * 2));
-  margin-right: auto;
-  margin-left: auto;
   padding-right: 50px;
-  padding-left: 50px;
+  padding-left: auto;
   @extend %clearfix;
 
   @include media-query($on-laptop) {
@@ -26,7 +22,8 @@
   display: flex;
   flex-direction: row; // Pushes content side-by-side
   gap: 40px; // Adds space between sidebar and content
-  
+  padding-left: 30px;
+  padding-right: 30px;
   @media (max-width: 800px) {
     flex-direction: column; // Stacks them on mobile
   }
@@ -39,5 +36,5 @@
 }
 
 .post {
-  flex: 3; // Takes up 3 parts of space
+  flex: 2; // Takes up 3 parts of space
 }
