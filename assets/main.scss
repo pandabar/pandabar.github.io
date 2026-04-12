@@ -23,7 +23,7 @@
   flex-direction: row; // Pushes content side-by-side
   gap: 40px; // Adds space between sidebar and content
   padding-left: 30px;
-  padding-right: 80px;
+  padding-right: 200px;
   @media (max-width: 800px) {
     flex-direction: column; // Stacks them on mobile
   }
@@ -36,5 +36,5 @@
 }
 
 .post {
-  flex: 2; // Takes up 3 parts of space
+  flex: 3; // Takes up 3 parts of space
 }
