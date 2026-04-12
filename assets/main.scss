@@ -1,7 +1,8 @@
 ---
 ---
+
 .site-with-sidebar {
-  display: flex;
+  display: flex !important;
   gap: 40px;
   align-items: flex-start;
 }
@@ -13,8 +14,6 @@
 
 .sidebar {
   flex: 1;
-  font-size: 0.9em;
-
   position: sticky;
   top: 20px;
 }
