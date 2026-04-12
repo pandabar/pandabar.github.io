@@ -1,21 +1,10 @@
 ---
+# Only the main Sass file needs front matter (the dashes are enough)
 ---
 
 @import "minima";
 
-.site-with-sidebar {
-  display: flex !important;
-  gap: 40px;
-  align-items: flex-start;
-}
-
-.main-content {
-  flex: 3;
-  min-width: 0;
-}
-
-.sidebar {
-  flex: 1;
-  position: sticky;
-  top: 20px;
+.layout-with-sidebar {
+  display: flex;
+  gap: 2rem;
 }
