@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: sidebar
 title: Teaching
 permalink: /teaching/
 ---
