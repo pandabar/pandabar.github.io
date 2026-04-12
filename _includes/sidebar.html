@@ -1,18 +1,3 @@
-<h3>Blog</h3>
-<p></p>
-
-<h3>Recent Posts</h3>
-<ul>
-  {% for post in site.posts limit:5 %}
-    <li>
-      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-    </li>
-  {% endfor %}
-</ul>
-
-<h3>Tags</h3>
-<ul>
-  {% for tag in site.tags %}
-    <li>{{ tag[0] }}</li>
-  {% endfor %}
-</ul>
+<aside class="sidebar">
+  <p>SIDEBAR TEST</p>
+</aside>
