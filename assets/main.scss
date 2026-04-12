@@ -1,0 +1,28 @@
+.layout-with-sidebar {
+  display: flex;
+  gap: 30px;
+}
+
+.main-content {
+  flex: 3;
+  min-width: 0;
+}
+
+.sidebar {
+  flex: 1;
+  font-size: 0.9em;
+}
+
+.sidebar h3 {
+  margin-top: 0;
+}
+
+@media (max-width: 800px) {
+  .layout-with-sidebar {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    margin-top: 20px;
+  }
+}
